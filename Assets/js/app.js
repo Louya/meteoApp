@@ -10,6 +10,7 @@ const compass = document.querySelector("#compass");
 const month = ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'];
 const day = ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'];
 
+
 const set_clothes = document.querySelector("#m_set4");
 const array_clothes = document.querySelectorAll(".img-clothes");
 
@@ -49,7 +50,6 @@ document.onreadystatechange = function () {
                     let chartPrecip18 = Math.round(retourReponse.hourly.data[18].precipProbability);
                     let chartPrecip23 = Math.round(retourReponse.hourly.data[23].precipProbability);
 
-                    console.log(chartTemp23);
 
                     new Chart(document.getElementById("summaryChart"), {
                         type: 'line',
@@ -104,14 +104,6 @@ document.onreadystatechange = function () {
                       });
                       
 
-
-
-
-
-
-                    // let phase = Math.round((retourReponse.daily.data[0].moonPhase-0)*0.25/(1-0))/0.25; // bring to 0-1 range
-                    // phase = phase*(1-0) + 0;
-
                     let phase = (Math.round(retourReponse.daily.data[0].moonPhase * 8) / 8);
                     let moon = "";
 
@@ -129,8 +121,6 @@ document.onreadystatechange = function () {
                             moon = "Pleine lune";                                                        
                             break;
                     }
-
-                    // .toFixed(2)
 
                     let currentDate = new Date(retourReponse.currently.time * 1000);
 
@@ -185,6 +175,25 @@ document.onreadystatechange = function () {
                         weatherHeure.innerHTML = setTime.value + ":00";
                         compass.style.transform = "rotate(" + retourReponse.hourly.data[setTime.value].windBearing + "deg";
 
+                    }) 
+                    
+                    let lat = retourReponse.latitude;
+                    let lon = retourReponse.longitude;
+                
+                    
+
+                    let url = `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${lat}&lon=${lon}`;
+                    // console.log(url);
+
+                    fetch(url, {method: "POST"})
+                    .then( (result) => { return result.json() })
+                    .then( (result) => {
+                        if(!result.error){
+                            // let city = typeof result.address.city !== 'undefined' ? result.address.city:result.address.town; 
+                            // console.log(result.address.town);
+                            // document.querySelector("#location-input").value = town;
+                            console.log('ed');
+                        }
                     })
 
                 }).catch((error) => {
