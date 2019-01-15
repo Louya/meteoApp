@@ -10,16 +10,13 @@ class DataController extends Controller{
     /** Route '/' */
 
     public function index(){
-        echo 'coucou';
         return $this->twig->render('message.html.twig');
     }
 
-    /** Route /list */
+    /** Route /weather */
 
-    public function list(){
-        $users = new Users();
-        $listUsers = $users->findAll();
-        return $this->twig->render('users.html.twig', ['users'=> $listUsers]);
+    public function weather(){
+        return $this->twig->render('message.html.twig');
     }
 
     /** Route /post/id */
