@@ -5,12 +5,11 @@ namespace App\Controller;
 use Framework\Component\Controller;
 use App\Models\Users;
 
-class BlogController extends Controller{
+class MainController extends Controller{
 
     /** Route '/' */
 
     public function index(){
-        echo 'coucou';
         return $this->twig->render('message.html.twig');
     }
 
@@ -27,6 +26,11 @@ class BlogController extends Controller{
     public function post( $params){
         extract($params);
         return 'id du post : '.$id;
+    }
+
+    /** Route /404  */
+    public function notFound(){
+        return $this->twig->render('404.html.twig');
     }
 
 }

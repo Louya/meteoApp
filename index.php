@@ -1,5 +1,7 @@
 <?php
 
+use App\Controller\MainController;
+
 require_once 'vendor/autoload.php';
 
 $router = new AltoRouter();
@@ -8,16 +10,29 @@ $router = new AltoRouter();
 #$router->setBasePath('/alto');
 
 /**Création des routes */
-$router->map('GET', '/', ['c'=>'BlogController', 'a'=>'index']);
-$router->map('GET', '/list', ['c'=>'BlogController', 'a'=>'list']);
-$router->map('GET', '/post/[i:id]', ['c'=>'BlogController', 'a'=>'post']);
+//Route vers la page d'accueil
+$router->map('GET', '/', ['c'=>'MainController', 'a'=>'index']);
 
+$router->map('GET', '/list', ['c'=>'MainController', 'a'=>'list']);
+$router->map('GET', '/post/[i:id]', ['c'=>'MainController', 'a'=>'post']);
+$router->map('GET', '/404', ['c'=>'MainController', 'a'=>'notFound']);
+
+//Correspondance avec l'URL actuelle
 $match = $router->match();
+
 $controller = 'App\\Controller\\'.$match['target']['c'];
 $action = $match['target']['a'];
 $params = $match['params'];
 
+//Instantiation d'un nouveau controlleur
 $object = new $controller();
-$print = $object->{$action}($params);
+$print = $object->{$action}($params); 
 
-echo $print;
+// test d'erreur 404
+//if( $match && is_callable( $match['target'] ) ) {
+    echo $print;
+//} else {
+	//Aucune route correspondante
+    // header( $_SERVER["SERVER_PROTOCOL"] . ' 404 Not Found');
+    //echo '404 not found';
+//}
