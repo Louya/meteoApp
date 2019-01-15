@@ -4,7 +4,8 @@ require_once 'vendor/autoload.php';
 
 $router = new AltoRouter();
 
-$router->setBasePath('/alto');
+//Sert a indiquer un sous dossier comme racine du site
+#$router->setBasePath('/alto');
 
 /**Création des routes */
 $router->map('GET', '/', ['c'=>'BlogController', 'a'=>'index']);
