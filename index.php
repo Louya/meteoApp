@@ -4,12 +4,12 @@ require_once 'vendor/autoload.php';
 
 $router = new AltoRouter();
 
-$router->setBasePath('/alto');
+// $router->setBasePath('/alto');
 
 /**Création des routes */
-$router->map('GET', '/', ['c'=>'BlogController', 'a'=>'index']);
-$router->map('GET', '/list', ['c'=>'BlogController', 'a'=>'list']);
-$router->map('GET', '/post/[i:id]', ['c'=>'BlogController', 'a'=>'post']);
+$router->map('GET', '/', ['c'=>'DataController', 'a'=>'index']);
+$router->map('GET', '/list', ['c'=>'DataController', 'a'=>'list']);
+$router->map('GET', '/post/[i:id]', ['c'=>'DataController', 'a'=>'post']);
 
 $match = $router->match();
 $controller = 'App\\Controller\\'.$match['target']['c'];
