@@ -21,9 +21,15 @@ class DataController extends Controller{
 
     /** Route /post/id */
 
-    public function post( $params){
-        extract($params);
-        return 'id du post : '.$id;
+    // public function post( $params){
+    //     extract($params);
+    //     return 'id du post : '.$id;
+    // }
+
+    /** Route /post/id */
+
+    public function notFound(){
+        return $this->twig->render('notFound.html.twig');
     }
 
 }
