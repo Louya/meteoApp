@@ -7,25 +7,26 @@ use App\Models\Users;
 
 class DataController extends Controller{
 
-/** Route '/' */
+    /** Route '/' */
 
-public function index(){
-return $this->twig->render('message.html.twig');
-}
+    public function index(){
+        echo 'coucou';
+        return $this->twig->render('message.html.twig');
+    }
 
-/** Route /list */
+    /** Route /list */
 
-public function list(){
-    $users = new Users();
-    $listUsers = $users->findAll();
-    return $this->twig->render('users.html.twig', ['users'=> $listUsers]);
-}
+    public function list(){
+        $users = new Users();
+        $listUsers = $users->findAll();
+        return $this->twig->render('users.html.twig', ['users'=> $listUsers]);
+    }
 
-/** Route /post/id */
+    /** Route /post/id */
 
-public function post( $params){
-extract($params);
-return 'id du post : '.$id;
-}
+    public function post( $params){
+        extract($params);
+        return 'id du post : '.$id;
+    }
 
 }
