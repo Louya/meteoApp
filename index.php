@@ -15,7 +15,7 @@ $router = new AltoRouter();
 /**Création des routes */
 $router->map('GET', '/', ['c'=>'DataController', 'a'=>'weather']);
 $router->map('GET', '/weather', ['c'=>'DataController', 'a'=>'weather']);
-$router->map('GET', '/weather/get', ['c'=>'DataController', 'a'=>'get']);
+$router->map('POST', '/weather/get', ['c'=>'DataController', 'a'=>'get']);
 $router->map('GET', '/user', ['c'=>'UserController', 'a'=>'login']);
 $router->map('GET', '/user/login', ['c'=>'UserController', 'a'=>'login']);
 $router->map('GET', '/user/register', ['c'=>'UserController', 'a'=>'register']);
@@ -25,7 +25,7 @@ $router->map('GET', '/404', ['c'=>'DataController', 'a'=>'notFound']);
 //Correspondance avec l'URL actuelle
 $match = $router->match();
 
-// var_dump($match);
+var_dump($match);
 
 $controller = 'App\\Controller\\'.$match['target']['c'];
 $action = $match['target']['a'];
