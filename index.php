@@ -13,8 +13,10 @@ $router = new AltoRouter();
 #$router->setBasePath('/alto');
 
 /**Création des routes */
-$router->map('GET', '/', ['c'=>'DataController', 'a'=>'index']);
-$router->map('GET', '/weather', ['c'=>'DataController', 'a'=>'weather']);
+$router->map('GET', '/', ['c'=>'DataController', 'a'=>'get']);
+$router->map('GET', '/weather', ['c'=>'DataController', 'a'=>'get']);
+// $router->map('GET', '/weather/get', ['c'=>'DataController', 'a'=>'get']);
+$router->map('GET', '/user', ['c'=>'UserController', 'a'=>'login']);
 $router->map('GET', '/user/login', ['c'=>'UserController', 'a'=>'login']);
 $router->map('GET', '/user/register', ['c'=>'UserController', 'a'=>'register']);
 $router->map('GET', '/post/[i:id]', ['c'=>'DataController', 'a'=>'post']);

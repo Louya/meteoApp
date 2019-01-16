@@ -10,13 +10,13 @@ class DataController extends Controller{
     /** Route '/' */
 
     public function index(){
-        return $this->twig->render('message.html.twig');
+        return $this->twig->render('weather.html.twig');
     }
 
     /** Route /weather */
 
-    public function weather(){
-        return $this->twig->render('message.html.twig');
+    public function get(){
+        return $this->twig->render('weather.html.twig');
     }
 
     /** Route /post/id */
@@ -29,7 +29,7 @@ class DataController extends Controller{
     /** Route /post/id */
 
     public function notFound(){
-        return $this->twig->render('notFound.html.twig');
+        return $this->twig->render('not_found.html.twig');
     }
 
 }
