@@ -9,6 +9,7 @@ document.onreadystatechange = function () {
 
             let latitude = position.coords.latitude;
             let longitude = position.coords.longitude;
+
             let data = new FormData();
 
             data.append("latitude", latitude);
@@ -17,7 +18,7 @@ document.onreadystatechange = function () {
             console.log("if geolocalisation marche");
             fetch("/weather/get", {method: "POST", body: data})
                 .then((retourReponse) => {
-                    return retourReponse.text();
+                    return retourReponse.json();
                 })
                 .then((retourReponse) => {
 
