@@ -1,7 +1,9 @@
-console.log("jpp");
+console.log("le js charge");
 
 document.onreadystatechange = function () {
+    console.log("onreadystatechange marche");
     if (document.readyState === "complete") {
+        console.log("if complete marche");
         if (navigator.geolocation) { /*demander l'autorisation d'obtenir la géolocalisation*/
         navigator.geolocation.getCurrentPosition(function (position) {
 
@@ -12,11 +14,13 @@ document.onreadystatechange = function () {
             data.append("latitude", latitude);
             data.append("longitude", longitude);
 
-            fetch("request.php", {method: "POST", body: data})
+            console.log("if geolocalisation marche");
+            fetch("/weather/get", {method: "POST", body: data})
                 .then((retourReponse) => {
-                    return retourReponse.json();
+                    return retourReponse.text();
                 })
                 .then((retourReponse) => {
+
                     console.log(retourReponse);
 
                 }).catch((error) => {
