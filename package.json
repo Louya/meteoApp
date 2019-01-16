@@ -1,0 +1,36 @@
+{
+  "name": "html",
+  "version": "1.0.0",
+  "description": "Application meteo qui utilise l'API DarkSky",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Louya/meteoApp.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Louya/meteoApp/issues"
+  },
+  "homepage": "https://github.com/Louya/meteoApp#readme",
+  "devDependencies": {
+    "gulp": "^4.0.0",
+    "gulp-clean": "^0.4.0",
+    "gulp-clean-css": "^4.0.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-imagemin": "^5.0.3",
+    "gulp-less": "^4.0.1",
+    "gulp-minify": "^3.1.0",
+    "gulp-sass": "^4.0.2",
+    "gulp-watch-sass": "^1.4.1",
+    "node-sass": "^4.11.0"
+  },
+  "dependencies": {
+    "gulp-minifier": "^1.2.2",
+    "gulp-util": "^3.0.8",
+    "imagemin-mozjpeg": "^8.0.0"
+  }
+}
