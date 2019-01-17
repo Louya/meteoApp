@@ -1,16 +1,58 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="dist/css/main.css">
-    <title>Météo</title>
+{% extends main.html.twig %}
 
-    {# <base href="localhost:8080/"> #}
-</head>
-<body>
-    <p>Météo</p>
-    <script src="Assets/js/app.js"></script>
-</body>
-</html>
+{% block title %} MeteApp - {{location}}{% endblock %}
+
+{% block content %}
+<section class="container">
+        <header class="row">
+            <div class="col">
+                *burger*
+            </div>
+            <div class="col">
+                *recherche*
+            </div>
+            <div class="col">
+                *options*
+            </div>
+        </header>
+        <nav class="row">
+            
+        </nav>
+        <article class="clothe">
+            <div class="row">
+    
+            </div>
+            <div class="row">
+    
+            </div>
+        </article>
+        <article class="summary">
+            <div class="row">
+    
+            </div>
+            <div class="row">
+    
+            </div>
+        </article>
+        <article class="details">
+            <div class="row">
+    
+            </div>
+            <div class="row">
+    
+            </div>
+            <div class="row">
+    
+            </div>
+            <div class="row">
+    
+            </div>
+            <div class="row">
+    
+            </div>
+            <div class="row">
+    
+            </div>
+        </article>
+    </section>
+{% endblock %}
