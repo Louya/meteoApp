@@ -1,4 +1,6 @@
 composer.phar
+composer.lock
+package-lock.json
 /vendor/
 .env
 /node_modules/
