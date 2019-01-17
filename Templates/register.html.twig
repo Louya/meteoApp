@@ -5,8 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link rel="stylesheet" href="../dist/css/main.css">
 </head>
 <body>
-    <p>register</p>
+   <div class="register-page">
+        <div class="form">
+            <div class="register-form">
+                <input id="mail-register" type="email" placeholder="Email"/>
+                <input id="pass-register" type="password" placeholder="Mot de passe"/>
+                <input id="prenom-register" type="text" placeholder="Prénom"/>
+                <select name="sexe" id="sexe-register">
+                    <option value="none">Sexe</option>
+                    <option value="homme">Homme</option>
+                    <option value="femme">Femme</option>
+                </select>
+                <select name="select" id="color-register">
+                    <option value="#F2F2F2" style="background-color: #F2F2F2">Peau</option>
+                    <option value="#FFEFD6" style="background-color: #FFEFD6"></option>
+                    <option value="#FFD699" style="background-color: #FFD699"></option>
+                    <option value="#FFC266" style="background-color: #FFC266"></option>
+                    <option value="#553301" style="background-color: #553301"></option>
+                </select>
+                <input id="localisation-register" type="text" placeholder="Localisation"/>
+                <button id="valider-register">Valider</button>
+                <p class="message"></p>
+            </div>
+        </div>
+    </div>
+<script src="Assets/js/register.js"></script>
 </body>
 </html>

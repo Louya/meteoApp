@@ -87,7 +87,7 @@ gulp.task('compressImg', function (){
 
 
 gulp.task('watch', function() {
-    gulp.watch('Assets/sass/main.scss', gulp.series('compileSass'));
+    gulp.watch('Assets/sass/*.scss', gulp.series('compileSass'));
 });
 
 // exports.default = series(concatCss); 

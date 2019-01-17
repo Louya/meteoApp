@@ -9,12 +9,6 @@ use App\Models\Users;
 
 class DataController extends Controller{
 
-    /** Route '/' */
-
-    public function index(){
-        return $this->twig->render('weather.html.twig');
-    }
-
     /** Route /weather */
 
     public function weather(){
@@ -61,16 +55,16 @@ class DataController extends Controller{
             return $result;
         }
 
-        // $latitude = $_POST["latitude"];
-        // $longitude = $_POST["longitude"];
-        $latitude = 67.3;
-        $longitude = 6.17;
+        $latitude = $_POST["latitude"];
+        $longitude = $_POST["longitude"];
+        // $latitude = 67.3;
+        // $longitude = 6.17;
 
         $ms = round(microtime(true));
         $link = "https://api.darksky.net/forecast/dc13d8d3db140a701e2aac4edfdfcfb3/".$latitude.",".$longitude.",".$ms."?lang=fr&units=auto";
 
         $get_data = callAPI('GET', $link, false);
-        //echo $get_data;
+        echo json_encode($get_data);
         // $response = json_decode($get_data, true);
         // $errors = $response['response']['errors'];
         // $data = $response['response']['data'][0];

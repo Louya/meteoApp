@@ -1,25 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <title>Météo</title>
 </head>
+
 <body>
-    <div class="wrapper">
-        <div class="login">
-            <p class="title">Accès utilisateur</p>
-            <input id="login" type="text" placeholder="Username" autofocus autocomplete="off"/>
-            <i class="fa fa-user"></i>
-            <input id="pass" name="pass" type="password" placeholder="Password" />
-            <i class="fa fa-key"></i>
-            <button id="connexion">
-            <i class="spinner"></i>
-            <span class="state">Se connecter</span>
-            </button>
-            <p id="error" class="text-center"></p>
+    <div class="container-fluid">
+        <div class="container">
+            <div>
+            <div class="form-group">
+                <input id="login_login" type="text" placeholder="Username" autofocus autocomplete="off" />
+            </div>
+            <div class="form-group">
+                <input id="pass_login" name="pass" type="password" placeholder="Password">
+            </div>
+            <button id="connexion_login" type="submit" class="btn btn-primary">Se connecter</button>
+            <div id="error"></div>
+        </div>
         </div>
     </div>
+    <script src="Assets/js/authentification.js"></script>
 </body>
+
 </html>
