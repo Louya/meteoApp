@@ -9,12 +9,6 @@ use App\Models\Users;
 
 class DataController extends Controller{
 
-    /** Route '/' */
-
-    public function index(){
-        return $this->twig->render('weather.html.twig');
-    }
-
     /** Route /weather */
 
     public function weather(){
