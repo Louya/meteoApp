@@ -4,21 +4,28 @@ use App\Controller\MainController;
 
 require_once 'vendor/autoload.php';
 
+use App\Controller\DataController;
+use App\Controller\UserController;
+
 $router = new AltoRouter();
 
 //Sert a indiquer un sous dossier comme racine du site
 #$router->setBasePath('/alto');
 
 /**Création des routes */
-//Route vers la page d'accueil
-$router->map('GET', '/', ['c'=>'MainController', 'a'=>'index']);
-
-$router->map('GET', '/list', ['c'=>'MainController', 'a'=>'list']);
-$router->map('GET', '/post/[i:id]', ['c'=>'MainController', 'a'=>'post']);
-$router->map('GET', '/404', ['c'=>'MainController', 'a'=>'notFound']);
+$router->map('GET', '/', ['c'=>'DataController', 'a'=>'weather']);
+$router->map('GET', '/weather', ['c'=>'DataController', 'a'=>'weather']);
+$router->map('POST', '/weather/get', ['c'=>'DataController', 'a'=>'get']);
+$router->map('GET', '/user', ['c'=>'UserController', 'a'=>'login']);
+$router->map('GET', '/user/login', ['c'=>'UserController', 'a'=>'login']);
+$router->map('GET', '/user/register', ['c'=>'UserController', 'a'=>'register']);
+$router->map('GET', '/post/[i:id]', ['c'=>'DataController', 'a'=>'post']);
+$router->map('GET', '/404', ['c'=>'DataController', 'a'=>'notFound']);
 
 //Correspondance avec l'URL actuelle
 $match = $router->match();
+
+var_dump($match);
 
 $controller = 'App\\Controller\\'.$match['target']['c'];
 $action = $match['target']['a'];
