@@ -69,8 +69,6 @@ self::execute();
 return self::fetchAll();
 }
 
-
-
 protected static function getOne( $sql, $params=[] ):array
 {
 self::$sql = $sql;
@@ -82,7 +80,15 @@ self::execute();
 return self::fetch();
 }
 
-
+protected static function insertOne( $sql, $params=[] )
+{
+    self::$sql = $sql;
+    self::prepare( self::$sql );
+    foreach( $params as $keys=>$values){
+        self::bindParam(':'.$keys, $values);
+    }
+    self::execute();
+}
 
 
 }

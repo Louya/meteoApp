@@ -10,11 +10,11 @@ function verify(element, event) {
         if (e.key === "Enter" || event === "click") {
            
             let data = new FormData();
-            data.append("login", login_login.value);
-            data.append("pass", pass_login.value);
-
+            data.append("login", login.value);
+            data.append("pass", pass.value);
+        
             fetch("/login/verif", {method: "POST", body: data})
-            .then( (result) => { return result.json() })
+            .then( (result) => { return result.json() } )
             .then( (result) => {
                 // console.log(result.error);
                 if(!result.error){

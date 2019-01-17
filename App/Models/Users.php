@@ -6,13 +6,17 @@ use Framework\Component\Database;
 
 class Users extends Database
 {
-    //private $id
-    //private astname;
 
-    public function bdd_register($prenom, $sexe, $mail, $pass, $localisation)
+    public function bdd_free($curr_mail)
     {
-        $req = "INSERT INTO user (prenom, sexe, mail, pass, localisation) VALUES ('$data[prenomUser]', '$data[nomUser]', '$data[villeUser]')";
-        return parent::getOne($req,['password'=>$curr_pass_encr, 'user'=>$curr_login_encr]);
+        $req = "SELECT COUNT(`mail`) AS nbr FROM `user` WHERE `mail` = :mail";
+        return parent::getOne($req,['mail'=>$curr_mail]);
+    }
+
+    public function bdd_register($curr_mail, $curr_pass_encr, $curr_prenom, $curr_sexe, $curr_color, $curr_localisation)
+    {
+        $req = "INSERT INTO user (mail, pass, prenom, sexe, color, localisation) VALUES (:mail, :pass, :prenom, :sexe, :color, :localisation)";
+        parent::insertOne($req,['mail'=>$curr_mail,'pass'=>$curr_pass_encr, 'prenom'=>$curr_prenom, 'sexe'=>$curr_sexe, 'color'=>$curr_color, 'localisation'=>$curr_localisation]);
     }
 
     // function bdd_authentication($curr_login_encr, $curr_pass_encr) {
