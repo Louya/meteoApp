@@ -83,6 +83,4 @@ return self::fetch();
 }
 
 
-
-
 }

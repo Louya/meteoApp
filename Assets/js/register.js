@@ -8,6 +8,11 @@ const passRegister = document.querySelector("#pass-register");
 const prenomRegister = document.querySelector("#prenom-register");
 const sexeRegister = document.querySelector("#sexe-register");
 const localisationRegister = document.querySelector("#localisation-register");
+const colorRegister = document.querySelector("#color-register");
+
+colorRegister.addEventListener('click', () => {
+    colorRegister.style.backgroundColor = colorRegister.value; 
+})
 
 function verify(element, event) {
 
@@ -19,6 +24,7 @@ function verify(element, event) {
             data.append("pass", passRegister.value);
             data.append("prenom", prenomRegister.value);
             data.append("sexe", sexeRegister.value);
+            data.append("color", colorRegister.value);
             data.append("localisation", localisationRegister.value);
         
             fetch("/register/verif", {method: "POST", body: data})
@@ -27,9 +33,9 @@ function verify(element, event) {
                 console.log(result);
                 if(!result.message){
                     document.querySelector(".message").innerHTML = "Inscription réussie, vous allez être redirigé.";
-                    setTimeout(function(){
-                        window.location.replace("/weather");
-                    }, 3000);
+                    // setTimeout(function(){
+                    //     window.location.replace("/weather");
+                    // }, 3000);
                 } else {
                     document.querySelector(".message").innerHTML = "";
                     for (let i = 0; i < result.message.length; i++) {
