@@ -52,6 +52,20 @@
     }
     .summary{
         background-color: $colorSummary;
+        #tempCard{
+            background-color: $colorClothe;
+            border-radius: 10px;
+            p{
+                color: #980000;
+            }
+        }
+        #rainCard{
+            background-color: $colorClothe;
+            border-radius: 10px;
+            p{
+                color: #030340;
+            }
+        }
     }
     .details{
         background-color: $colorDetails;

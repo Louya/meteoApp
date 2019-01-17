@@ -3439,6 +3439,16 @@ a.text-dark:hover, a.text-dark:focus {
 
 .weather .summary {
   background-color: #B9B9B9; }
+  .weather .summary #tempCard {
+    background-color: #FFFFFF;
+    border-radius: 10px; }
+    .weather .summary #tempCard p {
+      color: #980000; }
+  .weather .summary #rainCard {
+    background-color: #FFFFFF;
+    border-radius: 10px; }
+    .weather .summary #rainCard p {
+      color: #030340; }
 
 .weather .details {
   background-color: #EBEBEB; }
