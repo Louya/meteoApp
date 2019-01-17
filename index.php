@@ -16,9 +16,9 @@ $router = new AltoRouter();
 $router->map('GET', '/', ['c'=>'DataController', 'a'=>'weather']);
 $router->map('GET', '/weather', ['c'=>'DataController', 'a'=>'weather']);
 $router->map('POST', '/weather/get', ['c'=>'DataController', 'a'=>'get']);
-$router->map('GET', '/user', ['c'=>'UserController', 'a'=>'login']);
-$router->map('GET', '/user/login', ['c'=>'UserController', 'a'=>'login']);
-$router->map('GET', '/user/register', ['c'=>'UserController', 'a'=>'register']);
+$router->map('GET', '/login', ['c'=>'UserController', 'a'=>'login']);
+$router->map('GET', '/register', ['c'=>'UserController', 'a'=>'register']);
+$router->map('POST', '/register/verif', ['c'=>'UserController', 'a'=>'verifRegister']);
 $router->map('GET', '/post/[i:id]', ['c'=>'DataController', 'a'=>'post']);
 $router->map('GET', '/404', ['c'=>'DataController', 'a'=>'notFound']);
 
