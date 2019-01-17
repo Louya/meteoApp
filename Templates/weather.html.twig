@@ -4,38 +4,42 @@
 
 {% block content %}
 <div class="weather">
-    <header class="row p-0 m-0">
-        <div class="col-2 p-0 m-0">
-            *burger*
-        </div>
-        <div class="col-8 p-0 m-0 text-center">
-            *recherche*
-        </div>
-        <div class="col-2 p-0 m-0">
-            *options*
-        </div>
-    </header>
+    <div class="topBar">
+        <header class="row p-0 m-0">
+            <div class="col-2 p-0 m-0">
+                *burger*
+            </div>
+            <div class="col-8 p-0 m-0 text-center">
+                *recherche*
+            </div>
+            <div class="col-2 p-0 m-0">
+                *options*
+            </div>
+        </header>
 
-    <nav class="row p-0 m-0 d-flex align-items-center">
-        <div class="col-2 p-0 m-0">
-            <a href="">Prev.</a>
-        </div>
-        <div class="col-8 p-0 m-0 text-center">
-            <h2>Jour</h2>
-        </div>
-        <div class="col-2 p-0 m-0">
-            <a href="">Next</a>
-        </div>
-    </nav>
-    <section class="container m-0">
-        <article class="clothe">
+        <nav class="row p-0 m-0 d-flex align-items-center">
+            <div class="col-2 p-0 m-0">
+                <a href="">Prev.</a>
+            </div>
+            <div class="col-8 p-0 m-0 text-center">
+                <h2>Jour</h2>
+            </div>
+            <div class="col-2 p-0 m-0">
+                <a href="">Next</a>
+            </div>
+        </nav>
+    </div>
+    <section class="container m-0 p-0">
+        <article class="clothe px-3">
             <div class="row justify-content-center">
                 <p class="py-4">*Message sur le temps*</p>
             </div>
             <div class="row">
                 <div class="col-2 d-flex flex-column justify-content-center">
-                    <button class="my-3 d-flex justify-content-center" id="femaleButton"><img src="Assets/img/icons/icon-female.svg" alt=""></button>
-                    <button class="my-3 d-flex justify-content-center" id="maleButton"><img src="Assets/img/icons/icon-male.svg" alt=""></button>
+                    <button class="my-3 d-flex justify-content-center" id="femaleButton"><img src="Assets/img/icons/icon-female.svg"
+                            alt=""></button>
+                    <button class="my-3 d-flex justify-content-center" id="maleButton"><img src="Assets/img/icons/icon-male.svg"
+                            alt=""></button>
                 </div>
                 <div class="col-8 text-center">
                     <img id="gugus" src="Assets/img/male.svg" alt="">
@@ -49,35 +53,69 @@
             </div>
         </article>
         <article class="summary">
-            <div class="row">
-                <div id="tempCard" class="col-4">
-                    <img src="Assets/img/icons/thermometer.svg" alt="icone de thermomètre">
-                    <p id="tempData">5°C</p>
+            <div class="row px-3 d-flex justify-content-center align-items-center">
+                <div class="col-4">
+                    <div id="tempCard" class="py-2 d-flex justify-content-around align-items-center">
+                        <img id="thermoIcon" src="Assets/img/icons/thermometer.svg" alt="icone de thermomètre">
+                        <p id="tempData" class="m-0">5°C</p>
+                    </div>
                 </div>
                 <div id="weatherIcon" class="col-4">
-                    <img src="Assets/img/weather-icons/weather-clear.png" alt="">
+                    <img src="Assets/img/weather-icons/weather-clouds.png" alt="icone du temps">
                 </div>
-                <div id="rainCard" class="col-4">
-                    <p id="tempRain">10%</p>
-                    <img src="Assets/img/icons/raindrop.svg" alt="icone de thermomètre">
+                <div class="col-4">
+                    <div id="rainCard" class="py-2 d-flex justify-content-around align-items-center">
+                        <p id="tempRain" class="m-0">10%</p>
+                        <img id="rainIcon" src="Assets/img/icons/raindrop.svg" alt="icone de thermomètre">
+                    </div>
+
                 </div>
             </div>
-            <div class="row">
-                <canvas id="summaryChart" width="350" height="200"></canvas>
+            <div class="row" class="px-3">
+                <canvas id="summaryChart" width="300" height="100"></canvas>
             </div>
         </article>
         <article class="details">
             <div class="row">
+                <div class="col-4">
 
+                </div>
+                <div class="col-4">
+
+                </div>
+                <div class="col-4">
+
+                </div>
             </div>
             <div class="row">
+                <div class="col-4">
 
+                </div>
+                <div class="col-4">
+
+                </div>
+                <div class="col-4">
+
+                </div>
             </div>
             <div class="row">
+                <div class="col-2">
 
+                </div>
+                <div class="col-2">
+
+                </div>
             </div>
             <div class="row">
+                <div class="col-4">
 
+                </div>
+                <div class="col-4">
+
+                </div>
+                <div class="col-4">
+
+                </div>
             </div>
             <div class="row">
 

@@ -1,11 +1,17 @@
 .weather{
-    header{
+    .topBar{
+        height: 15vh;
         background-color: $colorMain;
+        header{
+            background-color: $colorMain;
+        }
+        nav{
+            background-color: $colorMain;
+        }
     }
-    nav{
-        background-color: $colorMain;
-    }
+   
     .clothe{
+        height: 85vh;
         background-color: $colorClothe;
         #femaleButton{
             width: 30px;
@@ -51,24 +57,44 @@
         }
     }
     .summary{
+        height: 42.5vh;
         background-color: $colorSummary;
         #tempCard{
             background-color: $colorClothe;
             border-radius: 10px;
+            box-shadow: 2px 2px 5px black;
+            img{
+                height: 30px;
+                width: auto;
+            }
             p{
                 color: #980000;
+                font-size: 1em;
+            }
+        }
+        #weatherIcon{
+            img{
+                width: 100px;
+                height: auto;
             }
         }
         #rainCard{
             background-color: $colorClothe;
             border-radius: 10px;
+            box-shadow: 2px 2px 5px black;
+            img{
+                height: 30px;
+                width: auto;
+            }
             p{
                 color: #030340;
+                font-size: 1em;
             }
         }
     }
     .details{
         background-color: $colorDetails;
+        height: 85vh;
     }
 
 }
