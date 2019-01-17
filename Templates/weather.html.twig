@@ -1,58 +1,89 @@
-{% extends main.html.twig %}
+{% extends "main.html.twig" %}
 
-{% block title %} MeteApp - {{location}}{% endblock %}
+{% block title %} MeteApp - {% endblock %}
 
 {% block content %}
-<section class="container">
-        <header class="row">
-            <div class="col">
-                *burger*
-            </div>
-            <div class="col">
-                *recherche*
-            </div>
-            <div class="col">
-                *options*
-            </div>
-        </header>
-        <nav class="row">
-            
-        </nav>
+<div class="weather">
+    <header class="row p-0 m-0">
+        <div class="col-2 p-0 m-0">
+            *burger*
+        </div>
+        <div class="col-8 p-0 m-0 text-center">
+            *recherche*
+        </div>
+        <div class="col-2 p-0 m-0">
+            *options*
+        </div>
+    </header>
+
+    <nav class="row p-0 m-0 d-flex align-items-center">
+        <div class="col-2 p-0 m-0">
+            <a href="">Prev.</a>
+        </div>
+        <div class="col-8 p-0 m-0 text-center">
+            <h2>Jour</h2>
+        </div>
+        <div class="col-2 p-0 m-0">
+            <a href="">Next</a>
+        </div>
+    </nav>
+    <section class="container m-0">
         <article class="clothe">
-            <div class="row">
-    
+            <div class="row justify-content-center">
+                <p class="py-4">*Message sur le temps*</p>
             </div>
             <div class="row">
-    
+                <div class="col-2 d-flex flex-column justify-content-center">
+                    <button class="my-3 d-flex justify-content-center" id="femaleButton"><img src="Assets/img/icons/icon-female.svg" alt=""></button>
+                    <button class="my-3 d-flex justify-content-center" id="maleButton"><img src="Assets/img/icons/icon-male.svg" alt=""></button>
+                </div>
+                <div class="col-8 text-center">
+                    <img id="gugus" src="Assets/img/male.svg" alt="">
+                </div>
+                <div class="col-2 d-flex flex-column justify-content-center">
+                    <button class="my-2" id="skin1"></button>
+                    <button class="my-2" id="skin2"></button>
+                    <button class="my-2" id="skin3"></button>
+                    <button class="my-2" id="skin4"></button>
+                </div>
             </div>
         </article>
         <article class="summary">
             <div class="row">
-    
+                <div class="col-4">
+
+                </div>
+                <div class="col-4">
+                    <img src="" alt="">
+                </div>
+                <div class="col-4">
+
+                </div>
             </div>
             <div class="row">
-    
+
             </div>
         </article>
         <article class="details">
             <div class="row">
-    
+
             </div>
             <div class="row">
-    
+
             </div>
             <div class="row">
-    
+
             </div>
             <div class="row">
-    
+
             </div>
             <div class="row">
-    
+
             </div>
             <div class="row">
-    
+
             </div>
         </article>
     </section>
+</div>
 {% endblock %}

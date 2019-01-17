@@ -70,7 +70,7 @@ class DataController extends Controller{
         $link = "https://api.darksky.net/forecast/dc13d8d3db140a701e2aac4edfdfcfb3/".$latitude.",".$longitude.",".$ms."?lang=fr&units=auto";
 
         $get_data = callAPI('GET', $link, false);
-        echo $get_data;
+        //echo $get_data;
         // $response = json_decode($get_data, true);
         // $errors = $response['response']['errors'];
         // $data = $response['response']['data'][0];

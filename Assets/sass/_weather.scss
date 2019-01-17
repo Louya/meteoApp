@@ -1,0 +1,60 @@
+.weather{
+    header{
+        background-color: $colorMain;
+    }
+    nav{
+        background-color: $colorMain;
+    }
+    .clothe{
+        background-color: $colorClothe;
+        #femaleButton{
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            border: none;
+            background-color: $colorDetails;
+        }
+        #maleButton{
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            border: none;
+            background-color: $colorMain;
+        }
+        #skin1{
+            background-color: $colorSkin1;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            border: none;
+        }
+        #skin2{
+            background-color: $colorSkin2;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            border: none;
+        }
+        #skin3{
+            background-color: $colorSkin3;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            border: none;
+        }
+        #skin4{
+            background-color: $colorSkin4;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            border: none;
+        }
+    }
+    .summary{
+        background-color: $colorSummary;
+    }
+    .details{
+        background-color: $colorDetails;
+    }
+
+}
