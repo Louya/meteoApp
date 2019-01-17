@@ -18,7 +18,7 @@ function verify(element, event) {
             .then( (result) => {
                 // console.log(result.error);
                 if(!result.error){
-                    console.log(result.error);
+                    console.log(result);
                     window.location.replace("/user");
                 } else {
                     document.querySelector("#error").innerHTML = result.error;
