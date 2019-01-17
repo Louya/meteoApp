@@ -77,7 +77,7 @@ class DataController extends Controller{
     /** Route /404 */
 
     public function notFound(){
-        return $this->twig->render('not_found.html.twig');
+        return $this->twig->render('notFound.html.twig');
     }
 
 }

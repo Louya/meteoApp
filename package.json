@@ -30,6 +30,7 @@
     "node-sass": "^4.11.0"
   },
   "dependencies": {
+    "bootstrap": "^4.2.1",
     "gulp-minifier": "^1.2.2",
     "gulp-util": "^3.0.8",
     "imagemin-mozjpeg": "^8.0.0"

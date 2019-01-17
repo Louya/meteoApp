@@ -2,12 +2,17 @@ composer.phar
 composer.lock
 package-lock.json
 /vendor/
+/node_modules/
 .env
 /node_modules/
+<<<<<<< HEAD
 <<<<<<< HEAD
 /dist/
 =======
 >>>>>>> 82b2924d991f5088bbcef7bccd787e48ca782a4f
+=======
+
+>>>>>>> origin/fabien
 # Commit your application's lock file https://getcomposer.org/doc/01-basic-usage.md#commit-your-composer-lock-file-to-version-control
 # You may choose to ignore a library lock file http://getcomposer.org/doc/02-libraries.md#lock-file
 # composer.lock
