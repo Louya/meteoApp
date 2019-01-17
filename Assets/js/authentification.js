@@ -11,7 +11,7 @@ function verify(element, event) {
             data.append("login", login.value);
             data.append("pass", pass.value);
         
-            fetch("/wetransfer_like/admin/verifForm", {method: "POST", body: data})
+            fetch("/login/verif", {method: "POST", body: data})
             .then( (result) => { return result.json() } )
             .then( (result) => {
                 // console.log(result.error);
