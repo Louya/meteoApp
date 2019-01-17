@@ -19,9 +19,7 @@ class Users extends Database
         parent::insertOne($req,['mail'=>$curr_mail,'pass'=>$curr_pass_encr, 'prenom'=>$curr_prenom, 'sexe'=>$curr_sexe, 'color'=>$curr_color, 'localisation'=>$curr_localisation]);
     }
 
-    // function bdd_authentication($curr_login_encr, $curr_pass_encr) {
 
-    //     $req = 'SELECT COUNT(id) AS nombre FROM users WHERE user = :user AND password = :password'; // Je compte le nombre d'entrée ayant pour mot de passe et login ceux rentrés
         
     //     return parent::getOne($req,['password'=>$curr_pass_encr, 'user'=>$curr_login_encr]);
         

@@ -55,10 +55,10 @@ class DataController extends Controller{
             return $result;
         }
 
-        // $latitude = $_POST["latitude"];
-        // $longitude = $_POST["longitude"];
-        $latitude = 67.3;
-        $longitude = 6.17;
+        $latitude = $_POST["latitude"];
+        $longitude = $_POST["longitude"];
+        // $latitude = 67.3;
+        // $longitude = 6.17;
 
         $ms = round(microtime(true));
         $link = "https://api.darksky.net/forecast/dc13d8d3db140a701e2aac4edfdfcfb3/".$latitude.",".$longitude.",".$ms."?lang=fr&units=auto";

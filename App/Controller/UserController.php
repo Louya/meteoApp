@@ -17,9 +17,8 @@ class UserController extends Controller{
     /** Route /user */
 
     function connected(){
-        
         if($_SESSION["authenticated"] = true){
-            session_start();
+        
             var_dump($_SESSION["authenticated"]);
             return $this->twig->render('weather.html.twig', array('connected'=>'connected'));
         }else{
@@ -68,7 +67,7 @@ class UserController extends Controller{
         } else {
             $reponse = array("error"=>false);
             $_SESSION["authenticated"] = true;
-           
+            session_start();
             // Stocke le login pour faire le message d'accueil personnalisé
         }
         echo json_encode($reponse);
@@ -146,7 +145,6 @@ class UserController extends Controller{
         }
             
         echo json_encode($reponse);
-
     }
 
     /** Route /weather/deconnexion */
@@ -154,7 +152,7 @@ class UserController extends Controller{
         session_unset();    
         session_destroy(); 
         header('Location: /weather');
-      }
+    }
         
 
     /** Route /register */
