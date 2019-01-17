@@ -10,7 +10,7 @@ class MainController extends Controller{
     /** Route '/' */
 
     public function index(){
-        return $this->twig->render('message.html.twig');
+        return $this->twig->render('main.html.twig');
     }
 
     /** Route /list */
