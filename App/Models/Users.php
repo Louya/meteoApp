@@ -13,10 +13,17 @@ class Users extends Database
         return parent::getOne($req,['mail'=>$curr_mail]);
     }
 
+<<<<<<< HEAD
     public function bdd_register($curr_mail, $curr_pass_encr, $curr_prenom, $curr_sexe, $curr_color, $curr_adresse, $curr_ville)
     {
         $req = "INSERT INTO user (mail, pass, prenom, sexe, color, adresse, ville) VALUES (:mail, :pass, :prenom, :sexe, :color, :adresse, :ville)";
         parent::insertOne($req,['mail'=>$curr_mail,'pass'=>$curr_pass_encr, 'prenom'=>$curr_prenom, 'sexe'=>$curr_sexe, 'color'=>$curr_color, 'adresse'=>$curr_adresse, 'ville'=>$curr_ville]);
+=======
+    public function bdd_register($curr_mail, $curr_pass_encr, $curr_prenom, $curr_sexe, $curr_color, $curr_localisation)
+    {
+        $req = "INSERT INTO user (mail, pass, prenom, sexe, color, localisation) VALUES (:mail, :pass, :prenom, :sexe, :color, :localisation)";
+        parent::insertOne($req,['mail'=>$curr_mail,'pass'=>$curr_pass_encr, 'prenom'=>$curr_prenom, 'sexe'=>$curr_sexe, 'color'=>$curr_color, 'localisation'=>$curr_localisation]);
+>>>>>>> fabien
     }
 
 
