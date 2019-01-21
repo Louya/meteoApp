@@ -1,4 +1,4 @@
-console.log("le js charge");
+console.log("le js");
 
 document.onreadystatechange = function () {
     console.log("onreadystatechange marche");

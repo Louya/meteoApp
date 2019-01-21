@@ -7,14 +7,15 @@ const mailRegister = document.querySelector("#mail-register");
 const passRegister = document.querySelector("#pass-register");
 const prenomRegister = document.querySelector("#prenom-register");
 const sexeRegister = document.querySelector("#sexe-register");
-const localisationRegister = document.querySelector("#localisation-register");
+const adresseRegister = document.querySelector("#adresse-register");
+const villeRegister = document.querySelector("#ville-register");
 const colorRegister = document.querySelector("#color-register");
 
 colorRegister.addEventListener('click', () => {
     colorRegister.style.backgroundColor = colorRegister.value; 
 })
 
-function verify(element, event) {
+function verifyRegister(element, event) {
 
     element.addEventListener(event, (e) => {
 
@@ -25,7 +26,8 @@ function verify(element, event) {
             data.append("prenom", prenomRegister.value);
             data.append("sexe", sexeRegister.value);
             data.append("color", colorRegister.value);
-            data.append("localisation", localisationRegister.value);
+            data.append("adresse", adresseRegister.value);
+            data.append("ville", villeRegister.value);
         
             fetch("/register/verif", {method: "POST", body: data})
             .then( (result) => { return result.json() } )
@@ -48,8 +50,9 @@ function verify(element, event) {
     })
 }
 
-verify(validerRegister, "click");
-verify(mailRegister, "keydown");
-verify(passRegister, "keydown");
-verify(prenomRegister, "keydown");
-verify(localisationRegister, "keydown");
+verifyRegister(validerRegister, "click");
+verifyRegister(mailRegister, "keydown");
+verifyRegister(passRegister, "keydown");
+verifyRegister(prenomRegister, "keydown");
+verifyRegister(adresseRegister, "keydown");
+verifyRegister(villeRegister, "keydown");
