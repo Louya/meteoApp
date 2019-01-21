@@ -15,7 +15,7 @@
                 <input class="form-control m-0" type="search" placeholder="Search" aria-label="Search">
         </div>
         <div class="col-2 p-0 m-0 d-flex justify-content-end">
-            <button class="btn btn-light m-0 p-1" type="submit"><img src="Assets/img/icons/search.svg" alt="magnifier icon"></button>
+            <button class="btn btn-light m-0 px-3 py-1" type="submit"><img src="Assets/img/icons/search.svg" alt="magnifier icon"></button>
             </form>
         </div>
     </header>
@@ -160,6 +160,13 @@
                 <form>
                     <div class="form-group">
                         <input type="range" class="form-control-range" id="setTime" value="12" min="0" max="24" step="1">
+                        <datalist id="tickmarks">
+                                <option value="0" label="00:00">
+                                <option value="6" label="06:00">
+                                <option value="12" label="12:00">
+                                <option value="18" label="18:00">
+                                <option value="24" label="24:00">
+                        </datalist>
                     </div>
                 </form>
             </div>
