@@ -11,6 +11,39 @@ const adresseRegister = document.querySelector("#adresse-register");
 const villeRegister = document.querySelector("#ville-register");
 const colorRegister = document.querySelector("#color-register");
 
+
+
+document.onreadystatechange = function () {
+    if (document.readyState === "complete") {
+        if (navigator.geolocation) { /*demander l'autorisation d'obtenir la géolocalisation*/
+            navigator.geolocation.getCurrentPosition(function (position) {
+
+                let latitude = position.coords.latitude;
+                let longitude = position.coords.longitude;
+                let link = "https://nominatim.openstreetmap.org/reverse?format=json&lat=" + latitude + "&lon=" + longitude;
+
+                fetch(link, {method: "POST"})
+                .then( (result) => { return result.json() } )
+                .then( (result) => {
+                // console.log(result);
+
+                let ville = typeof result.address.city !== 'undefined' ? result.address.city:result.address.town; 
+                let route = result.address.road;
+                
+                adresseRegister.value = route;
+                villeRegister.value = ville;
+
+                });
+
+            })
+        }
+    }
+}
+
+
+
+
+
 colorRegister.addEventListener('click', () => {
     colorRegister.style.backgroundColor = colorRegister.value; 
 })
