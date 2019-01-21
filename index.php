@@ -29,7 +29,6 @@ $router->map('GET', '/404', ['c'=>'DataController', 'a'=>'notFound']);
 //Correspondance avec l'URL actuelle
 $match = $router->match();
 
-
 $controller = 'App\\Controller\\'.$match['target']['c'];
 $action = $match['target']['a'];
 $params = $match['params'];
