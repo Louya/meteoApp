@@ -5,8 +5,10 @@ const weatherData = document.querySelectorAll(".data");
 const weatherDate = document.querySelector("#weather-date");
 const setTime = document.querySelector("#setTime");
 const weatherHeure = document.querySelector("#weather-heure");
+const weatherDay = document.querySelector("#weather-day");
 const compass = document.querySelector("#compass");
 const month = ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'];
+const day = ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'];
 
 
 document.onreadystatechange = function () {
@@ -55,7 +57,7 @@ document.onreadystatechange = function () {
                     // .toFixed(2)
 
                     let currentDate = new Date(retourReponse.currently.time * 1000);
-                    
+
                     let set = new Date(retourReponse.daily.data[0].sunsetTime * 1000);
                     let rise = new Date(retourReponse.daily.data[0].sunriseTime * 1000);
                     let riseHour, riseMinute, setHour, setMinute;
@@ -65,7 +67,8 @@ document.onreadystatechange = function () {
 
                     set.getHours() < 10 ? setHour = "0" + set.getHours() : setHour = set.getHours();
                     set.getMinutes() < 10 ? setMinute = "0" + set.getMinutes() : setMinute = set.getMinutes();
-
+                    
+                    weatherDay.innerHTML = day[currentDate.getDay()];
                     weatherDate.innerHTML = currentDate.getDate() + " " + month[currentDate.getMonth()] + " " + currentDate.getFullYear();
                     message.innerHTML = retourReponse.currently.summary;
                     temperature.innerHTML = Math.round(retourReponse.currently.temperature) + "°C";
