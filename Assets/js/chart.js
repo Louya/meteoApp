@@ -1,7 +1,7 @@
 new Chart(document.getElementById("summaryChart"), {
     type: 'line',
     data: {
-      labels: ['00:00', '06:00', '12:00', '18:00', '24:00'],
+      labels: ['00:00', '06:00', '12:00', '18:00', '23:00'],
       datasets: [{ 
           data: [1, 3, 8, 5, 2],
           yAxisID: 'temperature',
