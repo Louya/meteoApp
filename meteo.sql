@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  localhost:3306
--- Généré le :  Mar 15 Janvier 2019 à 16:44
+-- Généré le :  Jeu 17 Janvier 2019 à 16:57
 -- Version du serveur :  10.3.12-MariaDB-1:10.3.12+maria~bionic-log
 -- Version de PHP :  7.2.10-0ubuntu0.18.04.1
 
@@ -30,6 +30,7 @@ CREATE TABLE `user` (
   `id` int(4) NOT NULL,
   `prenom` varchar(255) DEFAULT NULL,
   `sexe` varchar(45) DEFAULT NULL,
+  `color` varchar(45) DEFAULT NULL,
   `mail` varchar(255) DEFAULT NULL,
   `pass` varchar(45) DEFAULT NULL,
   `localisation` varchar(255) DEFAULT NULL

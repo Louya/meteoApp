@@ -84,7 +84,7 @@ class UserController extends Controller{
             $curr_mail = $_POST["mail"];
         } else {
             $error = true;
-            array_push($message, "Le mail est incorrect");
+            array_push($message, "L'email est incorrect");
         }
             
         if(isset($_POST["pass"]) && strlen($_POST["pass"]) > 7) {
@@ -115,12 +115,33 @@ class UserController extends Controller{
             array_push($message, "La couleur est incorrecte");
         }
 
-        if(isset($_POST["localisation"]) &&  !empty($_POST["localisation"])) {
-            $curr_localisation = $_POST["localisation"];
+        if(isset($_POST["adresse"]) &&  !empty($_POST["adresse"])) {
+            $curr_adresse = $_POST["adresse"];
         } else {
             $error = true;
-            array_push($message, "La localisation est incorrecte");
+            array_push($message, "L'adresse est incorrecte");
         }
+
+        if(isset($_POST["ville"]) &&  !empty($_POST["ville"])) {
+            $curr_ville = $_POST["ville"];
+        } else {
+            $error = true;
+            array_push($message, "La ville est incorrecte");
+        }
+
+        if(!$error){
+            $link = "https://nominatim.openstreetmap.org/search?format=json&q=" . $curr_adresse . "," . $curr_ville;
+    
+            $get_data = callAPI('GET', $link, false);
+            
+            if(strlen($get_data) < 4){
+                $error = true;
+                array_push($message, "Cette association adresse/ville ne retourne pas de résultat");
+            }
+        }
+
+
+        // echo json_encode($get_data);
 
         $methode = 'aes-256-cbc';
         $mdp = 'skW6UZx7t54n3i3F5NqzcL8H3Qx79W3e3StuREMp3BsH556trV';
@@ -141,7 +162,7 @@ class UserController extends Controller{
             $reponse = array("message"=>$message);
         } else {
             $reponse = array("message"=>false);
-            $auth = $user->bdd_register($curr_mail, $curr_pass_encr, $curr_prenom, $curr_sexe, $curr_color, $curr_localisation);
+            $auth = $user->bdd_register($curr_mail, $curr_pass_encr, $curr_prenom, $curr_sexe, $curr_color, $curr_adresse, $curr_ville);
         }
             
         echo json_encode($reponse);
@@ -161,3 +182,48 @@ class UserController extends Controller{
         return $this->twig->render('register.html.twig');
     }
 }
+
+
+
+function callAPI($method, $url, $data){
+    $curl = curl_init();
+
+    switch ($method){
+    case "POST":
+        curl_setopt($curl, CURLOPT_POST, 1);
+        if ($data)
+            curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
+        break;
+    case "PUT":
+        curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "PUT");
+        if ($data)
+            curl_setopt($curl, CURLOPT_POSTFIELDS, $data);			 					
+        break;
+    default:
+        if ($data)
+            $url = sprintf("%s?%s", $url, http_build_query($data));
+    }
+
+    // OPTIONS:
+    curl_setopt($curl, CURLOPT_URL, $url);
+    curl_setopt($curl, CURLOPT_HTTPHEADER, array(
+    'APIKEY: 111111111111111111111',
+    'Content-Type: application/json',
+    ));
+    curl_setopt ($curl, CURLOPT_USERAGENT, 'browser description');
+    curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+    curl_setopt($curl, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
+
+    // EXECUTE:
+    $result = curl_exec($curl);
+    if(!$result){die("Connection Failure");}
+    curl_close($curl);
+    return $result;
+}
+
+// $response = json_decode($get_data, true);
+// $errors = $response['response']['errors'];
+// $data = $response['response']['data'][0];
+
+
+// echo json_encode($response);

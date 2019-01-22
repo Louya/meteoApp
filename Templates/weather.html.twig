@@ -1,8 +1,9 @@
 {% extends "main.html.twig" %}
 
-{% block title %} MeteApp - {% endblock %}
+{% block title %} MeteApp - Le temps {% endblock %}
 
 {% block content %}
+<<<<<<< HEAD
 <div class="weather">
     <div class="topBar">
         <header class="row p-0 m-0">
@@ -104,34 +105,184 @@
                 <div class="col-4">
 
                 </div>
+=======
+<div class="topBar sticky-top">
+    <header class="row p-1 m-0">
+        <div class="col-2 p-0 m-0 d-flex justify-content-start">
+            <button type="button" id="sidebarCollapse" class="btn btn-info">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+        <div class="col-8 p-0 m-0 text-center">
+            <form class="form-inline p-0">
+                <input class="form-control m-0" type="search" placeholder="Search" aria-label="Search">
+        </div>
+        <div class="col-2 p-0 m-0 d-flex justify-content-end">
+            <button class="btn btn-light m-0 px-3 py-1" type="submit"><img src="Assets/img/icons/search.svg" alt="magnifier icon"></button>
+            </form>
+        </div>
+    </header>
+
+    <nav class="row p-0 m-0 d-flex align-items-center">
+        <div class="col-2 p-0 m-0 text-center">
+            <a href="">
+                <</a> </div> <div class="col-8 p-0 m-0 text-center">
+                    <h2 class="p-0 m-0">Jour</h2>
+                    <p class="p-0 m-0">01 janvier 2019</p>
+        </div>
+        <div class="col-2 p-0 m-0 text-center">
+            <a href="">></a>
+        </div>
+    </nav>
+</div>
+<section class="m-0 p-0">
+    {# - Partie - Clothe - ---------- #}
+    <article class="clothe px-3">
+        <div class="row justify-content-center">
+            <p class="py-4">*Message sur le temps*</p>
+        </div>
+        <div class="row">
+            <div class="col-2 d-flex flex-column justify-content-center">
+                <button class="my-3 d-flex justify-content-center" id="femaleButton"><img src="Assets/img/icons/icon-female.svg"
+                        alt=""></button>
+                <button class="my-3 d-flex justify-content-center" id="maleButton"><img src="Assets/img/icons/icon-male.svg"
+                        alt=""></button>
             </div>
-            <div class="row">
-                <div class="col-2">
-
-                </div>
-                <div class="col-2">
-
+            {# Avatar #}
+            <div class="col-8 text-center">
+                <img id="avatar" class="img-fluid" src="Assets/img/avatar/male-s1.svg" alt="avatar image">
+>>>>>>> 1ec62a98d12585209481543a7583f6918134406a
+            </div>
+            {# Vetements #}
+            <div class="col-2 d-flex flex-column justify-content-center">
+                <button class="my-2" id="skin1"></button>
+                <button class="my-2" id="skin2"></button>
+                <button class="my-2" id="skin3"></button>
+                <button class="my-2" id="skin4"></button>
+            </div>
+        </div>
+    </article>
+    {# Patie - Summary - ------------ #}
+    <article class="summary px-3">
+        <div class="row d-flex justify-content-center align-items-center">
+            <div class="col-4">
+                <div id="tempCard" class="py-2 d-flex justify-content-around align-items-center">
+                    <img id="thermoIcon" src="Assets/img/icons/thermometer.svg" alt="icone de thermomètre">
+                    <p id="tempData" class="m-0">5°C</p>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-4">
-
-                </div>
-                <div class="col-4">
-
-                </div>
-                <div class="col-4">
-
-                </div>
+            <div id="weatherIcon" class="col-4 d-flex justify-content-center">
+                <img src="Assets/img/weather-icons/weather-clouds.png" alt="icone du temps">
             </div>
-            <div class="row">
+            <div class="col-4">
+                <div id="rainCard" class="py-2 d-flex justify-content-around align-items-center">
+                    <p id="tempRain" class="m-0">10%</p>
+                    <img id="rainIcon" src="Assets/img/icons/raindrop.svg" alt="icone de thermomètre">
+                </div>
 
             </div>
-            <div class="row">
-
+        </div>
+        <div class="row">
+            <div class="col-12 d-flex justify-content-center">
+                <canvas class="p-3" id="summaryChart" width="300" height="150"></canvas>
             </div>
+        </div>
+    </article>
+    {# Partie - Details - --------- #}
+    <article class="details px-3 d-flex flex-column justify-content-around">
+
+        <div class="row p-2">
+            <div class="carte d-flex justify-content-center align-items-center">
+                <div class="col-4 d-flex flex-column justify-content-center align-items-center">
+                    Pression:
+                    <br><span class="data">1083 hPa</span>
+                </div>
+                <div class="col-4 d-flex flex-column justify-content-center align-items-center">
+                    Vent:
+                    <br><span class="data">10 km/h</span>
+                </div>
+                <div class="col-4 d-flex justify-content-center align-items-center">
+                    <img src="Assets/img/icons/compass.svg" alt="Compass">
+                </div>
+            </div>
+        </div>
+
+        <div class="row p-2">
+            <div class="carte d-flex justify-content-center align-items-center">
+                <div class="col-4 d-flex flex-column justify-content-center align-items-center">
+                    Humidité:
+                    <br><span class="data">63 %</span>
+                </div>
+                <div class="col-4 d-flex flex-column justify-content-center align-items-center">
+                    Précip:
+                    <br><span class="data">20 %</span>
+                </div>
+                <div class="col-4 d-flex flex-column justify-content-center align-items-center">
+                    Temp: 
+                    <br><span class="data">7° C</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="row p-2">
+            <div class="carte d-flex justify-content-center align-items-center">
+                <div class="col-6 d-flex justify-content-center align-items-center">
+                    <p class="text-center"> indice UV: 
+                    <br><span class="data">1</span></p>
+                </div>
+                <div class="col-6 d-flex justify-content-center align-items-center">
+                    <p class="text-center"> Visibilité: 
+                    <br><span class="data">16 km</span></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row p-2">
+            <div class="carte d-flex justify-content-center align-items-center">
+                <div class="col-4 d-flex flex-column justify-content-center align-items-center">
+                    <img class="icon" src="Assets/img/icons/sunrise.svg" alt="sunrise">
+                    <p class="m-0 data">07:12</p>
+                </div>
+                <div class="col-4 d-flex flex-column justify-content-center align-items-center">
+                    <img class="icon" src="Assets/img/icons/sunset.svg" alt="sunset">
+                    <p class="m-0 data">17:32</p>
+                </div>
+                <div class="col-4  d-flex flex-column justify-content-center align-items-center">
+                    <img class="icon" src="Assets/img/icons/moon.svg" alt="surise">
+                    <p class="m-0 data">1st Crois.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2>12:00</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 p-0">
+                <form>
+                    <div class="form-group">
+                        <input type="range" class="form-control-range" id="setTime" value="12" min="0" max="24" step="1">
+                        <datalist id="tickmarks">
+                                <option value="0" label="00:00">
+                                <option value="6" label="06:00">
+                                <option value="12" label="12:00">
+                                <option value="18" label="18:00">
+                                <option value="24" label="24:00">
+                        </datalist>
+                    </div>
+                </form>
+            </div>
+<<<<<<< HEAD
         </article>
     </section>
 </div>
 <script src="Assets/js/adress.js"></script>
 {% endblock %}
+=======
+        </div>
+    </article>
+</section>
+{% endblock %}
+>>>>>>> 1ec62a98d12585209481543a7583f6918134406a

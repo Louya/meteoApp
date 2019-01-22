@@ -2,7 +2,6 @@ const connexionLogin = document.querySelector("#connexion_login");
 const loginLogin = document.querySelector("#login_login");
 const passLogin = document.querySelector("#pass_login");
 
-
 function verify(element, event) {
 
     element.addEventListener(event, (e) => {
