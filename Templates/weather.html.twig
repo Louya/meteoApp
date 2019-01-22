@@ -24,7 +24,7 @@
         <div class="col-2 p-0 m-0 text-center">
             <a href="">
                 </a> </div> <div class="col-8 p-0 m-0 text-center">
-                    <h2 class="p-0 m-0">Jour</h2>
+                    <h2 id="weather-day" class="p-0 m-0">Jour</h2>
                     <p id="weather-date" class="p-0 m-0">01 janvier 2019</p>
         </div>
         <div class="col-2 p-0 m-0 text-center">
@@ -98,7 +98,7 @@
                     <br><span class="data">10 km/h</span>
                 </div>
                 <div class="col-4 d-flex justify-content-center align-items-center">
-                    <img src="Assets/img/icons/compass.svg" alt="Compass">
+                    <img id="compass" src="Assets/img/icons/compass.svg" alt="Compass">
                 </div>
             </div>
         </div>
@@ -159,7 +159,7 @@
             <div class="col-12 p-0">
                 <form>
                     <div class="form-group">
-                        <input type="range" class="form-control-range" id="setTime" value="12" min="0" max="24" step="1">
+                        <input type="range" class="form-control-range" id="setTime" value="12" min="0" max="23" step="1">
                         <datalist id="tickmarks">
                                 <option value="0" label="00:00">
                                 <option value="6" label="06:00">
