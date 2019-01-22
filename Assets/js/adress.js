@@ -1,7 +1,5 @@
 const location_input = document.querySelector("#location-input");
 const submit = document.querySelector("#adress");
-// const longitude = document.querySelector(".longitude");
-// const latitude = document.querySelector(".latitude");
 
 function verify(element, event) {
 
@@ -17,10 +15,7 @@ function verify(element, event) {
             .then( (result) => { return result.json() })
             .then( (result) => {
                 if(!result.error){
-                    // console.log(result[0]);
-                    // document.querySelector(".longitude").innerHTML = result[0].lon;
-                    // document.querySelector(".latitude").innerHTML = result[0].lat;
-                    
+    
                     let longitude = result[0].lon;
                     let latitude = result[0].lat;
 
@@ -32,14 +27,13 @@ function verify(element, event) {
                     fetch("/weather/get", {method: "POST", body: data})
                     .then( (results) => { return results.json() })
                     .then( (results) => {
-
                         if(!results.error){
                             console.log(results);
-                            // window.location.replace("/weather/get");
                         } else {
                             document.querySelector("#error").innerHTML = results.error;
                         }
                     });
+                    
                 } else {
                     document.querySelector("#error").innerHTML = result.error;
                 }
