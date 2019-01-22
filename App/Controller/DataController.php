@@ -61,16 +61,9 @@ class DataController extends Controller{
         // $longitude = 6.17;
 
         $ms = round(microtime(true));
-        $link = "https://api.darksky.net/forecast/dc13d8d3db140a701e2aac4edfdfcfb3/".$latitude.",".$longitude.",".$ms."?lang=fr&units=auto";
+        $link = "https://api.darksky.net/forecast/dc13d8d3db140a701e2aac4edfdfcfb3/".$latitude.",".$longitude.",".$ms."?lang=fr&units=si";
 
-        $get_data = callAPI('GET', $link, false);
-        echo json_encode($get_data);
-        // $response = json_decode($get_data, true);
-        // $errors = $response['response']['errors'];
-        // $data = $response['response']['data'][0];
-
-
-        // echo json_encode($response);
+        echo $get_data = callAPI('GET', $link, false);
 
     }
 
