@@ -33,6 +33,80 @@ document.onreadystatechange = function () {
                 })
                 .then((retourReponse) => {
 
+
+
+                    let chartTemp0 = Math.round(retourReponse.hourly.data[0].temperature);
+                    let chartTemp6 = Math.round(retourReponse.hourly.data[6].temperature);
+                    let chartTemp12 = Math.round(retourReponse.hourly.data[12].temperature);
+                    let chartTemp18 = Math.round(retourReponse.hourly.data[18].temperature);
+                    let chartTemp23 = Math.round(retourReponse.hourly.data[23].temperature);
+
+                    let chartPrecip0 = Math.round(retourReponse.hourly.data[0].precipProbability);
+                    let chartPrecip6 = Math.round(retourReponse.hourly.data[6].precipProbability);
+                    let chartPrecip12 = Math.round(retourReponse.hourly.data[12].precipProbability);
+                    let chartPrecip18 = Math.round(retourReponse.hourly.data[18].precipProbability);
+                    let chartPrecip23 = Math.round(retourReponse.hourly.data[23].precipProbability);
+
+                    console.log(chartTemp23);
+
+                    new Chart(document.getElementById("summaryChart"), {
+                        type: 'line',
+                        data: {
+                          labels: ['00:00', '06:00', '12:00', '18:00', '23:00'],
+                          datasets: [{ 
+                              data: [chartTemp0, chartTemp6, chartTemp12, chartTemp18, chartTemp23],
+                              yAxisID: 'temperature',
+                              label: "Température",
+                              borderColor: "#980000",
+                              fill: true
+                            }, { 
+                              data: [chartPrecip0, chartPrecip6, chartPrecip12, chartPrecip18, chartPrecip23],
+                              yAxisID: 'rain',
+                              label: "Précipitation",
+                              borderColor: "#030340",
+                              fill: true
+                            }
+                          ]
+                        },
+                        options: {
+                            legend:{
+                                display: false
+                            },
+                            title: {
+                                display: false,
+                                text: 'World population per region (in millions)'
+                            },
+                            scales: {
+                                yAxes: [{
+                                    type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
+                                    display: true,
+                                    position: 'left',
+                                    id: 'temperature',
+                                }, {
+                                    type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
+                                    display: true,
+                                    position: 'right',
+                                    id: 'rain',
+                                    ticks: {
+                                        min: 0,
+                                        max: 100
+                                    },
+                    
+                                    // grid line settings
+                                    gridLines: {
+                                        drawOnChartArea: false, // only want the grid lines for one axis to show up
+                                    },
+                                }],
+                            }
+                        }
+                      });
+                      
+
+
+
+
+
+
                     // let phase = Math.round((retourReponse.daily.data[0].moonPhase-0)*0.25/(1-0))/0.25; // bring to 0-1 range
                     // phase = phase*(1-0) + 0;
 
