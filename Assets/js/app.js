@@ -10,6 +10,9 @@ const compass = document.querySelector("#compass");
 const month = ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'];
 const day = ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'];
 
+const set_clothes = document.querySelector("#m_set4");
+const array_clothes = document.querySelectorAll(".img-clothes");
+
 
 document.onreadystatechange = function () {
     console.log("onreadystatechange marche");
@@ -145,6 +148,12 @@ document.onreadystatechange = function () {
                     weatherDate.innerHTML = currentDate.getDate() + " " + month[currentDate.getMonth()] + " " + currentDate.getFullYear();
                     message.innerHTML = retourReponse.currently.summary;
                     temperature.innerHTML = Math.round(retourReponse.currently.temperature) + "°C";
+
+                    
+                        // if(){
+                        //     array_avatar[i].classList.add("invisible");
+                        // }
+
                     pluie.innerHTML = Math.round(retourReponse.currently.precipProbability * 100) + "%";
                     weatherData[0].innerHTML = Math.round(retourReponse.currently.pressure) + " hpa";
                     weatherData[1].innerHTML = Math.round(retourReponse.currently.windSpeed) + " m/s";
