@@ -8,8 +8,16 @@ const weatherHeure = document.querySelector("#weather-heure");
 const weatherDay = document.querySelector("#weather-day");
 const weatherImg = document.querySelector("#weather-img");
 const compass = document.querySelector("#compass");
+const precedent = document.querySelector("#precedent");
+const suivant = document.querySelector("#suivant");
+const search = document.querySelector("#search");
 const month = ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'];
 const day = ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'];
+let time = new Date();
+time = time.getTime();
+time = Math.round(time/1000);
+let limit = time + (86400*6);
+let base = time;
 
 
 document.onreadystatechange = function () {
@@ -34,6 +42,123 @@ document.onreadystatechange = function () {
                 })
                 .then((retourReponse) => {
 
+                    displayData(retourReponse);
+
+                                    
+                    setTime.addEventListener("change", () => {
+                        
+                        displayHourly(retourReponse);
+
+                    })
+
+                }).catch((error) => {
+                    console.log(error);
+                });
+
+
+
+                precedent.addEventListener('click', () => {
+
+
+                    let data = new FormData();
+                    let latitude = position.coords.latitude;
+                    let longitude = position.coords.longitude;
+                    time -= 86400;
+
+                    console.log(time);
+                    console.log(base);
+
+
+                    time === base ? precedent.style.display = "none" : precedent.style.display = "block";
+                    time === limit ? suivant.style.display = "none" : suivant.style.display = "block";
+
+                    if(time === base) {
+                        precedent.style.display = "none";
+                    } else {
+                        precedent.style.display = "block";
+                    }
+
+
+                    data.append("latitude", latitude);
+                    data.append("longitude", longitude);
+                    data.append("time", time);
+
+                    fetch("/weather/get", {method: "POST", body: data})
+                    .then((retourReponse) => {
+                        return retourReponse.json();
+                    })
+                    .then((retourReponse) => {
+
+                        // console.log(retourReponse);
+
+                        displayData(retourReponse);
+
+                        setTime.addEventListener("change", () => {
+                        
+                            displayHourly(retourReponse);
+                            
+    
+                        })
+
+
+
+                    }).catch((error) => {
+                        console.log(error);
+                    });
+                    
+                })
+                suivant.addEventListener('click', () => {
+
+
+                    let data = new FormData();
+                    let latitude = position.coords.latitude;
+                    let longitude = position.coords.longitude;
+                    time += 86400;
+
+                    console.log(time);
+                    console.log(limit);
+
+                    if(time === limit) {
+                        suivant.style.display = "none";
+                    } else {
+                        suivant.style.display = "block";
+                    }
+
+                    time === base ? precedent.style.display = "none" : precedent.style.display = "block";
+                    time === limit ? suivant.style.display = "none" : suivant.style.display = "block";
+
+                    data.append("latitude", latitude);
+                    data.append("longitude", longitude);
+                    data.append("time", time);
+
+                    fetch("/weather/get", {method: "POST", body: data})
+                    .then((retourReponse) => {
+                        return retourReponse.json();
+                    })
+                    .then((retourReponse) => {
+
+                        // console.log(retourReponse);
+
+                        displayData(retourReponse);
+
+                        setTime.addEventListener("change", () => {
+                        
+                            displayHourly(retourReponse);
+                            
+    
+                        })
+
+
+
+                    }).catch((error) => {
+                        console.log(error);
+                    });
+                    
+                })
+
+
+
+                function displayData(retourReponse) {
                     let chartTemp0 = Math.round(retourReponse.hourly.data[0].temperature);
                     let chartTemp6 = Math.round(retourReponse.hourly.data[6].temperature);
                     let chartTemp12 = Math.round(retourReponse.hourly.data[12].temperature);
@@ -100,13 +225,6 @@ document.onreadystatechange = function () {
                       
 
 
-
-
-
-
-                    // let phase = Math.round((retourReponse.daily.data[0].moonPhase-0)*0.25/(1-0))/0.25; // bring to 0-1 range
-                    // phase = phase*(1-0) + 0;
-
                     let phase = (Math.round(retourReponse.daily.data[0].moonPhase * 8) / 8);
                     let moon = "";
 
@@ -116,7 +234,7 @@ document.onreadystatechange = function () {
                             moon = "Nouvelle lune";
                             break;
                         case 0.125: 
-                        case 0.775:
+                        case 0.875:
                             moon = "Croissant de lune";                            
                             break;
                         case 0.25:
@@ -130,7 +248,6 @@ document.onreadystatechange = function () {
                             break;
                     }
 
-                    // .toFixed(2)
 
                     let currentDate = new Date(retourReponse.currently.time * 1000);
 
@@ -163,30 +280,29 @@ document.onreadystatechange = function () {
                     setTime.value = currentDate.getHours();
                     weatherHeure.innerHTML = currentDate.getHours() + ":00";
                     compass.style.transform = "rotate(" + retourReponse.currently.windBearing + "deg";
+                }
+
+                function displayHourly(retourReponse) {
+                    message.innerHTML = retourReponse.hourly.data[setTime.value].summary;
+                    temperature.innerHTML = Math.round(retourReponse.hourly.data[setTime.value].temperature) + "°C";
+                    weatherImg.src = "../Assets/img/weather-icons/" + retourReponse.hourly.data[setTime.value].icon + ".png";
+                    pluie.innerHTML = Math.round(retourReponse.hourly.data[setTime.value].precipProbability * 100) + "%";
+                    weatherData[0].innerHTML = Math.round(retourReponse.hourly.data[setTime.value].pressure) + " hpa";
+                    weatherData[1].innerHTML = Math.round(retourReponse.hourly.data[setTime.value].windSpeed) + " m/s";
+                    weatherData[2].innerHTML = Math.round(retourReponse.hourly.data[setTime.value].humidity) + "%";
+                    weatherData[3].innerHTML = Math.round(retourReponse.hourly.data[setTime.value].precipProbability * 100) + "%";
+                    weatherData[4].innerHTML = Math.round(retourReponse.hourly.data[setTime.value].temperature) + "°C";
+                    weatherData[5].innerHTML = Math.round(retourReponse.hourly.data[setTime.value].uvIndex);
+                    weatherData[6].innerHTML = Math.round(retourReponse.hourly.data[setTime.value].visibility) + " km";
+                    weatherHeure.innerHTML = setTime.value + ":00";
+                    compass.style.transform = "rotate(" + retourReponse.hourly.data[setTime.value].windBearing + "deg";
 
                     
-                    setTime.addEventListener("change", () => {
-                        
-                        message.innerHTML = retourReponse.hourly.data[setTime.value].summary;
-                        temperature.innerHTML = Math.round(retourReponse.hourly.data[setTime.value].temperature) + "°C";
-                        weatherImg.src = "../Assets/img/weather-icons/" + retourReponse.hourly.data[setTime.value].icon + ".png";
-                        pluie.innerHTML = Math.round(retourReponse.hourly.data[setTime.value].precipProbability * 100) + "%";
-                        weatherData[0].innerHTML = Math.round(retourReponse.hourly.data[setTime.value].pressure) + " hpa";
-                        weatherData[1].innerHTML = Math.round(retourReponse.hourly.data[setTime.value].windSpeed) + " m/s";
-                        weatherData[2].innerHTML = Math.round(retourReponse.hourly.data[setTime.value].humidity) + "%";
-                        weatherData[3].innerHTML = Math.round(retourReponse.hourly.data[setTime.value].precipProbability * 100) + "%";
-                        weatherData[4].innerHTML = Math.round(retourReponse.hourly.data[setTime.value].temperature) + "°C";
-                        weatherData[5].innerHTML = Math.round(retourReponse.hourly.data[setTime.value].uvIndex);
-                        weatherData[6].innerHTML = Math.round(retourReponse.hourly.data[setTime.value].visibility) + " km";
-                        weatherHeure.innerHTML = setTime.value + ":00";
-                        compass.style.transform = "rotate(" + retourReponse.hourly.data[setTime.value].windBearing + "deg";
+                }
 
-                    })
-
-                }).catch((error) => {
-                    console.log(error);
-                });
             })
         }
     }
 }
+
+

@@ -12,7 +12,7 @@
         </div>
         <div class="col-8 p-0 m-0 text-center">
             <form class="form-inline p-0">
-                <input class="form-control m-0" type="search" placeholder="Search" aria-label="Search">
+                <input id="search" class="form-control m-0" type="search" placeholder="Search" aria-label="Search">
         </div>
         <div class="col-2 p-0 m-0 d-flex justify-content-end">
             <button class="btn btn-light m-0 px-3 py-1" type="submit"><img src="Assets/img/icons/search.svg" alt="magnifier icon"></button>
@@ -22,13 +22,14 @@
 
     <nav class="row p-0 m-0 d-flex align-items-center">
         <div class="col-2 p-0 m-0 text-center">
-            <a href="">
-                </a> </div> <div class="col-8 p-0 m-0 text-center">
-                    <h2 id="weather-day" class="p-0 m-0">Jour</h2>
-                    <p id="weather-date" class="p-0 m-0">01 janvier 2019</p>
+            <button id="precedent" style="display:none" ><</button> 
+        </div> 
+        <div class="col-8 p-0 m-0 text-center">
+            <h2 id="weather-day" class="p-0 m-0">Jour</h2>
+            <p id="weather-date" class="p-0 m-0">01 janvier 2019</p>
         </div>
         <div class="col-2 p-0 m-0 text-center">
-            <button>></button>
+            <button id="suivant">></button>
         </div>
     </nav>
 </div>
@@ -58,7 +59,7 @@
             </div>
         </div>
     </article>
-    {# Patie - Summary - ------------ #}
+    {# Partie - Summary - ------------ #}
     <article class="summary px-3">
         <div class="row d-flex justify-content-center align-items-center">
             <div class="col-4">
