@@ -34,9 +34,6 @@ document.onreadystatechange = function () {
                     .then((retourReponse) => {
                         console.log(retourReponse);
 
-<<<<<<< HEAD
-
-
                     let chartTemp0 = Math.round(retourReponse.hourly.data[0].temperature);
                     let chartTemp6 = Math.round(retourReponse.hourly.data[6].temperature);
                     let chartTemp12 = Math.round(retourReponse.hourly.data[12].temperature);
@@ -184,11 +181,6 @@ document.onreadystatechange = function () {
                 }).catch((error) => {
                     console.log(error);
                 });
-=======
-                    }).catch((error) => {
-                        console.log(error);
-                    });
->>>>>>> abdel
             })
         }
     }
