@@ -54,8 +54,13 @@ class DataController extends Controller{
 
         $latitude = $_POST["latitude"];
         $longitude = $_POST["longitude"];
+        
+        if(!isset($_POST["time"])) {
+            $ms = round(microtime(true));
+        } else {
+            $ms = $_POST["time"];
+        }
 
-        $ms = round(microtime(true));
         $link = "https://api.darksky.net/forecast/dc13d8d3db140a701e2aac4edfdfcfb3/".$latitude.",".$longitude.",".$ms."?lang=fr&units=si";
 
         echo $get_data = callAPI('GET', $link, false);
