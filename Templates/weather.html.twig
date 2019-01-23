@@ -11,12 +11,12 @@
             </button>
         </div>
         <div class="col-8 p-0 m-0 text-center">
-            <form class="form-inline p-0">
-                <input class="form-control m-0" type="search" placeholder="Search" aria-label="Search">
+            <div class="form-inline p-0">
+                <input class="form-control m-0" id="location-input" type="search" placeholder="Search" aria-label="Search">
         </div>
         <div class="col-2 p-0 m-0 d-flex justify-content-end">
-            <button class="btn btn-light m-0 px-3 py-1" type="submit"><img src="Assets/img/icons/search.svg" alt="magnifier icon"></button>
-            </form>
+            <button class="btn btn-light m-0 px-3 py-1" id="adress"><img src="Assets/img/icons/search.svg" alt="magnifier icon"></button>
+            </div>
         </div>
     </header>
 
@@ -28,7 +28,7 @@
                     <p id="weather-date" class="p-0 m-0">01 janvier 2019</p>
         </div>
         <div class="col-2 p-0 m-0 text-center">
-            <a href="">></a>
+            <a href=""></a>
         </div>
     </nav>
 </div>
@@ -47,7 +47,14 @@
             </div>
             {# Avatar #}
             <div class="col-8 text-center">
-                <img id="avatar" class="img-fluid" src="Assets/img/avatar/male-s1.svg" alt="avatar image">
+                <img id="avatar_m1" class="img-fluid invisible" src="Assets/img/avatar/male-s1.svg" alt="avatar image">
+                <img id="avatar_m2" class="img-fluid invisible" src="Assets/img/avatar/male-s2.svg" alt="avatar image">
+                <img id="avatar_m3" class="img-fluid invisible" src="Assets/img/avatar/male-s3.svg" alt="avatar image">
+                <img id="avatar_m4" class="img-fluid invisible" src="Assets/img/avatar/male-s4.svg" alt="avatar image">
+                <img id="avatar_f1" class="img-fluid invisible" src="Assets/img/avatar/female-s1.svg" alt="avatar image">
+                <img id="avatar_f2" class="img-fluid invisible" src="Assets/img/avatar/female-s2.svg" alt="avatar image">
+                <img id="avatar_f3" class="img-fluid invisible" src="Assets/img/avatar/female-s3.svg" alt="avatar image">
+                <img id="avatar_f4" class="img-fluid invisible" src="Assets/img/avatar/female-s4.svg" alt="avatar image">
             </div>
             {# Vetements #}
             <div class="col-2 d-flex flex-column justify-content-center">
@@ -170,7 +177,9 @@
                     </div>
                 </form>
             </div>
-        </div>
-    </article>
-</section>
+        </article>
+    </section>
+</div>
+<script src="Assets/js/adress.js"></script>
+<script src="Assets/js/avatar.js"></script>
 {% endblock %}

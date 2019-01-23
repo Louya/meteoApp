@@ -16,23 +16,25 @@ document.onreadystatechange = function () {
     if (document.readyState === "complete") {
         console.log("if complete marche");
         if (navigator.geolocation) { /*demander l'autorisation d'obtenir la géolocalisation*/
-        navigator.geolocation.getCurrentPosition(function (position) {
+            navigator.geolocation.getCurrentPosition(function (position) {
 
-            let latitude = position.coords.latitude;
-            let longitude = position.coords.longitude;
+                let latitude = position.coords.latitude;
+                let longitude = position.coords.longitude;
 
-            let data = new FormData();
+                let data = new FormData();
 
-            data.append("latitude", latitude);
-            data.append("longitude", longitude);
+                data.append("latitude", latitude);
+                data.append("longitude", longitude);
 
-            console.log("if geolocalisation marche");
-            fetch("/weather/get", {method: "POST", body: data})
-                .then((retourReponse) => {
-                    return retourReponse.json();
-                })
-                .then((retourReponse) => {
+                console.log("if geolocalisation marche");
+                fetch("/weather/get", {method: "POST", body: data})
+                    .then((retourReponse) => {
+                        return retourReponse.json();
+                    })
+                    .then((retourReponse) => {
+                        console.log(retourReponse);
 
+<<<<<<< HEAD
 
 
                     let chartTemp0 = Math.round(retourReponse.hourly.data[0].temperature);
@@ -182,6 +184,11 @@ document.onreadystatechange = function () {
                 }).catch((error) => {
                     console.log(error);
                 });
+=======
+                    }).catch((error) => {
+                        console.log(error);
+                    });
+>>>>>>> abdel
             })
         }
     }

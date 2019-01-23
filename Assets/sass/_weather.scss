@@ -32,14 +32,12 @@
             height: 30px;
             border-radius: 50%;
             border: none;
-            background-color: $colorDetails;
         }
         #maleButton{
             width: 30px;
             height: 30px;
             border-radius: 50%;
             border: none;
-            background-color: $colorMain;
         }
         #skin1{
             background-color: $colorSkin1;
@@ -69,6 +67,13 @@
             border-radius: 50%;
             border: none;
         }
+        .genre{
+            background-color: #009688;
+        }
+        .invisible{
+            display: none; 
+        }
+        
     }
     .summary{
         height: 42.5vh;
@@ -124,7 +129,5 @@
                 
             }
         }
-        
     }
-
 }
