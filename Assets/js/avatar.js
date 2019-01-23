@@ -1,5 +1,5 @@
-const avatarMale = document.querySelector("#maleButton");
-const avatarFemale = document.querySelector("#femaleButton");
+const genre_male = document.querySelector("#maleButton");
+const genre_female = document.querySelector("#femaleButton");
 
 const avatar_m1 = document.querySelector("#avatar_m1");
 const avatar_m2 = document.querySelector("#avatar_m2");
@@ -17,10 +17,6 @@ const skin1 = document.querySelector("#skin1");
 const skin2 = document.querySelector("#skin2");
 const skin3 = document.querySelector("#skin3");
 const skin4 = document.querySelector("#skin4");
-
-const genre_male = document.querySelector("#maleButton");
-const genre_female = document.querySelector("#femaleButton");
-
 
 avatarMale.addEventListener("click", (e) => {
     genre_male.classList.add("genre");
