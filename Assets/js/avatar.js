@@ -18,7 +18,7 @@ const skin2 = document.querySelector("#skin2");
 const skin3 = document.querySelector("#skin3");
 const skin4 = document.querySelector("#skin4");
 
-avatarMale.addEventListener("click", (e) => {
+genre_male.addEventListener("click", (e) => {
     genre_male.classList.add("genre");
     genre_female.classList.remove("genre");
     for (let j = 0; j < array_skin.length; j++) {
@@ -31,7 +31,7 @@ avatarMale.addEventListener("click", (e) => {
     }
 })
 
-avatarFemale.addEventListener("click", (e) => {
+genre_female.addEventListener("click", (e) => {
     genre_female.classList.add("genre");
     genre_male.classList.remove("genre");
     for (let j = 0; j < array_skin.length; j++) {
