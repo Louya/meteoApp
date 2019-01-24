@@ -1,7 +1,8 @@
-const location_input = document.querySelector("#location-input");
+const location_input = document.querySelector("#search");
 const submit = document.querySelector("#adress");
 
-function verify(element, event) {
+
+function verify(element,event) {
 
     element.addEventListener(event, (e) => {
 
@@ -94,15 +95,6 @@ function verify(element, event) {
                                     }
                                 }
                               });
-                              
-        
-        
-        
-        
-        
-        
-                            // let phase = Math.round((results.daily.data[0].moonPhase-0)*0.25/(1-0))/0.25; // bring to 0-1 range
-                            // phase = phase*(1-0) + 0;
         
                             let phase = (Math.round(results.daily.data[0].moonPhase * 8) / 8);
                             let moon = "";
@@ -122,7 +114,6 @@ function verify(element, event) {
                                     break;
                             }
         
-                            // .toFixed(2)
         
                             let currentDate = new Date(results.currently.time * 1000);
         
@@ -155,7 +146,39 @@ function verify(element, event) {
                             weatherHeure.innerHTML = currentDate.getHours() + ":00";
                             compass.style.transform = "rotate(" + results.currently.windBearing + "deg";
         
-                            
+                            let temp = Math.round(results.hourly.data[setTime.value].temperature);
+                            let rain = results.hourly.data[setTime.value].precipProbability;
+                                                        
+                            // Changement vêtements
+                            function clothes(temp, rain){
+                                                            
+                                if(temp < 15 && rain < 0.2){
+                                    for (let i = 0; i < array_clothes.length; i++) {
+                                        array_clothes[i].classList.add("invisible");
+                                    }
+                                    set_clothes3.classList.remove("invisible");
+
+                                }else if(temp < 15 && rain > 0.2){
+                                    for (let i = 0; i < array_clothes.length; i++) {
+                                        array_clothes[i].classList.add("invisible");
+                                    }
+                                    set_clothes4.classList.remove("invisible");
+
+                                }else if(temp >= 15 && rain < 0.2){
+                                    for (let i = 0; i < array_clothes.length; i++) {
+                                        array_clothes[i].classList.add("invisible");
+                                    }
+                                    set_clothes1.classList.remove("invisible");
+
+                                }else if(temp >= 15 && rain > 0.2){
+                                    for (let i = 0; i < array_clothes.length; i++) {
+                                        array_clothes[i].classList.add("invisible");
+                                    }
+                                    set_clothes2.classList.remove("invisible");
+                                }
+                            }
+                            clothes(temp, rain);
+
                             setTime.addEventListener("change", () => {
                                 
                                 message.innerHTML = results.hourly.data[setTime.value].summary;
@@ -171,7 +194,12 @@ function verify(element, event) {
                                 weatherHeure.innerHTML = setTime.value + ":00";
                                 compass.style.transform = "rotate(" + results.hourly.data[setTime.value].windBearing + "deg";
         
+                                let temp = Math.round(results.hourly.data[setTime.value].temperature);
+                                let rain = results.hourly.data[setTime.value].precipProbability;
+                                clothes(temp, rain);
+                                console.log(rain);
                             })
+
                         } else {
                             document.querySelector("#error").innerHTML = results.error;
                         }
@@ -181,7 +209,6 @@ function verify(element, event) {
                     document.querySelector("#error").innerHTML = result.error;
                 }
             });
-
         }
     })
 }
