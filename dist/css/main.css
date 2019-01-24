@@ -6935,24 +6935,6 @@ a.text-dark:hover, a.text-dark:focus {
 .main-body #sidebar.active {
   margin-left: -250px; }
 
-.main-body .page-button {
-  position: fixed;
-  left: 85%;
-  transform: translate(-50%, -50%);
-  width: 35px;
-  height: 35px;
-  background-color: rgba(255, 153, 0, 0.5);
-  opacity: 50%;
-  border: none;
-  border-radius: 50%;
-  z-index: 1; }
-
-.main-body #upButton {
-  top: 18.1vh; }
-
-.main-body #downButton {
-  bottom: 90px; }
-
 .main-body .topBar {
   height: 15vh;
   background-color: #009688; }
@@ -6966,6 +6948,7 @@ a.text-dark:hover, a.text-dark:focus {
       color: #009688;
       transition: 250; }
   .main-body .topBar nav {
+    height: 60%;
     background-color: #009688; }
     .main-body .topBar nav h2 {
       font-size: 1.4em;
