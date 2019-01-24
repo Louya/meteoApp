@@ -11,8 +11,12 @@ const month = ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet',
 const day = ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'];
 
 
-const set_clothes = document.querySelector("#m_set4");
+const set_clothes1 = document.querySelector("#m_set1");
+const set_clothes2 = document.querySelector("#m_set2");
+const set_clothes3 = document.querySelector("#m_set3");
+const set_clothes4 = document.querySelector("#m_set4");
 const array_clothes = document.querySelectorAll(".img-clothes");
+
 
 
 document.onreadystatechange = function () {
@@ -140,9 +144,6 @@ document.onreadystatechange = function () {
                     temperature.innerHTML = Math.round(retourReponse.currently.temperature) + "°C";
 
                     
-                        // if(){
-                        //     array_avatar[i].classList.add("invisible");
-                        // }
 
                     pluie.innerHTML = Math.round(retourReponse.currently.precipProbability * 100) + "%";
                     weatherData[0].innerHTML = Math.round(retourReponse.currently.pressure) + " hpa";
@@ -159,6 +160,67 @@ document.onreadystatechange = function () {
                     weatherHeure.innerHTML = currentDate.getHours() + ":00";
                     compass.style.transform = "rotate(" + retourReponse.currently.windBearing + "deg";
 
+                    let temp = Math.round(retourReponse.hourly.data[setTime.value].temperature);
+                    let rain = retourReponse.hourly.data[setTime.value].precipProbability;
+                                                        
+                    // Changement vêtements
+                    function clothes(temp, rain){
+
+                        if(temp < 15 && rain < 0.2){
+                            for (let i = 0; i < array_clothes.length; i++) {
+                                array_clothes[i].classList.add("invisible");
+                            }
+                            set_clothes3.classList.remove("invisible");
+    
+                        }else if(temp < 15 && rain > 0.2){
+                            for (let i = 0; i < array_clothes.length; i++) {
+                                array_clothes[i].classList.add("invisible");
+                            }
+                            set_clothes4.classList.remove("invisible");
+    
+                        }else if(temp >= 15 && rain < 0.2){
+                            for (let i = 0; i < array_clothes.length; i++) {
+                                array_clothes[i].classList.add("invisible");
+                            }
+                            set_clothes1.classList.remove("invisible");
+    
+                        }else if(temp >= 15 && rain > 0.2){
+                            for (let i = 0; i < array_clothes.length; i++) {
+                                array_clothes[i].classList.add("invisible");
+                            }
+                            set_clothes2.classList.remove("invisible");
+                        }
+
+                        genre_female.addEventListener("click", (e) => {
+                            if(temp < 15 && rain < 0.2){
+                                for (let i = 0; i < array_clothes.length; i++) {
+                                    array_clothes[i].classList.add("invisible");
+                                }
+                                set_clothes3.classList.remove("invisible");
+        
+                            }else if(temp < 15 && rain > 0.2){
+                                for (let i = 0; i < array_clothes.length; i++) {
+                                    array_clothes[i].classList.add("invisible");
+                                }
+                                set_clothes4.classList.remove("invisible");
+        
+                            }else if(temp >= 15 && rain < 0.2){
+                                for (let i = 0; i < array_clothes.length; i++) {
+                                    array_clothes[i].classList.add("invisible");
+                                }
+                                set_clothes1.classList.remove("invisible");
+        
+                            }else if(temp >= 15 && rain > 0.2){
+                                for (let i = 0; i < array_clothes.length; i++) {
+                                    array_clothes[i].classList.add("invisible");
+                                }
+                                set_clothes2.classList.remove("invisible");
+                            }
+                            
+                        })
+                    }
+                                                    
+                    clothes(temp, rain);
                     
                     setTime.addEventListener("change", () => {
                         
@@ -175,24 +237,22 @@ document.onreadystatechange = function () {
                         weatherHeure.innerHTML = setTime.value + ":00";
                         compass.style.transform = "rotate(" + retourReponse.hourly.data[setTime.value].windBearing + "deg";
 
+                         // Changement vêtements
+                        let temp = Math.round(retourReponse.hourly.data[setTime.value].temperature);
+                        let rain = retourReponse.hourly.data[setTime.value].precipProbability;
+                        clothes(temp, rain);
                     }) 
                     
                     let lat = retourReponse.latitude;
                     let lon = retourReponse.longitude;
-                
-                    
-
                     let url = `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${lat}&lon=${lon}`;
-                    // console.log(url);
-
+ 
                     fetch(url, {method: "POST"})
                     .then( (result) => { return result.json() })
                     .then( (result) => {
                         if(!result.error){
-                            // let city = typeof result.address.city !== 'undefined' ? result.address.city:result.address.town; 
-                            // console.log(result.address.town);
-                            // document.querySelector("#location-input").value = town;
-                            console.log('ed');
+                            let city = typeof result.address.city !== 'undefined' ? result.address.city:result.address.town; 
+                            document.querySelector("#location-input").value = city;
                         }
                     })
 
