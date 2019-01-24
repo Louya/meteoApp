@@ -1,8 +1,8 @@
-const location_input = document.querySelector("#location-input");
+const location_input = document.querySelector("#search");
 const submit = document.querySelector("#adress");
 
 
-function verify(element, event) {
+function verify(element,event) {
 
     element.addEventListener(event, (e) => {
 
@@ -209,7 +209,6 @@ function verify(element, event) {
                     document.querySelector("#error").innerHTML = result.error;
                 }
             });
-
         }
     })
 }
