@@ -301,6 +301,8 @@ document.onreadystatechange = function () {
                 }
 
             })
+        } else {
+            console.log("Le service de géolocalisation n'est pas disponible sur votre navigateur.");
         }
     }
 }
