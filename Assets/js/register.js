@@ -66,6 +66,26 @@ function verifyRegister(element, event) {
             .then( (result) => { return result.json() } )
             .then( (result) => {
                 console.log(result);
+
+
+                // getAddress();
+
+
+                // fetch("http://ip-api.com/json?callback=?", {method: "GET"})
+                // .then((retourReponse) => {
+                //     return retourReponse.json();
+                // })
+                // .then((retourReponse) => {
+            
+                //     console.log(retourReponse);                    
+            
+            
+                // }).catch((error) => {
+                //     console.log(error);
+                // });
+
+
+
                 if(!result.message){
                     document.querySelector(".message").innerHTML = "Inscription réussie, vous allez être redirigé.";
                     // setTimeout(function(){
@@ -89,3 +109,10 @@ verifyRegister(passRegister, "keydown");
 verifyRegister(prenomRegister, "keydown");
 verifyRegister(adresseRegister, "keydown");
 verifyRegister(villeRegister, "keydown");
+
+// async function getAddress() {
+//     const res = await fetch('http://ip-api.com/json?callback=?');
+//     const retourReponse = await res.text();
+
+//     console.log(res);
+// }
