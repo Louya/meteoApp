@@ -10,19 +10,16 @@ use App\Models\Users;
 class DataController extends Controller{
 
     /** Route /weather */
-
     public function weather(){
         return $this->twig->render('weather.html.twig');
     }
 
     /** Route /weather/get */
-
-
     public function get(){
-
+      
         function callAPI($method, $url, $data){
             $curl = curl_init();
- 
+    
             switch ($method){
             case "POST":
                 curl_setopt($curl, CURLOPT_POST, 1);
@@ -38,7 +35,7 @@ class DataController extends Controller{
                 if ($data)
                     $url = sprintf("%s?%s", $url, http_build_query($data));
             }
- 
+    
             // OPTIONS:
             curl_setopt($curl, CURLOPT_URL, $url);
             curl_setopt($curl, CURLOPT_HTTPHEADER, array(
@@ -71,9 +68,7 @@ class DataController extends Controller{
     }
 
     /** Route /404 */
-
     public function notFound(){
         return $this->twig->render('notFound.html.twig');
     }
-
 }

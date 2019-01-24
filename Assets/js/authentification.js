@@ -27,6 +27,6 @@ function verify(element, event) {
     })
 }
 
-verify(connexion_login, "click");
-verify(login_login, "keydown");
-verify(pass_login, "keydown");
+verify(connexionlogin, "click");
+verify(loginlogin, "keydown");
+verify(passlogin, "keydown");

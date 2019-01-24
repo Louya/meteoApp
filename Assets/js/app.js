@@ -306,5 +306,3 @@ document.onreadystatechange = function () {
         }
     }
 }
-
-

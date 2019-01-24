@@ -47,8 +47,21 @@
                         alt=""></button>
             </div>
             {# Avatar #}
-            <div class="col-8 text-center">
-                <img id="avatar" class="img-fluid" src="Assets/img/avatar/male-s1.svg" alt="avatar image">
+            <div class="col-8 d-flex justify-content-center">
+                <img id="avatar_m1" class="img-fluid img-avatar invisible" src="Assets/img/avatar/male-s1.svg" alt="avatar image">
+                <img id="avatar_m2" class="img-fluid img-avatar invisible" src="Assets/img/avatar/male-s2.svg" alt="avatar image">
+                <img id="avatar_m3" class="img-fluid img-avatar invisible" src="Assets/img/avatar/male-s3.svg" alt="avatar image">
+                <img id="avatar_m4" class="img-fluid img-avatar invisible" src="Assets/img/avatar/male-s4.svg" alt="avatar image">
+                <img id="avatar_f1" class="img-fluid img-avatar invisible" src="Assets/img/avatar/female-s1.svg" alt="avatar image">
+                <img id="avatar_f2" class="img-fluid img-avatar invisible" src="Assets/img/avatar/female-s2.svg" alt="avatar image">
+                <img id="avatar_f3" class="img-fluid img-avatar invisible" src="Assets/img/avatar/female-s3.svg" alt="avatar image">
+                <img id="avatar_f4" class="img-fluid img-avatar invisible" src="Assets/img/avatar/female-s4.svg" alt="avatar image">
+
+                <img id="m_set1" class="img-fluid invisible img-clothes" src="Assets/img/clothes/m_set1.svg" alt="avatar clothes">
+                <img id="m_set2" class="img-fluid invisible img-clothes" src="Assets/img/clothes/m_set2.svg" alt="avatar clothes">
+                <img id="m_set3" class="img-fluid invisible img-clothes" src="Assets/img/clothes/m_set3.svg" alt="avatar clothes">
+                <img id="m_set4" class="img-fluid invisible img-clothes" src="Assets/img/clothes/m_set4.svg" alt="avatar clothes">
+
             </div>
             {# Vetements #}
             <div class="col-2 d-flex flex-column justify-content-center">
@@ -115,7 +128,7 @@
                     <br><span class="data">20 %</span>
                 </div>
                 <div class="col-4 d-flex flex-column justify-content-center align-items-center">
-                    Temp: 
+                    Temp:
                     <br><span class="data">7° C</span>
                 </div>
             </div>
@@ -124,12 +137,12 @@
         <div class="row p-2">
             <div class="carte d-flex justify-content-center align-items-center">
                 <div class="col-6 d-flex justify-content-center align-items-center">
-                    <p class="text-center"> indice UV: 
-                    <br><span class="data">1</span></p>
+                    <p class="text-center"> indice UV:
+                        <br><span class="data">1</span></p>
                 </div>
                 <div class="col-6 d-flex justify-content-center align-items-center">
-                    <p class="text-center"> Visibilité: 
-                    <br><span class="data">16 km</span></p>
+                    <p class="text-center"> Visibilité:
+                        <br><span class="data">16 km</span></p>
                 </div>
             </div>
         </div>
@@ -162,16 +175,18 @@
                     <div class="form-group">
                         <input type="range" class="form-control-range" id="setTime" value="12" min="0" max="23" step="1">
                         <datalist id="tickmarks">
-                                <option value="0" label="00:00">
-                                <option value="6" label="06:00">
-                                <option value="12" label="12:00">
-                                <option value="18" label="18:00">
-                                <option value="24" label="24:00">
+                            <option value="0" label="00:00">
+                            <option value="6" label="06:00">
+                            <option value="12" label="12:00">
+                            <option value="18" label="18:00">
+                            <option value="24" label="24:00">
                         </datalist>
                     </div>
                 </form>
             </div>
-        </div>
     </article>
 </section>
+</div>
+<script src="Assets/js/adress.js"></script>
+<script src="Assets/js/avatar.js"></script>
 {% endblock %}
