@@ -6954,48 +6954,57 @@ a.text-dark:hover, a.text-dark:focus {
   height: 85vh;
   background-color: #FFFFFF;
   padding-bottom: 100px; }
-  .main-body .clothe #femaleButton {
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    border: none; }
-  .main-body .clothe #maleButton {
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    border: none; }
-  .main-body .clothe #skin1 {
-    background-color: #FFEFD6;
-    width: 25px;
-    height: 25px;
-    border-radius: 50%;
-    border: none; }
-  .main-body .clothe #skin2 {
-    background-color: #FFD699;
-    width: 25px;
-    height: 25px;
-    border-radius: 50%;
-    border: none; }
-  .main-body .clothe #skin3 {
-    background-color: #FFC266;
-    width: 25px;
-    height: 25px;
-    border-radius: 50%;
-    border: none; }
-  .main-body .clothe #skin4 {
-    background-color: #553301;
-    width: 25px;
-    height: 25px;
-    border-radius: 50%;
-    border: none; }
-  .main-body .clothe .genre {
-    background-color: #009688; }
-  .main-body .clothe .invisible {
-    display: none; }
-  .main-body .clothe .img-avatar {
-    position: absolute; }
-  .main-body .clothe .img-clothes {
-    position: relative; }
+  .main-body .clothe .animeRow {
+    height: 100%;
+    padding-bottom: 100px; }
+    .main-body .clothe .animeRow .sexButton:hover {
+      transform: scale(1.25);
+      transition: 200; }
+    .main-body .clothe .animeRow #femaleButton {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      border: none; }
+    .main-body .clothe .animeRow #maleButton {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      border: none; }
+    .main-body .clothe .animeRow .skinButton:hover {
+      transform: scale(1.25);
+      transition: 200; }
+    .main-body .clothe .animeRow #skin1 {
+      background-color: #FFEFD6;
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      border: none; }
+    .main-body .clothe .animeRow #skin2 {
+      background-color: #FFD699;
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      border: none; }
+    .main-body .clothe .animeRow #skin3 {
+      background-color: #FFC266;
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      border: none; }
+    .main-body .clothe .animeRow #skin4 {
+      background-color: #553301;
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      border: none; }
+    .main-body .clothe .animeRow .genre {
+      background-color: #009688; }
+    .main-body .clothe .animeRow .invisible {
+      display: none; }
+    .main-body .clothe .animeRow .img-avatar {
+      position: absolute; }
+    .main-body .clothe .animeRow .img-clothes {
+      position: relative; }
 
 .main-body .summary {
   height: 85vh;
