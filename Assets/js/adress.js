@@ -30,6 +30,7 @@ function verify(element,event) {
                     .then( (results) => {
                         if(!results.error){
                             console.log(results);
+                            
                             let chartTemp0 = Math.round(results.hourly.data[0].temperature);
                             let chartTemp6 = Math.round(results.hourly.data[6].temperature);
                             let chartTemp12 = Math.round(results.hourly.data[12].temperature);
@@ -41,9 +42,7 @@ function verify(element,event) {
                             let chartPrecip12 = Math.round(results.hourly.data[12].precipProbability);
                             let chartPrecip18 = Math.round(results.hourly.data[18].precipProbability);
                             let chartPrecip23 = Math.round(results.hourly.data[23].precipProbability);
-        
-                            console.log(chartTemp23);
-        
+            
                             new Chart(document.getElementById("summaryChart"), {
                                 type: 'line',
                                 data: {
@@ -148,36 +147,47 @@ function verify(element,event) {
         
                             let temp = Math.round(results.hourly.data[setTime.value].temperature);
                             let rain = results.hourly.data[setTime.value].precipProbability;
-                                                        
+                    
+                            j = 0;
+                            clothes(temp, rain, j);
+
+                            genre_male.addEventListener("click", (e) => {
+                                j = 0;
+                                clothes(temp, rain, j);
+                            })
+                            genre_female.addEventListener("click", (e) => {
+                                j = 4;
+                                clothes(temp, rain, j);
+                            })
+
                             // Changement vêtements
-                            function clothes(temp, rain){
-                                                            
-                                if(temp < 15 && rain < 0.2){
+                            function clothes(temp, rain, j){
+                            
+                                if(temp >= 17 && rain < 0.3){
                                     for (let i = 0; i < array_clothes.length; i++) {
                                         array_clothes[i].classList.add("invisible");
                                     }
-                                    set_clothes3.classList.remove("invisible");
-
-                                }else if(temp < 15 && rain > 0.2){
+                                set_clothes[j+1].classList.remove("invisible");
+                                
+                                }else if(temp >= 17 && rain > 0.3){
                                     for (let i = 0; i < array_clothes.length; i++) {
                                         array_clothes[i].classList.add("invisible");
                                     }
-                                    set_clothes4.classList.remove("invisible");
-
-                                }else if(temp >= 15 && rain < 0.2){
+                                    set_clothes[j+2].classList.remove("invisible");
+        
+                                }else if(temp < 17 && rain < 0.3){
                                     for (let i = 0; i < array_clothes.length; i++) {
                                         array_clothes[i].classList.add("invisible");
                                     }
-                                    set_clothes1.classList.remove("invisible");
-
-                                }else if(temp >= 15 && rain > 0.2){
+                                    set_clothes[j+3].classList.remove("invisible");
+        
+                                }else if(temp < 17 && rain > 0.3){
                                     for (let i = 0; i < array_clothes.length; i++) {
                                         array_clothes[i].classList.add("invisible");
                                     }
-                                    set_clothes2.classList.remove("invisible");
+                                    set_clothes[j+4].classList.remove("invisible");
                                 }
-                            }
-                            clothes(temp, rain);
+                            }                    
 
                             setTime.addEventListener("change", () => {
                                 
@@ -193,11 +203,24 @@ function verify(element,event) {
                                 weatherData[6].innerHTML = Math.round(results.hourly.data[setTime.value].visibility) + " km";
                                 weatherHeure.innerHTML = setTime.value + ":00";
                                 compass.style.transform = "rotate(" + results.hourly.data[setTime.value].windBearing + "deg";
-        
+                                
+                                
                                 let temp = Math.round(results.hourly.data[setTime.value].temperature);
                                 let rain = results.hourly.data[setTime.value].precipProbability;
-                                clothes(temp, rain);
+                                console.log(temp);
                                 console.log(rain);
+                                j = 0;
+                                clothes(temp, rain, j);
+    
+                                genre_male.addEventListener("click", (e) => {
+                                    j = 0;
+                                    clothes(temp, rain, j);
+                                })
+                                genre_female.addEventListener("click", (e) => {
+                                    j = 4;
+                                    clothes(temp, rain, j);
+                                })
+                             
                             })
 
                         } else {
