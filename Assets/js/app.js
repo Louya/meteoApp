@@ -18,6 +18,9 @@ time = time.getTime();
 time = Math.round(time/1000);
 let limit = time + (86400*6);
 let base = time;
+var latitude = 48.866667;
+var longitude = 2.333333;
+var result;
 
 getInitialData();
 
@@ -30,14 +33,18 @@ document.onreadystatechange = function () {
         if (navigator.geolocation) { /*demander l'autorisation d'obtenir la géolocalisation*/
         navigator.geolocation.getCurrentPosition(function (position) {
 
-            // setTime.removeEventListener("change", displayHourly, true);
-            // precedent.removeEventListener("click", getPreviousDay, true);
-            // suivant.removeEventListener("click", getNextDay, true);
-            
-            // suivant.removeEventListener("click", handleMouseDown, true);
+
+            time = new Date();
+            time = time.getTime();
+            time = Math.round(time/1000);
+            limit = time + (86400*6);
+            base = time;
+
+            precedent.style.display = "none";
+
             console.log("je passe");
-            let latitude = position.coords.latitude;
-            let longitude = position.coords.longitude;
+            latitude = position.coords.latitude;
+            longitude = position.coords.longitude;
 
             let data = new FormData();
 
@@ -50,10 +57,12 @@ document.onreadystatechange = function () {
                 })
                 .then((retourReponse) => {
 
+                    result = retourReponse;
+
                     displayData(retourReponse);
 
                                     
-                    setTime.addEventListener("change", displayHourly(retourReponse));
+                    // setTime.addEventListener("change", displayHourly(retourReponse));
 
                 }).catch((error) => {
                     console.log(error);
@@ -195,20 +204,20 @@ function displayData(retourReponse) {
     compass.style.transform = "rotate(" + retourReponse.currently.windBearing + "deg";
 }
 
-function displayHourly(retourReponse) {
-    message.innerHTML = retourReponse.hourly.data[setTime.value].summary;
-    temperature.innerHTML = Math.round(retourReponse.hourly.data[setTime.value].temperature) + "°C";
-    weatherImg.src = "../Assets/img/weather-icons/" + retourReponse.hourly.data[setTime.value].icon + ".svg";
-    pluie.innerHTML = Math.round(retourReponse.hourly.data[setTime.value].precipProbability * 100) + "%";
-    weatherData[0].innerHTML = Math.round(retourReponse.hourly.data[setTime.value].pressure) + " hpa";
-    weatherData[1].innerHTML = Math.round(retourReponse.hourly.data[setTime.value].windSpeed) + " m/s";
-    weatherData[2].innerHTML = Math.round(retourReponse.hourly.data[setTime.value].humidity) + "%";
-    weatherData[3].innerHTML = Math.round(retourReponse.hourly.data[setTime.value].precipProbability * 100) + "%";
-    weatherData[4].innerHTML = Math.round(retourReponse.hourly.data[setTime.value].temperature) + "°C";
-    weatherData[5].innerHTML = Math.round(retourReponse.hourly.data[setTime.value].uvIndex);
-    weatherData[6].innerHTML = Math.round(retourReponse.hourly.data[setTime.value].visibility) + " km";
+function displayHourly() {
+    message.innerHTML = result.hourly.data[setTime.value].summary;
+    temperature.innerHTML = Math.round(result.hourly.data[setTime.value].temperature) + "°C";
+    weatherImg.src = "../Assets/img/weather-icons/" + result.hourly.data[setTime.value].icon + ".svg";
+    pluie.innerHTML = Math.round(result.hourly.data[setTime.value].precipProbability * 100) + "%";
+    weatherData[0].innerHTML = Math.round(result.hourly.data[setTime.value].pressure) + " hpa";
+    weatherData[1].innerHTML = Math.round(result.hourly.data[setTime.value].windSpeed) + " m/s";
+    weatherData[2].innerHTML = Math.round(result.hourly.data[setTime.value].humidity) + "%";
+    weatherData[3].innerHTML = Math.round(result.hourly.data[setTime.value].precipProbability * 100) + "%";
+    weatherData[4].innerHTML = Math.round(result.hourly.data[setTime.value].temperature) + "°C";
+    weatherData[5].innerHTML = Math.round(result.hourly.data[setTime.value].uvIndex);
+    weatherData[6].innerHTML = Math.round(result.hourly.data[setTime.value].visibility) + " km";
     weatherHeure.innerHTML = setTime.value + ":00";
-    compass.style.transform = "rotate(" + retourReponse.hourly.data[setTime.value].windBearing + "deg";
+    compass.style.transform = "rotate(" + result.hourly.data[setTime.value].windBearing + "deg";
 
     
 }
@@ -216,7 +225,7 @@ function displayHourly(retourReponse) {
 
 
 
-function getPreviousDay(latitude, longitude) {
+function getPreviousDay() {
 
         console.log("je fais un previous");
         let data = new FormData();
@@ -243,16 +252,18 @@ function getPreviousDay(latitude, longitude) {
         })
         .then((retourReponse) => {
 
+            result = retourReponse;
+
             // console.log(retourReponse);
 
             displayData(retourReponse);
 
-            setTime.addEventListener("change", () => {
+            // setTime.addEventListener("change", () => {
             
-                displayHourly(retourReponse);
+            //     displayHourly(retourReponse);
                 
 
-            })
+            // })
 
 
 
@@ -261,7 +272,7 @@ function getPreviousDay(latitude, longitude) {
         });
 }
 
-function getNextDay(latitude, longitude) {
+function getNextDay() {
 
 
         console.log("je fais un next");
@@ -288,16 +299,16 @@ function getNextDay(latitude, longitude) {
         })
         .then((retourReponse) => {
 
-            // console.log(retourReponse);
+            result = retourReponse;
 
             displayData(retourReponse);
 
-            setTime.addEventListener("change", () => {
+            // setTime.addEventListener("change", () => {
             
-                displayHourly(retourReponse);
+            //     displayHourly(retourReponse);
                 
 
-            })
+            // })
 
 
 
@@ -310,38 +321,36 @@ function getNextDay(latitude, longitude) {
 
 function getInitialData() {
 
-    let latitude = 48.866667;
-    let longitude = 2.333333;
-
     let data = new FormData();
 
     data.append("latitude", latitude);
     data.append("longitude", longitude);
 
     // const res = await fetch('/weather/get', {method: "POST", body: data});
-    // const result = await res.json();
+    // const retourReponse = await res.json();
 
     fetch("/weather/get", {method: "POST", body: data})
-    .then((result) => {
-        return result.json();
+    .then((retourReponse) => {
+        return retourReponse.json();
     })
-    .then((result) => {
+    .then((retourReponse) => {
 
+        result = retourReponse;
 
-        displayData(result);
+        displayData(retourReponse);
 
         suivant.addEventListener('click', () => {
-            getNextDay(latitude,longitude);
+            getNextDay();
         });
     
         precedent.addEventListener('click', () => {
-            getPreviousDay(latitude,longitude);
+            getPreviousDay();
         });
     
         
         setTime.addEventListener("change", () => {
                             
-            displayHourly(result);
+            displayHourly();
     
         })
 
