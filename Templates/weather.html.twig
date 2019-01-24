@@ -3,34 +3,39 @@
 {% block title %} MeteApp - Le temps {% endblock %}
 
 {% block content %}
+{# Boutons Up and Down #}
+<button class="page-button" id="upButton">
+    u
+</button>
+<button class="page-button" id="downButton">
+    d
+</button>
 {# Partie TopBar #}
 <div class="topBar sticky-top">
     <header class="row p-1 m-0">
         <div class="col-2 p-0 m-0 d-flex justify-content-start">
-            <button type="button" id="sidebarCollapse" class="btn btn-info">
+            <button type="button" id="sidebarCollapse" class="header-button btn btn-info">
                 <img src="Assets/img/icons/burger.svg" width="24px" height="24px" alt="burger icon">
             </button>
         </div>
         <div class="col-8 p-0 m-0 text-center">
-            <form class="form-inline p-0">
-                <input id="search" class="form-control m-0" type="search" placeholder="Search" aria-label="Search">
+            <input id="search" class="form-control m-0" type="search" placeholder="Search"aria-label="Search">
         </div>
         <div class="col-2 p-0 m-0 d-flex justify-content-end">
-            <button class="btn btn-info" type="submit"><img src="Assets/img/icons/search.svg" width="24px" height="24px"
-                    alt="magnifier icon"></button>
-            </form>
+            <button class="header-button btn btn-info" type="button" id="adress"><img src="Assets/img/icons/search.svg" width="24px" height="24px" alt="magnifier icon">
+            </button>
         </div>
     </header>
 
     <nav class="row p-0 m-0 d-flex align-items-center">
         <div class="col-2 p-0 m-0 d-flex justify-content-center">
-            <button id="precedent" style="display:none">
+            <button class="day-button" id="precedent" style="display:none">
                 <</button> </div> <div class="col-8 p-0 m-0 text-center">
                     <h2 id="weather-day" class="p-0 m-0">Jour</h2>
                     <p id="weather-date" class="p-0 m-0">01 janvier 2019</p>
         </div>
         <div class="col-2 p-0 m-0 d-flex justify-content-center">
-            <button id="suivant">></button>
+            <button class="day-button" id="suivant">></button>
         </div>
     </nav>
 </div>
@@ -139,12 +144,14 @@
         <div class="row p-2">
             <div class="carte d-flex justify-content-center align-items-center">
                 <div class="col-6 d-flex justify-content-center align-items-center">
-                    <p class="text-center"> indice UV:
-                        <br><span class="data">1</span></p>
+                    <p class="text-center m-0"> indice UV:
+                    <br><span class="data">1</span>
+                    </p>
                 </div>
                 <div class="col-6 d-flex justify-content-center align-items-center">
-                    <p class="text-center"> Visibilité:
-                        <br><span class="data">16 km</span></p>
+                    <p class="text-center m-0"> Visibilité:
+                    <br><span class="data">16 km</span>
+                    </p>
                 </div>
             </div>
         </div>
@@ -161,7 +168,7 @@
                 </div>
                 <div class="col-4  d-flex flex-column justify-content-center align-items-center">
                     <img class="icon" src="Assets/img/icons/moon.svg" alt="surise">
-                    <p class="m-0 data">1st Crois.</p>
+                    <p class="m-0 data text-center">1st Crois.</p>
                 </div>
             </div>
         </div>
