@@ -280,6 +280,7 @@ document.onreadystatechange = function () {
                     setTime.value = currentDate.getHours();
                     weatherHeure.innerHTML = currentDate.getHours() + ":00";
                     compass.style.transform = "rotate(" + retourReponse.currently.windBearing + "deg";
+                    compass.style.transition = "200";
                 }
 
                 function displayHourly(retourReponse) {
@@ -296,7 +297,7 @@ document.onreadystatechange = function () {
                     weatherData[6].innerHTML = Math.round(retourReponse.hourly.data[setTime.value].visibility) + " km";
                     weatherHeure.innerHTML = setTime.value + ":00";
                     compass.style.transform = "rotate(" + retourReponse.hourly.data[setTime.value].windBearing + "deg";
-
+                    compass.style.transition = "200";
                     
                 }
 
