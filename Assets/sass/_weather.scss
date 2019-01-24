@@ -13,77 +13,142 @@
     #sidebar.active {
         margin-left: -250px;
     }
+    .page-button{
+        position: fixed;
+        left: 85%;
+        transform: translate(-50%, -50%);
+        width: 35px;
+        height: 35px;
+        background-color: rgba(255,153,0,0.5);
+        opacity: 50%;
+        border: none;
+        border-radius: 50%;
+        z-index: 1;
+
+    }
+    #upButton{
+        top: 18.1vh;
+    }
+    #downButton{
+        bottom: 90px;
+    }
     .topBar{
         height: 15vh;
         background-color: $colorMain;
         header{
             background-color: $colorMain;
+            .header-button{
+                background-color: $colorMain !important;
+                box-shadow: black 1px 1px 3px;
+            }
+            .header-button:hover{
+                background-color: white !important;
+                color: $colorMain;
+                transition: 250;
+            }
         }
         nav{
             background-color: $colorMain;
+            h2{
+                font-size: 1.4em;
+                font-weight: bold;
+                color: white;
+            }
+            p{
+                font-size: 1em;
+                color: #2E2E2E;
+            }
+            .day-button{
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                background-color: #009688;
+                color: white;
+                border: none;
+                box-shadow: black 1px 1px 3px;
+                font-weight: bold;
+            }
+            .day-button:hover{
+                background-color: white;
+                color: $colorMain;
+                transition: 250;
+            }
         }
     }
    
     .clothe{
         height: 85vh;
         background-color: $colorClothe;
-        #femaleButton{
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            border: none;
-        }
-        #maleButton{
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            border: none;
-        }
-        #skin1{
-            background-color: $colorSkin1;
-            width: 25px;
-            height: 25px;
-            border-radius: 50%;
-            border: none;
-        }
-        #skin2{
-            background-color: $colorSkin2;
-            width: 25px;
-            height: 25px;
-            border-radius: 50%;
-            border: none;
-        }
-        #skin3{
-            background-color: $colorSkin3;
-            width: 25px;
-            height: 25px;
-            border-radius: 50%;
-            border: none;
-        }
-        #skin4{
-            background-color: $colorSkin4;
-            width: 25px;
-            height: 25px;
-            border-radius: 50%;
-            border: none;
-        }
-        .genre{
-            background-color: #009688;
-        }
-        .invisible{
-            display: none; 
-        }
-        .img-avatar{
-            position: absolute;
-        }
-        .img-clothes{
-            position: relative;
-        }
-        
+        padding-bottom: 100px;
+        .animeRow{
+            height: 100%;
+            padding-bottom: 100px;
+            .sexButton:hover{
+                transform: scale(1.25);
+                transition: 200;
+            }
+            #femaleButton{
+                width: 30px;
+                height: 30px;
+                border-radius: 50%;
+                border: none;
+            }
+            #maleButton{
+                width: 30px;
+                height: 30px;
+                border-radius: 50%;
+                border: none;
+            }
+            .skinButton:hover{
+                transform: scale(1.25);
+                transition: 200;
+            }
+            #skin1{
+                background-color: $colorSkin1;
+                width: 25px;
+                height: 25px;
+                border-radius: 50%;
+                border: none;
+            }
+            #skin2{
+                background-color: $colorSkin2;
+                width: 25px;
+                height: 25px;
+                border-radius: 50%;
+                border: none;
+            }
+            #skin3{
+                background-color: $colorSkin3;
+                width: 25px;
+                height: 25px;
+                border-radius: 50%;
+                border: none;
+            }
+            #skin4{
+                background-color: $colorSkin4;
+                width: 25px;
+                height: 25px;
+                border-radius: 50%;
+                border: none;
+            }
+            .genre{
+                background-color: #009688;
+            }
+            .invisible{
+                display: none; 
+            }
+            .img-avatar{
+                position: absolute;
+            }
+            .img-clothes{
+                position: relative;
+            }
+        }        
     }
     .summary{
-        height: 42.5vh;
+        height: 85vh;
         background-color: $colorSummary;
+        padding-bottom: 100px;
         #tempCard{
             background-color: $colorClothe;
             border-radius: 10px;
@@ -94,13 +159,14 @@
             }
             p{
                 color: #980000;
-                font-size: 1em;
+                font-size: 1.3em;
+                font-weight: bold;
             }
         }
         #weatherIcon{
             img{
-                width: 100px;
-                height: 100px;
+                width: 125px;
+                height: 125px;
             }
         }
         #rainCard{
@@ -113,18 +179,24 @@
             }
             p{
                 color: #030340;
-                font-size: 1em;
+                font-size: 1.3em;
+                font-weight: bold;
             }
+        }
+        .summaryChart{
+            width: 100%;
+            height: 300px;
         }
     }
     .details{
         background-color: $colorDetails;
         height: 85vh;
+        padding-bottom: 100px;
         .carte{
             background-color: white;
-            border-radius: 10px;
+            border-radius: 5px;
             width: 100%;
-            height: 80px;
+            height: 95px;
             box-shadow: 2px 2px 5px;
             .data{
                 color: $colorMain;
@@ -134,6 +206,17 @@
                 width: auto;
                 
             }
+        }
+    }
+    .hour-select{
+        background-color: $colorMain;
+        h2{
+            font-size: 1.4em;
+            font-weight: bold;
+            color: white;
+        }
+        p{
+            font-size: 0.8em;
         }
     }
 }

@@ -66,6 +66,8 @@ function verifyRegister(element, event) {
             .then( (result) => { return result.json() } )
             .then( (result) => {
                 console.log(result);
+
+
                 if(!result.message){
                     document.querySelector(".message").innerHTML = "Inscription réussie, vous allez être redirigé.";
                     // setTimeout(function(){
