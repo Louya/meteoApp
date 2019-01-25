@@ -14,7 +14,10 @@ const search = document.querySelector("#search");
 const month = ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'];
 const day = ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'];
 
-const set_clothes = document.querySelectorAll("#clothes");
+const set_clothes1 = document.querySelector("#m_set1");
+const set_clothes2 = document.querySelector("#m_set2");
+const set_clothes3 = document.querySelector("#m_set3");
+const set_clothes4 = document.querySelector("#m_set4");
 const array_clothes = document.querySelectorAll(".img-clothes");
 
 let time = new Date();
@@ -24,10 +27,11 @@ let limit = time + (86400*6);
 let base = time;
 var latitude = 48.866667;
 var longitude = 2.333333;
-var result, temp, rain;
-
+var result;
 
 getInitialData();
+
+
 
 
 document.onreadystatechange = function () {
@@ -65,86 +69,71 @@ document.onreadystatechange = function () {
 
                     displayData(retourReponse);
 
-                        // Changement vêtements
-                        // let temp = Math.round(retourReponse.hourly.data[setTime.value].temperature);
-                        // let rain = retourReponse.hourly.data[setTime.value].precipProbability;
+                                    
+                    // setTime.addEventListener("change", displayHourly(retourReponse));
 
-                        temp = Math.round(result.hourly.data[setTime.value].temperature);
-                        rain = result.hourly.data[setTime.value].precipProbability;
+                    // Changement vêtements
+                    let temp = Math.round(retourReponse.hourly.data[setTime.value].temperature);
+                    let rain = retourReponse.hourly.data[setTime.value].precipProbability;
+
+                    function clothes(temp, rain){
+
+                        if(temp < 15 && rain < 0.3){
+                            for (let i = 0; i < array_clothes.length; i++) {
+                                array_clothes[i].classList.add("invisible");
+                            }
+                            set_clothes3.classList.remove("invisible");
                         
-                        j = 0 ;
-                        clothes(temp, rain, j);
-
-                        console.log(temp);
-                        console.log(rain);
-                        // genre_male.addEventListener("click", (e) => {
-                        //     j = 0;
-                        //     clothes(temp, rain, j);
-                        // })
-
-                        // genre_female.addEventListener("click", (e) => {
-                        //     j = 4;
-                        //     clothes(temp, rain, j);
-                        // })
+                        }else if(temp < 15 && rain > 0.3){
+                            for (let i = 0; i < array_clothes.length; i++) {
+                                array_clothes[i].classList.add("invisible");
+                            }
+                            set_clothes4.classList.remove("invisible");
                         
-                    let lat = retourReponse.latitude;
-                    let lon = retourReponse.longitude;
-                    let url = `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${lat}&lon=${lon}`;
-                    
-                    fetch(url, {method: "POST"})
-                    .then( (result) => { return result.json() })
-                    .then( (result) => {
-                        if(!result.error){
-                            let city = typeof result.address.city !== 'undefined' ? result.address.city:result.address.town; 
-                            document.querySelector("#search").value = city;
+                        }else if(temp >= 15 && rain < 0.3){
+                            for (let i = 0; i < array_clothes.length; i++) {
+                                array_clothes[i].classList.add("invisible");
+                            }
+                            set_clothes1.classList.remove("invisible");
+                        
+                        }else if(temp >= 15 && rain > 0.3){
+                            for (let i = 0; i < array_clothes.length; i++) {
+                                array_clothes[i].classList.add("invisible");
+                            }
+                            set_clothes2.classList.remove("invisible");
+                                }
+                        
                         }
                                                             
-                        clothes(temp, rain, j);
+                        clothes(temp, rain);
+                        
+                        let lat = retourReponse.latitude;
+                        let lon = retourReponse.longitude;
+                        let url = `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${lat}&lon=${lon}`;
+                        
+                        fetch(url, {method: "POST"})
+                        .then( (result) => { return result.json() })
+                        .then( (result) => {
+                            if(!result.error){
+                                let city = typeof result.address.city !== 'undefined' ? result.address.city:result.address.town; 
+                                document.querySelector("#search").value = city;
+                            }
+                        })
 
                 }).catch((error) => {
                     console.log(error);
                 });
-                    })
 
-                    
+                
+                // getPreviousDay(latitude, longitude);
+                // getNextDay(latitude, longitude);
+
             })
+        } else {
+            console.log("Le service de géolocalisation n'est pas disponible sur votre navigateur.");
         }
-    } else {
-        console.log("Le service de géolocalisation n'est pas disponible sur votre navigateur.");
     }
 }
-
-
-
-function clothes(temp, rain, j){
-                            
-    if(temp >= 17 && rain < 0.3){
-        for (let i = 0; i < array_clothes.length; i++) {
-            array_clothes[i].classList.add("invisible");
-        }
-    set_clothes[j+1].classList.remove("invisible");
-    
-    }else if(temp >= 17 && rain > 0.3){
-        for (let i = 0; i < array_clothes.length; i++) {
-            array_clothes[i].classList.add("invisible");
-        }
-        set_clothes[j+2].classList.remove("invisible");
-
-    }else if(temp < 17 && rain < 0.3){
-        for (let i = 0; i < array_clothes.length; i++) {
-            array_clothes[i].classList.add("invisible");
-        }
-        set_clothes[j+3].classList.remove("invisible");
-
-    }else if(temp < 17 && rain > 0.3){
-        for (let i = 0; i < array_clothes.length; i++) {
-            array_clothes[i].classList.add("invisible");
-        }
-        set_clothes[j+4].classList.remove("invisible");
-    }
-}
-
-
 
 
 function displayData(retourReponse) {
@@ -285,6 +274,8 @@ function displayHourly() {
     weatherData[6].innerHTML = Math.round(result.hourly.data[setTime.value].visibility) + " km";
     weatherHeure.innerHTML = setTime.value + ":00";
     compass.style.transform = "rotate(" + result.hourly.data[setTime.value].windBearing + "deg";
+
+    
 }
 
 
@@ -321,22 +312,17 @@ function getPreviousDay() {
             // console.log(retourReponse);
 
             displayData(retourReponse);
-                            displayHourly(retourReponse);
-                           // Changement vêtements
-                            let temp = Math.round(retourReponse.hourly.data[setTime.value].temperature);
-                            let rain = retourReponse.hourly.data[setTime.value].precipProbability;
 
-                            genre_male.addEventListener("click", (e) => {
-                                j = 0;
-                                clothes(temp, rain, j);
-                            })
-    
-                            genre_female.addEventListener("click", (e) => {
-                                j = 4;
-                                clothes(temp, rain, j);
-                            })
-                            
-                        }).catch((error) => {
+            // setTime.addEventListener("change", () => {
+            
+            //     displayHourly(retourReponse);
+                
+
+            // })
+
+
+
+        }).catch((error) => {
             console.log(error);
         });
 }
@@ -423,20 +409,6 @@ function getInitialData() {
     
         })
 
-        genre_male.addEventListener("click", (e) => {
-            j = 0;
-            temp = Math.round(result.hourly.data[setTime.value].temperature);
-            rain = result.hourly.data[setTime.value].precipProbability;
-            clothes(temp, rain, j);
-        })
-    
-        genre_female.addEventListener("click", (e) => {
-            j = 4;
-            temp = Math.round(result.hourly.data[setTime.value].temperature);
-            rain = result.hourly.data[setTime.value].precipProbability;
-            clothes(temp, rain, j);
-        })
-
 
     }).catch((error) => {
         console.log(error);
@@ -444,3 +416,4 @@ function getInitialData() {
 
 
 }
+

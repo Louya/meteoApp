@@ -159,35 +159,7 @@ function verify(element,event) {
                                 j = 4;
                                 clothes(temp, rain, j);
                             })
-
-                            // Changement vêtements
-                            function clothes(temp, rain, j){
-                            
-                                if(temp >= 17 && rain < 0.3){
-                                    for (let i = 0; i < array_clothes.length; i++) {
-                                        array_clothes[i].classList.add("invisible");
-                                    }
-                                set_clothes[j+1].classList.remove("invisible");
-                                
-                                }else if(temp >= 17 && rain > 0.3){
-                                    for (let i = 0; i < array_clothes.length; i++) {
-                                        array_clothes[i].classList.add("invisible");
-                                    }
-                                    set_clothes[j+2].classList.remove("invisible");
-        
-                                }else if(temp < 17 && rain < 0.3){
-                                    for (let i = 0; i < array_clothes.length; i++) {
-                                        array_clothes[i].classList.add("invisible");
-                                    }
-                                    set_clothes[j+3].classList.remove("invisible");
-        
-                                }else if(temp < 17 && rain > 0.3){
-                                    for (let i = 0; i < array_clothes.length; i++) {
-                                        array_clothes[i].classList.add("invisible");
-                                    }
-                                    set_clothes[j+4].classList.remove("invisible");
-                                }
-                            }                    
+                   
 
                             setTime.addEventListener("change", () => {
                                 
@@ -238,3 +210,32 @@ function verify(element,event) {
 
 verify(submit, "click");
 verify(location_input, "keydown");
+
+        // Changement vêtements
+        function clothes(temp, rain, j){
+                            
+            if(temp >= 17 && rain < 0.3){
+                for (let i = 0; i < array_clothes.length; i++) {
+                    array_clothes[i].classList.add("invisible");
+                }
+            set_clothes[j+1].classList.remove("invisible");
+            
+            }else if(temp >= 17 && rain > 0.3){
+                for (let i = 0; i < array_clothes.length; i++) {
+                    array_clothes[i].classList.add("invisible");
+                }
+                set_clothes[j+2].classList.remove("invisible");
+
+            }else if(temp < 17 && rain < 0.3){
+                for (let i = 0; i < array_clothes.length; i++) {
+                    array_clothes[i].classList.add("invisible");
+                }
+                set_clothes[j+3].classList.remove("invisible");
+
+            }else if(temp < 17 && rain > 0.3){
+                for (let i = 0; i < array_clothes.length; i++) {
+                    array_clothes[i].classList.add("invisible");
+                }
+                set_clothes[j+4].classList.remove("invisible");
+            }
+        } 
