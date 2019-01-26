@@ -29,33 +29,31 @@ var result, temp, rain;
 
 getInitialData();
 
-
 document.onreadystatechange = function () {
     console.log("onreadystatechange marche");
     if (document.readyState === "complete") {
 
         if (navigator.geolocation) { /*demander l'autorisation d'obtenir la géolocalisation*/
-        navigator.geolocation.getCurrentPosition(function (position) {
+            navigator.geolocation.getCurrentPosition(function (position) {
 
+                time = new Date();
+                time = time.getTime();
+                time = Math.round(time/1000);
+                limit = time + (86400*6);
+                base = time;
 
-            time = new Date();
-            time = time.getTime();
-            time = Math.round(time/1000);
-            limit = time + (86400*6);
-            base = time;
+                precedent.style.display = "none";
 
-            precedent.style.display = "none";
+                console.log("je passe");
+                latitude = position.coords.latitude;
+                longitude = position.coords.longitude;
 
-            console.log("je passe");
-            latitude = position.coords.latitude;
-            longitude = position.coords.longitude;
+                let data = new FormData();
 
-            let data = new FormData();
+                data.append("latitude", latitude);
+                data.append("longitude", longitude);
 
-            data.append("latitude", latitude);
-            data.append("longitude", longitude);
-
-            fetch("/weather/get", {method: "POST", body: data})
+                fetch("/weather/get", {method: "POST", body: data})
                 .then((retourReponse) => {
                     return retourReponse.json();
                 })
@@ -65,28 +63,20 @@ document.onreadystatechange = function () {
 
                     displayData(retourReponse);
 
-                        // Changement vêtements
-                        // let temp = Math.round(retourReponse.hourly.data[setTime.value].temperature);
-                        // let rain = retourReponse.hourly.data[setTime.value].precipProbability;
-
-                        temp = Math.round(result.hourly.data[setTime.value].temperature);
-                        rain = result.hourly.data[setTime.value].precipProbability;
-                        
-                        j = 0 ;
+                    temp = Math.round(retourReponse.hourly.data[setTime.value].temperature);
+                    rain = retourReponse.hourly.data[setTime.value].precipProbability;
+                    
+                    genre_male.addEventListener("click", (e) => {
+                        j = 0;
                         clothes(temp, rain, j);
+                    })
+                    genre_female.addEventListener("click", (e) => {
+                        j = 4;
+                        clothes(temp, rain, j);
+                    })
+                    j = 0 ;
+                    clothes(temp, rain, j);
 
-                        console.log(temp);
-                        console.log(rain);
-                        // genre_male.addEventListener("click", (e) => {
-                        //     j = 0;
-                        //     clothes(temp, rain, j);
-                        // })
-
-                        // genre_female.addEventListener("click", (e) => {
-                        //     j = 4;
-                        //     clothes(temp, rain, j);
-                        // })
-                        
                     let lat = retourReponse.latitude;
                     let lon = retourReponse.longitude;
                     let url = `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${lat}&lon=${lon}`;
@@ -95,18 +85,28 @@ document.onreadystatechange = function () {
                     .then( (result) => { return result.json() })
                     .then( (result) => {
                         if(!result.error){
-                            let city = typeof result.address.city !== 'undefined' ? result.address.city:result.address.town; 
-                            document.querySelector("#search").value = city;
+                            let ville;
+
+                            if(typeof result.address.city !== 'undefined'){
+                                ville = result.address.city;
+
+                            } else if(typeof result.address.city === 'undefined' && typeof result.address.town !== 'undefined' ) {
+                                ville = result.address.town
+
+                            } else {
+                                ville = result.address.village;
+                            }  
+                            document.querySelector("#search").value = ville;
+                            console.log(result.address);
                         }
                                                             
-                        clothes(temp, rain, j);
+                    // clothes(temp, rain, j);
 
-                }).catch((error) => {
-                    console.log(error);
-                });
-                    })
-
-                    
+                    }).catch((error) => {
+                        console.log(error);
+                    });
+                })
+    
             })
         }
     } else {
@@ -114,38 +114,33 @@ document.onreadystatechange = function () {
     }
 }
 
-
-
 function clothes(temp, rain, j){
                             
-    if(temp >= 17 && rain < 0.3){
+    if(temp >= 4 && rain < 0.15){
         for (let i = 0; i < array_clothes.length; i++) {
             array_clothes[i].classList.add("invisible");
         }
-    set_clothes[j+1].classList.remove("invisible");
+    set_clothes[j+0].classList.remove("invisible");
     
-    }else if(temp >= 17 && rain > 0.3){
+    }else if(temp >= 4 && rain > 0.15){
+        for (let i = 0; i < array_clothes.length; i++) {
+            array_clothes[i].classList.add("invisible");
+        }
+        set_clothes[j+1].classList.remove("invisible");
+
+    }else if(temp < 4 && rain < 0.15){
         for (let i = 0; i < array_clothes.length; i++) {
             array_clothes[i].classList.add("invisible");
         }
         set_clothes[j+2].classList.remove("invisible");
-
-    }else if(temp < 17 && rain < 0.3){
+        
+    }else if(temp < 4 && rain > 0.15){
         for (let i = 0; i < array_clothes.length; i++) {
             array_clothes[i].classList.add("invisible");
         }
         set_clothes[j+3].classList.remove("invisible");
-
-    }else if(temp < 17 && rain > 0.3){
-        for (let i = 0; i < array_clothes.length; i++) {
-            array_clothes[i].classList.add("invisible");
-        }
-        set_clothes[j+4].classList.remove("invisible");
     }
 }
-
-
-
 
 function displayData(retourReponse) {
     let chartTemp0 = Math.round(retourReponse.hourly.data[0].temperature);
@@ -285,64 +280,74 @@ function displayHourly() {
     weatherData[6].innerHTML = Math.round(result.hourly.data[setTime.value].visibility) + " km";
     weatherHeure.innerHTML = setTime.value + ":00";
     compass.style.transform = "rotate(" + result.hourly.data[setTime.value].windBearing + "deg";
+
+    // Changement vêtements
+    let temp = Math.round(result.hourly.data[setTime.value].temperature);
+    let rain = result.hourly.data[setTime.value].precipProbability;
+
+    genre_male.addEventListener("click", (e) => {
+        j = 0;
+        clothes(temp, rain, j);
+    })
+    genre_female.addEventListener("click", (e) => {
+        j = 4;
+        clothes(temp, rain, j);
+    })
+
+    clothes(temp, rain, j);
 }
-
-
 
 function getPreviousDay() {
 
-        console.log("je fais un previous");
-        let data = new FormData();
-        time -= 86400;
+    console.log("je fais un previous");
+    let data = new FormData();
+    time -= 86400;
 
 
-        time === base ? precedent.style.display = "none" : precedent.style.display = "block";
-        time === limit ? suivant.style.display = "none" : suivant.style.display = "block";
+    time === base ? precedent.style.display = "none" : precedent.style.display = "block";
+    time === limit ? suivant.style.display = "none" : suivant.style.display = "block";
 
-        if(time === base) {
-            precedent.style.display = "none";
-        } else {
-            precedent.style.display = "block";
-        }
+    if(time === base) {
+        precedent.style.display = "none";
+    } else {
+        precedent.style.display = "block";
+    }
 
+    data.append("latitude", latitude);
+    data.append("longitude", longitude);
+    data.append("time", time);
 
-        data.append("latitude", latitude);
-        data.append("longitude", longitude);
-        data.append("time", time);
+    fetch("/weather/get", {method: "POST", body: data})
+    .then((retourReponse) => {
+        return retourReponse.json();
+    })
+    .then((retourReponse) => {
 
-        fetch("/weather/get", {method: "POST", body: data})
-        .then((retourReponse) => {
-            return retourReponse.json();
+        result = retourReponse;
+
+        displayData(retourReponse);
+        displayHourly(retourReponse);
+
+        // Changement vêtements
+        let temp = Math.round(retourReponse.hourly.data[setTime.value].temperature);
+        let rain = retourReponse.hourly.data[setTime.value].precipProbability;
+        
+        genre_male.addEventListener("click", (e) => {
+            j = 0;
+            clothes(temp, rain, j);
         })
-        .then((retourReponse) => {
-
-            result = retourReponse;
-
-            // console.log(retourReponse);
-
-            displayData(retourReponse);
-                            displayHourly(retourReponse);
-                           // Changement vêtements
-                            let temp = Math.round(retourReponse.hourly.data[setTime.value].temperature);
-                            let rain = retourReponse.hourly.data[setTime.value].precipProbability;
-
-                            genre_male.addEventListener("click", (e) => {
-                                j = 0;
-                                clothes(temp, rain, j);
-                            })
-    
-                            genre_female.addEventListener("click", (e) => {
-                                j = 4;
-                                clothes(temp, rain, j);
-                            })
-                            
-                        }).catch((error) => {
-            console.log(error);
-        });
+        genre_female.addEventListener("click", (e) => {
+            j = 4;
+            clothes(temp, rain, j);
+        })
+        clothes(temp, rain, j);
+            
+    }).catch((error) => {
+        console.log(error);
+    });
 }
 
 function getNextDay() {
-
 
         console.log("je fais un next");
         let data = new FormData();
@@ -371,22 +376,26 @@ function getNextDay() {
             result = retourReponse;
 
             displayData(retourReponse);
+            displayHourly(retourReponse);
 
-            // setTime.addEventListener("change", () => {
-            
-            //     displayHourly(retourReponse);
-                
-
-            // })
-
-
+            // Changement vêtements
+            let temp = Math.round(retourReponse.hourly.data[setTime.value].temperature);
+            let rain = retourReponse.hourly.data[setTime.value].precipProbability;
+        
+            genre_male.addEventListener("click", (e) => {
+                j = 0;
+                clothes(temp, rain, j);
+            })
+            genre_female.addEventListener("click", (e) => {
+                j = 4;
+                clothes(temp, rain, j);
+            })
+            clothes(temp, rain, j);
 
         }).catch((error) => {
             console.log(error);
         });
 }
-
-
 
 function getInitialData() {
 
@@ -394,9 +403,6 @@ function getInitialData() {
 
     data.append("latitude", latitude);
     data.append("longitude", longitude);
-
-    // const res = await fetch('/weather/get', {method: "POST", body: data});
-    // const retourReponse = await res.json();
 
     fetch("/weather/get", {method: "POST", body: data})
     .then((retourReponse) => {
@@ -417,30 +423,11 @@ function getInitialData() {
         });
     
         
-        setTime.addEventListener("change", () => {
-                            
+        setTime.addEventListener("change", () => {                
             displayHourly();
-    
         })
-
-        genre_male.addEventListener("click", (e) => {
-            j = 0;
-            temp = Math.round(result.hourly.data[setTime.value].temperature);
-            rain = result.hourly.data[setTime.value].precipProbability;
-            clothes(temp, rain, j);
-        })
-    
-        genre_female.addEventListener("click", (e) => {
-            j = 4;
-            temp = Math.round(result.hourly.data[setTime.value].temperature);
-            rain = result.hourly.data[setTime.value].precipProbability;
-            clothes(temp, rain, j);
-        })
-
 
     }).catch((error) => {
         console.log(error);
     });
-
-
 }
