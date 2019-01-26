@@ -2,6 +2,9 @@ const location_input = document.querySelector("#search");
 const submit = document.querySelector("#adress");
 
 
+
+getInitialData();
+
 function verify(element,event) {
     element.addEventListener(event, (e) => {
         if (e.key === "Enter" || event === "click") {
@@ -81,4 +84,43 @@ function clothes(temp, rain, j){
         }
         set_clothes[j+3].classList.remove("invisible");
     }
+}
+
+
+function getInitialData() {
+    let time = new Date();
+time = time.getTime();
+time = Math.round(time/1000);
+
+var latitude = 48.866667;
+var longitude = 2.333333;
+
+
+    let data = new FormData();
+
+    data.append("latitude", latitude);
+    data.append("longitude", longitude);
+
+    fetch("/weather/get", {method: "POST", body: data})
+    .then((retourReponse) => {
+        return retourReponse.json();
+    })
+    .then((retourReponse) => {
+        temp = Math.round(retourReponse.hourly.data[setTime.value].temperature);
+        rain = retourReponse.hourly.data[setTime.value].precipProbability;
+        
+        genre_male.addEventListener("click", (e) => {
+            j = 0;
+            clothes(temp, rain, j);
+        })
+        genre_female.addEventListener("click", (e) => {
+            j = 4;
+            clothes(temp, rain, j);
+        })
+        j = 0 ;
+        clothes(temp, rain, j);
+
+    }).catch((error) => {
+        console.log(error);
+    });
 }
