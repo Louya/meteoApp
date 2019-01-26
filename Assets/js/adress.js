@@ -3,12 +3,9 @@ const submit = document.querySelector("#adress");
 
 
 function verify(element,event) {
-
     element.addEventListener(event, (e) => {
-
         if (e.key === "Enter" || event === "click") {
-           
-        
+            
             let city = location_input.value;
             let url = `https://nominatim.openstreetmap.org/search?format=json&city=${city}`;
 
@@ -16,7 +13,6 @@ function verify(element,event) {
             .then( (result) => { return result.json() })
             .then( (result) => {
                 if(!result.error){
-    
                     let longitude = result[0].lon;
                     let latitude = result[0].lat;
 
@@ -28,9 +24,7 @@ function verify(element,event) {
                     fetch("/weather/get", {method: "POST", body: data})
                     .then( (results) => { return results.json() })
                     .then( (results) => {
-                        if(!results.error){
-                            console.log(results);
-                            
+                        if(!results.error){                       
                             temp = Math.round(results.hourly.data[setTime.value].temperature);
                             rain = results.hourly.data[setTime.value].precipProbability;
                             
@@ -88,4 +82,3 @@ function clothes(temp, rain, j){
         set_clothes[j+3].classList.remove("invisible");
     }
 }
-
