@@ -25,9 +25,18 @@ document.onreadystatechange = function () {
                 fetch(link, {method: "POST"})
                 .then( (result) => { return result.json() } )
                 .then( (result) => {
-                // console.log(result);
-
-                let ville = typeof result.address.city !== 'undefined' ? result.address.city:result.address.town; 
+                    
+                    
+                    let ville;
+                    
+                    if(typeof result.address.city !== 'undefined'){
+                        ville = result.address.city;
+                    } else if(typeof result.address.city === 'undefined' && typeof result.address.town !== 'undefined' ) {
+                        ville = result.address.town
+                    } else {
+                        ville = result.address.village;
+                    }
+                    
                 let route = result.address.road;
                 
                 adresseRegister.value = route;
@@ -63,7 +72,7 @@ function verifyRegister(element, event) {
             data.append("ville", villeRegister.value);
         
             fetch("/register/verif", {method: "POST", body: data})
-            .then( (result) => { return result.json() } )
+            .then( (result) => { return result.text() } )
             .then( (result) => {
                 console.log(result);
 
