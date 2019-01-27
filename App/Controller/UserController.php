@@ -129,7 +129,7 @@ class UserController extends Controller{
             array_push($message, "La ville est incorrecte");
         }
 
-        if(!$error){
+        // if(!$error){
             $link = "https://nominatim.openstreetmap.org/search?format=json&q=" . $curr_adresse . "," . $curr_ville;
     
             $get_data = callAPI('GET', $link, false);
@@ -138,7 +138,7 @@ class UserController extends Controller{
                 $error = true;
                 array_push($message, "Cette association adresse/ville ne retourne pas de résultat");
             }
-        }
+        // }
 
 
         // echo json_encode($get_data);

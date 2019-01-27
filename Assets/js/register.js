@@ -72,7 +72,7 @@ function verifyRegister(element, event) {
             data.append("ville", villeRegister.value);
         
             fetch("/register/verif", {method: "POST", body: data})
-            .then( (result) => { return result.text() } )
+            .then( (result) => { return result.json() } )
             .then( (result) => {
                 console.log(result);
 
