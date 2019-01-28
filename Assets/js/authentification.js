@@ -1,6 +1,9 @@
 const connexionLogin = document.querySelector("#connexion_login");
 const loginLogin = document.querySelector("#login_login");
 const passLogin = document.querySelector("#pass_login");
+const messageLogin = document.querySelector("#error");
+// const search = document.querySelector("#search");
+
 
 function verify(element, event) {
 
@@ -17,8 +20,11 @@ function verify(element, event) {
             .then( (result) => {
                 // console.log(result.error);
                 if(!result.error){
-                    console.log(result);
-                    window.location.replace("/user");
+                    // console.log(result);
+                    // messageLogin.innerHTML = 'Bonjour ' + result.infos.prenom;
+                    // search.value = result.infos.adresse + ' ' + result.infos.ville;
+                    // console.log(result.infos.sexe);
+                    // window.location.replace("/weather");
                 } else {
                     document.querySelector("#error").innerHTML = result.error;
                 }
@@ -27,6 +33,7 @@ function verify(element, event) {
     })
 }
 
-verify(connexionlogin, "click");
-verify(loginlogin, "keydown");
-verify(passlogin, "keydown");
+
+verify(connexionLogin, "click");
+verify(loginLogin, "keydown");
+verify(passLogin, "keydown");

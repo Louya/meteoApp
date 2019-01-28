@@ -2,6 +2,7 @@
 <html lang="fr">
 
 <head>
+    {# Métadonnées de la page #}
     <meta charset="UTF-8">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,28 +12,61 @@
     <meta name="keywords" content="Meteo, API, DarkSky, ">
 
     <meta http-equiv="X-UA-Compatible" content="ie=edge, chrome=1">
-    {#
-    <meta http-equiv="refresh" content="30"> #}
+    
+    <!-- Font Awesome JS -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ"
+        crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY"
+        crossorigin="anonymous"></script>
 
+    {# URL de base #}
     <base href="http://localhost:8080/">
 
+    {# Feuille de style personalisée #}
     <link rel="stylesheet" href="dist/css/main.css">
 
+    {# Titre de la page en cours  #}
     <title>{% block title %}{% endblock %}</title>
 </head>
 
 <body class="main-body">
 
     <main class="container-fluid p-0 m-0">
-        <div class="content">
+        {# Menu latéral #}
+        <nav id="sidebar">
+            <div id="dismiss">
+                <i class="fas fa-arrow-left"></i>
+            </div>
+
+            <div class="sidebar-header">
+                    <h3>Menu MeteoApp</h3>
+            </div>
+            <input id="login_login" type="text" placeholder="Username" autofocus autocomplete="off" />
+            <input id="pass_login" name="pass" type="password" placeholder="Password">
+            <button id="connexion_login" type="submit" class="btn btn-primary">Se connecter</button>
+            <div id="error"></div>
+        </nav>
+        {# Dark overlay #}
+        <div id="overlay"></div>
+        {# Contenu de la page #}
+        <div class="content" id="content">
             {% block content %}
             {% endblock %}
         </div>
     </main>
 
+    <script src="Assets/js/adress.js"></script>
+
+    <script src="Assets/js/avatar.js"></script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
-    <script src="Assets/js/app.js"></script>
     
+    <script src="Assets/js/menu.js"></script>
+
+    <script src="Assets/js/app.js"></script>
+
+    <script src="Assets/js/authentification.js"></script>
+
 </body>
 
 </html>

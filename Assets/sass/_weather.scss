@@ -1,38 +1,6 @@
 .main-body{
-    .wrapper {
-        display: flex;
-        width: 100%;
-        align-items: stretch;
-    }
-    #sidebar {
-        min-width: 250px;
-        max-width: 250px;
-        min-height: 100vh;
-    }
-    
-    #sidebar.active {
-        margin-left: -250px;
-    }
-    .page-button{
-        position: fixed;
-        left: 85%;
-        transform: translate(-50%, -50%);
-        width: 35px;
-        height: 35px;
-        background-color: rgba(255,153,0,0.5);
-        opacity: 50%;
-        border: none;
-        border-radius: 50%;
-        z-index: 1;
-
-    }
-    #upButton{
-        top: 18.1vh;
-    }
-    #downButton{
-        bottom: 90px;
-    }
     .topBar{
+        z-index: 800;
         height: 15vh;
         background-color: $colorMain;
         header{
@@ -46,8 +14,13 @@
                 color: $colorMain;
                 transition: 250;
             }
+            #search{
+                text-transform: uppercase;
+                font-weight: bold;
+            }
         }
         nav{
+            height: 60%;
             background-color: $colorMain;
             h2{
                 font-size: 1.4em;
@@ -183,10 +156,6 @@
                 font-weight: bold;
             }
         }
-        .summaryChart{
-            width: 100%;
-            height: 300px;
-        }
     }
     .details{
         background-color: $colorDetails;
@@ -209,6 +178,7 @@
         }
     }
     .hour-select{
+        z-index: 800;
         background-color: $colorMain;
         h2{
             font-size: 1.4em;

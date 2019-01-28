@@ -65,7 +65,9 @@ class UserController extends Controller{
             $reponse = array("error"=>"Erreur dans l'identifiant ou le mot de passe");
             $_SESSION["authenticated"] = false;
         } else {
-            $reponse = array("error"=>false);
+            $user = new Users();
+            $info_user = $user->bdd_user($curr_login_encr, $curr_pass_encr);
+            $reponse = array("error"=>false, "infos"=>$info_user);
             $_SESSION["authenticated"] = true;
             session_start();
             // Stocke le login pour faire le message d'accueil personnalisé
@@ -129,7 +131,7 @@ class UserController extends Controller{
             array_push($message, "La ville est incorrecte");
         }
 
-        if(!$error){
+        // if(!$error){
             $link = "https://nominatim.openstreetmap.org/search?format=json&q=" . $curr_adresse . "," . $curr_ville;
     
             $get_data = callAPI('GET', $link, false);
@@ -138,7 +140,7 @@ class UserController extends Controller{
                 $error = true;
                 array_push($message, "Cette association adresse/ville ne retourne pas de résultat");
             }
-        }
+        // }
 
 
         // echo json_encode($get_data);

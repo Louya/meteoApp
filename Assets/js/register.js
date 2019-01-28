@@ -72,16 +72,16 @@ function verifyRegister(element, event) {
             data.append("ville", villeRegister.value);
         
             fetch("/register/verif", {method: "POST", body: data})
-            .then( (result) => { return result.text() } )
+            .then( (result) => { return result.json() } )
             .then( (result) => {
                 console.log(result);
 
 
                 if(!result.message){
                     document.querySelector(".message").innerHTML = "Inscription réussie, vous allez être redirigé.";
-                    // setTimeout(function(){
-                    //     window.location.replace("/weather");
-                    // }, 3000);
+                    setTimeout(function(){
+                        window.location.replace("/weather");
+                    }, 3000);
                 } else {
                     document.querySelector(".message").innerHTML = "";
                     for (let i = 0; i < result.message.length; i++) {

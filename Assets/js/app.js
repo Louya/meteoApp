@@ -30,7 +30,6 @@ var result, temp, rain;
 getInitialData();
 
 document.onreadystatechange = function () {
-    console.log("onreadystatechange marche");
     if (document.readyState === "complete") {
 
         if (navigator.geolocation) { /*demander l'autorisation d'obtenir la géolocalisation*/
@@ -44,7 +43,6 @@ document.onreadystatechange = function () {
 
                 precedent.style.display = "none";
 
-                console.log("je passe");
                 latitude = position.coords.latitude;
                 longitude = position.coords.longitude;
 
@@ -66,16 +64,16 @@ document.onreadystatechange = function () {
                     temp = Math.round(retourReponse.hourly.data[setTime.value].temperature);
                     rain = retourReponse.hourly.data[setTime.value].precipProbability;
                     
-                    genre_male.addEventListener("click", (e) => {
-                        j = 0;
-                        clothes(temp, rain, j);
-                    })
-                    genre_female.addEventListener("click", (e) => {
-                        j = 4;
-                        clothes(temp, rain, j);
-                    })
-                    j = 0 ;
-                    clothes(temp, rain, j);
+                    // genre_male.addEventListener("click", (e) => {
+                    //     j = 0;
+                    //     clothes(temp, rain, j);
+                    // })
+                    // genre_female.addEventListener("click", (e) => {
+                    //     j = 4;
+                    //     clothes(temp, rain, j);
+                    // })
+                    // j = 0 ;
+                    // clothes(temp, rain, j);
 
                     let lat = retourReponse.latitude;
                     let lon = retourReponse.longitude;
@@ -97,7 +95,6 @@ document.onreadystatechange = function () {
                                 ville = result.address.village;
                             }  
                             document.querySelector("#search").value = ville;
-                            console.log(result.address);
                         }
                                                             
                     // clothes(temp, rain, j);
@@ -110,7 +107,6 @@ document.onreadystatechange = function () {
             })
         }
     } else {
-        console.log("Le service de géolocalisation n'est pas disponible sur votre navigateur.");
     }
 }
 
@@ -299,7 +295,6 @@ function displayHourly() {
 
 function getPreviousDay() {
 
-    console.log("je fais un previous");
     let data = new FormData();
     time -= 86400;
 
@@ -349,7 +344,6 @@ function getPreviousDay() {
 
 function getNextDay() {
 
-        console.log("je fais un next");
         let data = new FormData();
         time += 86400;
 
@@ -413,6 +407,20 @@ function getInitialData() {
         result = retourReponse;
 
         displayData(retourReponse);
+
+        temp = Math.round(retourReponse.hourly.data[setTime.value].temperature);
+        rain = retourReponse.hourly.data[setTime.value].precipProbability;
+        
+        genre_male.addEventListener("click", (e) => {
+            j = 0;
+            clothes(temp, rain, j);
+        })
+        genre_female.addEventListener("click", (e) => {
+            j = 4;
+            clothes(temp, rain, j);
+        })
+        j = 0 ;
+        clothes(temp, rain, j);
 
         suivant.addEventListener('click', () => {
             getNextDay();
