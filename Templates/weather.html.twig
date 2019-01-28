@@ -4,12 +4,12 @@
 
 {% block content %}
 {# Boutons Up and Down #}
-<button class="page-button" id="upButton">
+{# <button class="page-button" id="upButton">
     u
 </button>
 <button class="page-button" id="downButton">
     d
-</button>
+</button> #}
 {# Partie TopBar #}
 <div class="topBar sticky-top">
     <header class="row p-1 m-0">
@@ -40,8 +40,9 @@
     </nav>
 </div>
 <section class="m-0 p-0">
+<div class="row">
     {# - Partie - Clothe - ---------- #}
-    <article class="clothe px-3">
+    <article class="col-12 col-lg-4 clothe px-3">
         <div class="row justify-content-center">
             <p id="message" class="py-4 m-0">Message sur le temps</p>
         </div>
@@ -83,7 +84,7 @@
         </div>
     </article>
     {# Partie - Summary - ------------ #}
-    <article class="summary pt-2 px-3 d-flex flex-column justify-content-around">
+    <article class="col-12 col-lg-4 summary pt-2 px-3 d-flex flex-column justify-content-around">
         <div class="row py-0 d-flex justify-content-center align-items-center">
             <div id="weatherIcon" class="col-4 d-flex justify-content-center">
                 <img id="weather-img" src="Assets/img/weather-icons/weather-clouds.png" alt="icone du temps">
@@ -110,7 +111,7 @@
         </div>
     </article>
     {# Partie - Details - --------- #}
-    <article class="details px-3 d-flex flex-column justify-content-around">
+    <article class="col-12 col-lg-4 details px-3 d-flex flex-column justify-content-around">
 
         <div class="row p-2">
             <div class="carte d-flex justify-content-center align-items-center">
@@ -177,6 +178,7 @@
             </div>
         </div>
     </article>
+    {# Partie hour select #}
     <article class="hour-select fixed-bottom px-3 pt-2">
         <div class="row">
             <div class="col-12 text-center">
@@ -207,4 +209,6 @@
 </div>
 <script src="Assets/js/adress.js"></script>
 <script src="Assets/js/avatar.js"></script>
+</div>
+
 {% endblock %}
