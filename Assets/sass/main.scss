@@ -59,8 +59,8 @@ $colorSkin4 : #553301;
 }
 /* display .overlay when it has the .active class */
 #overlay.active {
-    display: block;
     opacity: 1;
+    display: block;
 }
 
 #dismiss {

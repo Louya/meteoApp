@@ -1,5 +1,6 @@
 .main-body{
     .topBar{
+        z-index: 800;
         height: 15vh;
         background-color: $colorMain;
         header{
@@ -177,6 +178,7 @@
         }
     }
     .hour-select{
+        z-index: 800;
         background-color: $colorMain;
         h2{
             font-size: 1.4em;
