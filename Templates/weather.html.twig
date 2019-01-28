@@ -3,6 +3,13 @@
 {% block title %} MeteApp - Le temps {% endblock %}
 
 {% block content %}
+{# Boutons Up and Down #}
+<button class="page-button" id="upButton">
+    u
+</button>
+<button class="page-button" id="downButton">
+    d
+</button>
 {# Partie TopBar #}
 <div class="topBar sticky-top">
     <header class="row p-1 m-0">
@@ -98,7 +105,7 @@
         </div>
         <div class="row py-3">
             <div class="col-12 vh-50 d-flex justify-content-center">
-                <canvas class="summaryChart" id="summaryChart" width="350px" height="225px"></canvas>
+                <canvas class="summaryChart" id="summaryChart" width="" height="230px"></canvas>
             </div>
         </div>
     </article>
