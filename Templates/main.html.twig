@@ -12,7 +12,7 @@
     <meta name="keywords" content="Meteo, API, DarkSky, ">
 
     <meta http-equiv="X-UA-Compatible" content="ie=edge, chrome=1">
-    
+
     <!-- Font Awesome JS -->
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ"
         crossorigin="anonymous"></script>
@@ -25,7 +25,7 @@
     {# Feuille de style personalisée #}
     <link rel="stylesheet" href="dist/css/main.css">
 
-    {# Titre de la page en cours  #}
+    {# Titre de la page en cours #}
     <title>{% block title %}{% endblock %}</title>
 </head>
 
@@ -34,17 +34,30 @@
     <main class="container-fluid p-0 m-0">
         {# Menu latéral #}
         <nav id="sidebar">
-            <div id="dismiss">
-                <i class="fas fa-arrow-left"></i>
+            <div class="h-100 d-flex flex-column justify-content-between">
+                <div id="sidebar-up">
+                    <div class="sidebar-header d-flex justify-content-between align-items-center">
+                        <h3 class="m-0">Menu</h3>
+                        <button id="dismiss" class="btn btn-primary d-flex justify-content-center align-items-center">
+                            <i class="fas fa-arrow-left"></i>
+                        </button>
+                    </div>
+                    <div id="sidebar-login" class="sidebar-connect py-2 d-flex flex-column align-items-center">
+                        <input class="py-2 my-2 text-center" id="login_login" type="text" placeholder="Username"
+                            autofocus autocomplete="off" />
+                        <input class="py-2 m-2 text-center" id="pass_login" name="pass" type="password " placeholder="Password">
+                        <button id="connexion_login" type="submit" class="btn btn-primary py-2 my-2">Se connecter</button>
+                        <a href="register"><button id="inscription" class="btn btn-info py-2 my-2">Inscription</button></a>
+                        <div id="error"></div>
+                    </div>
+                </div>
+                <div id="sidebar-down">
+                    <div class="legal d-flex flex-column justify-content-center align-items-center">
+                        <p>2018 - CC BY-NC 3.0 FR</p>
+                        <p>- Access Code School -</p>
+                    </div>
+                </div>
             </div>
-
-            <div class="sidebar-header">
-                    <h3>Menu MeteoApp</h3>
-            </div>
-            <input id="login_login" type="text" placeholder="Username" autofocus autocomplete="off" />
-            <input id="pass_login" name="pass" type="password" placeholder="Password">
-            <button id="connexion_login" type="submit" class="btn btn-primary">Se connecter</button>
-            <div id="error"></div>
         </nav>
         {# Dark overlay #}
         <div id="overlay"></div>
@@ -60,7 +73,7 @@
     <script src="Assets/js/avatar.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
-    
+
     <script src="Assets/js/menu.js"></script>
 
     <script src="Assets/js/app.js"></script>
