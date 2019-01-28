@@ -63,17 +63,9 @@ document.onreadystatechange = function () {
 
                     temp = Math.round(retourReponse.hourly.data[setTime.value].temperature);
                     rain = retourReponse.hourly.data[setTime.value].precipProbability;
-                    
-                    // genre_male.addEventListener("click", (e) => {
-                    //     j = 0;
-                    //     clothes(temp, rain, j);
-                    // })
-                    // genre_female.addEventListener("click", (e) => {
-                    //     j = 4;
-                    //     clothes(temp, rain, j);
-                    // })
-                    // j = 0 ;
-                    // clothes(temp, rain, j);
+                     
+                    j = 0 ;
+                    clothes(temp, rain, j);
 
                     let lat = retourReponse.latitude;
                     let lon = retourReponse.longitude;
