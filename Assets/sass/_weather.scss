@@ -6,12 +6,12 @@
         header{
             background-color: $colorMain;
             .header-button{
-                background-color: $colorMain !important;
-                box-shadow: black 1px 1px 3px;
+                background-color: $clearMain !important;
+                // box-shadow: black 1px 1px 2px;
             }
             .header-button:hover{
                 background-color: white !important;
-                color: $colorMain;
+                color: $clearMain;
                 transition: 250;
             }
             #search{
@@ -35,10 +35,10 @@
                 width: 40px;
                 height: 40px;
                 border-radius: 50%;
-                background-color: #009688;
+                background-color: $clearMain;
                 color: white;
                 border: none;
-                box-shadow: black 1px 1px 3px;
+                // box-shadow: black 1px 1px 2px;
                 font-weight: bold;
             }
             .day-button:hover{
@@ -123,7 +123,7 @@
         background-color: $colorSummary;
         padding-bottom: 100px;
         #tempCard{
-            background-color: $colorClothe;
+            background-color: white;
             border-radius: 10px;
             box-shadow: 2px 2px 5px black;
             img{
@@ -143,7 +143,7 @@
             }
         }
         #rainCard{
-            background-color: $colorClothe;
+            background-color: white;
             border-radius: 10px;
             box-shadow: 2px 2px 5px black;
             img{
@@ -169,11 +169,21 @@
             box-shadow: 2px 2px 5px;
             .data{
                 color: $colorMain;
+                font-weight: 500;
             }
             .icon{
                 height: 25px;
                 width: auto;
                 
+            }
+        }
+        #div-compass{
+            position: relative;
+            #bgCompass{
+                position: absolute;
+                width: 75px;
+                height: 75px;
+
             }
         }
     }
