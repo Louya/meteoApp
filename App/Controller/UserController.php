@@ -65,7 +65,9 @@ class UserController extends Controller{
             $reponse = array("error"=>"Erreur dans l'identifiant ou le mot de passe");
             $_SESSION["authenticated"] = false;
         } else {
-            $reponse = array("error"=>false);
+            $user = new Users();
+            $info_user = $user->bdd_user($curr_login_encr, $curr_pass_encr);
+            $reponse = array("error"=>false, "infos"=>$info_user);
             $_SESSION["authenticated"] = true;
             session_start();
             // Stocke le login pour faire le message d'accueil personnalisé
