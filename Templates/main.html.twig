@@ -41,15 +41,10 @@
             <div class="sidebar-header">
                     <h3>Menu MeteoApp</h3>
             </div>
-            <ul class="list-unstyled components">
-                    <p>Dummy Heading</p>
-                    <li>
-                        <a href="#">Portfolio</a>
-                    </li>
-                    <li>
-                        <a href="#">Contact</a>
-                    </li>
-                </ul>
+            <input id="login_login" type="text" placeholder="Username" autofocus autocomplete="off" />
+            <input id="pass_login" name="pass" type="password" placeholder="Password">
+            <button id="connexion_login" type="submit" class="btn btn-primary">Se connecter</button>
+            <div id="error"></div>
         </nav>
         {# Contenu de la page #}
         <div class="content" id="content">
@@ -69,6 +64,8 @@
     <script src="Assets/js/menu.js"></script>
 
     <script src="Assets/js/app.js"></script>
+
+    <script src="Assets/js/authentification.js"></script>
 
 </body>
 
