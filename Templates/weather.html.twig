@@ -3,26 +3,18 @@
 {% block title %} MeteApp - Le temps {% endblock %}
 
 {% block content %}
-{# Boutons Up and Down #}
-{# <button class="page-button" id="upButton">
-    u
-</button>
-<button class="page-button" id="downButton">
-    d
-</button> #}
-{# Partie TopBar #}
-
+{# Barre de navigation #}
 <div class="topBar sticky-top">
     <header class="row p-1 m-0">
-        <div class="col-2 p-0 m-0 d-flex justify-content-start">
+        <div class="col-2 p-0 m-0 d-flex justify-content-start justify-content-lg-center">
             <button type="button" id="sidebarCollapse" class="header-button btn btn-info">
                 <img src="Assets/img/icons/burger.svg" width="24px" height="24px" alt="burger icon">
             </button>
         </div>
         <div class="col-8 p-0 m-0 text-center">
-            <input id="search" class="form-control m-0" type="search" placeholder="Search" aria-label="Search">
+            <input id="search" class="form-control m-0 text-center" type="search" placeholder="Search" aria-label="Search">
         </div>
-        <div class="col-2 p-0 m-0 d-flex justify-content-end">
+        <div class="col-2 p-0 m-0 d-flex justify-content-end justify-content-lg-center">
             <button class="header-button btn btn-info" type="button" id="adress"><img src="Assets/img/icons/search.svg"
                     width="24px" height="24px" alt="magnifier icon">
             </button>
@@ -111,8 +103,8 @@
                 </div>
             </div>
             <div class="row py-3">
-                <div class="col-12 vh-50 d-flex justify-content-center">
-                    <canvas class="summaryChart" id="summaryChart" width="" height="230px"></canvas>
+                <div class="col-12 vh-30 d-flex justify-content-center">
+                    <canvas class="summaryChart" id="summaryChart"></canvas>
                 </div>
             </div>
         </article>
@@ -216,5 +208,4 @@
 </div>
 
 </div>
-
 {% endblock %}

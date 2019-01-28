@@ -14,6 +14,10 @@
                 color: $colorMain;
                 transition: 250;
             }
+            #search{
+                text-transform: uppercase;
+                font-weight: bold;
+            }
         }
         nav{
             height: 60%;
@@ -151,10 +155,6 @@
                 font-size: 1.3em;
                 font-weight: bold;
             }
-        }
-        .summaryChart{
-            width: 100%;
-            height: 300px;
         }
     }
     .details{
