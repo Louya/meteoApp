@@ -21,9 +21,9 @@ function verify(element, event) {
                 // console.log(result.error);
                 if(!result.error){
                     // console.log(result);
-                    messageLogin.innerHTML = 'Bonjour ' + result.infos.prenom;
-                    search.value = result.infos.adresse + ' ' + result.infos.ville;
-                    console.log(result.infos.sexe);
+                    // messageLogin.innerHTML = 'Bonjour ' + result.infos.prenom;
+                    // search.value = result.infos.adresse + ' ' + result.infos.ville;
+                    // console.log(result.infos.sexe);
                     // window.location.replace("/weather");
                 } else {
                     document.querySelector("#error").innerHTML = result.error;
