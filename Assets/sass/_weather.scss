@@ -31,8 +31,9 @@
                 color: white;
             }
             p{
-                font-size: 1em;
-                color: #2E2E2E;
+                font-size: 0.9em;
+                color: $darkFont;
+                font-weight: 600;
             }
             .day-button{
                 width: 40px;
@@ -51,14 +52,22 @@
             }
         }
     }
-   
     .clothe{
         height: 85vh;
         background-color: $colorClothe;
         padding-bottom: 100px;
+        #message{
+            background-color: $clearMain;
+            color: #464646;
+            border-radius: 2px;
+        }
         .animeRow{
+            position: relative;
             height: 100%;
             padding-bottom: 100px;
+            .sexButton{
+                background-color: #464646;
+            }
             .sexButton:hover{
                 transform: scale(1.25);
                 transition: 200;
@@ -115,9 +124,13 @@
             }
             .img-avatar{
                 position: absolute;
+                height: 100%;
+                width: 100%;
             }
             .img-clothes{
-                position: relative;
+                position: absolute;
+                height: 100%;
+                width: 100%;
             }
         }        
     }
@@ -142,7 +155,7 @@
             height: 100%;
             img{
                 width: auto;
-                height: 100%;
+                height: 175px;
             }
         }
         #rainCard{
@@ -168,9 +181,11 @@
             border-radius: 5px;
             width: 100%;
             height: 100%;
-            .data{
-                color: $colorMain;
-                font-weight: 500;
+            .data{ 
+                background-color: $clearMain;
+                border-radius: 3px;
+                color: $darkFont;
+                font-weight: 550;
             }
             .icon{
                 height: 25px;
@@ -194,7 +209,10 @@
         h2{
             font-size: 1.4em;
             font-weight: bold;
-            color: white;
+            color: $colorMain;
+            background-color: white;
+            border-radius: 2px;
+            width: 100px;
         }
         p{
             font-size: 0.8em;
@@ -207,7 +225,7 @@
     .main-body{
         .topBar{
             nav{
-                height: 60%;
+                height: 65%;
                 background-color: $colorMain;
                 h2{
                     font-size: 1.6em;
@@ -222,13 +240,21 @@
             }
         }
         .clothe{
-            .img-avatar{
-                height: 90%;
-                width: auto;
+            #message{
+                font-weight: 600;
             }
-            .img-clothes{
-                height: 90%;
-                width: auto
+            .animeRow{
+                position: relative;
+                .img-avatar{
+                    position: absolute;
+                    height: 100%;
+                    width: 100%;
+                }
+                .img-clothes{
+                    position: absolute;
+                    height: 100%;
+                    width: 100%;
+                }
             }
         }
         .summary{
@@ -241,11 +267,9 @@
             .carte{
                 height: 100%;
                 .data{
-                    font-size: 1.25em;
-                    font-weight: bold !important;
-                    background-color: #FFC266;
-                    border-radius: 2px;
-                    color: white;
+                    font-size: 1.1em;
+                    font-weight: 600;
+                    // background-color: #FFD494;
                 }
             }
         }

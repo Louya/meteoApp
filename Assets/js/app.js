@@ -132,32 +132,44 @@ function clothes(temp, rain, j){
 
 function displayData(retourReponse) {
     let chartTemp0 = Math.round(retourReponse.hourly.data[0].temperature);
+    let chartTemp3 = Math.round(retourReponse.hourly.data[3].temperature);
     let chartTemp6 = Math.round(retourReponse.hourly.data[6].temperature);
+    let chartTemp9 = Math.round(retourReponse.hourly.data[9].temperature);
     let chartTemp12 = Math.round(retourReponse.hourly.data[12].temperature);
+    let chartTemp15 = Math.round(retourReponse.hourly.data[15].temperature);
     let chartTemp18 = Math.round(retourReponse.hourly.data[18].temperature);
+    let chartTemp21 = Math.round(retourReponse.hourly.data[21].temperature);
     let chartTemp23 = Math.round(retourReponse.hourly.data[23].temperature);
 
     let chartPrecip0 = Math.round(retourReponse.hourly.data[0].precipProbability * 100);
+    let chartPrecip3 = Math.round(retourReponse.hourly.data[3].precipProbability * 100);
     let chartPrecip6 = Math.round(retourReponse.hourly.data[6].precipProbability * 100);
+    let chartPrecip9 = Math.round(retourReponse.hourly.data[9].precipProbability * 100);
     let chartPrecip12 = Math.round(retourReponse.hourly.data[12].precipProbability * 100);
+    let chartPrecip15 = Math.round(retourReponse.hourly.data[15].precipProbability * 100);
     let chartPrecip18 = Math.round(retourReponse.hourly.data[18].precipProbability * 100);
+    let chartPrecip21 = Math.round(retourReponse.hourly.data[21].precipProbability * 100);
     let chartPrecip23 = Math.round(retourReponse.hourly.data[23].precipProbability * 100);
 
     new Chart(document.getElementById("summaryChart"), {
         type: 'line',
         data: {
-          labels: ['00:00', '06:00', '12:00', '18:00', '23:00'],
+          labels: ['00:00', '03:00', '06:00', '09:00', '12:00', '15:00', '18:00', '21:00', '24:00'],
           datasets: [{ 
-              data: [chartTemp0, chartTemp6, chartTemp12, chartTemp18, chartTemp23],
+              radius: 0,
+              data: [chartTemp0, chartTemp3, chartTemp6, chartTemp9, chartTemp12, chartTemp15, chartTemp18, chartTemp21, chartTemp23],
               yAxisID: 'temperature',
               label: "Température",
               borderColor: "#980000",
+              backgroundColor: "rgba(152, 0, 0, 0.4)",
               fill: true
             }, { 
-              data: [chartPrecip0, chartPrecip6, chartPrecip12, chartPrecip18, chartPrecip23],
+                radius: 0,
+              data: [chartPrecip0, chartPrecip3, chartPrecip6, chartPrecip9, chartPrecip12, chartPrecip15, chartPrecip18, chartPrecip21, chartPrecip23],
               yAxisID: 'rain',
               label: "Précipitation",
               borderColor: "#030340",
+              backgroundColor: "rgba(3, 3, 54, 0.4)",
               fill: true
             }
           ]
@@ -168,12 +180,15 @@ function displayData(retourReponse) {
             },
             title: {
                 display: false,
-                text: 'World population per region (in millions)'
+                text: 'Températures et précipitations'
             },
             scales: {
                 yAxes: [{
                     type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
                     display: true,
+                    ticks: {
+                        fontColor: "#980000"
+                    },
                     position: 'left',
                     id: 'temperature',
                 }, {
@@ -182,6 +197,7 @@ function displayData(retourReponse) {
                     position: 'right',
                     id: 'rain',
                     ticks: {
+                        fontColor: "#030340",
                         min: 0,
                         max: 100
                     },
@@ -207,7 +223,7 @@ function displayData(retourReponse) {
             break;
         case 0.125: 
         case 0.875:
-            moon = "Croissant de lune";                            
+            moon = "Croissant";                            
             break;
         case 0.25:
         case 0.375:
