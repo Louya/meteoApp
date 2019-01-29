@@ -4,12 +4,16 @@ const passLogin = document.querySelector("#pass_login");
 const messageLogin = document.querySelector("#error");
 // const search = document.querySelector("#search");
 
+console.log("je charge");
 
 function verify(element, event) {
 
     element.addEventListener(event, (e) => {
 
         if (e.key === "Enter" || event === "click") {
+
+            console.log("un evenement");
+
            
             let data = new FormData();
             data.append("login", loginLogin.value);
@@ -25,6 +29,8 @@ function verify(element, event) {
                     // search.value = result.infos.adresse + ' ' + result.infos.ville;
                     // console.log(result.infos.sexe);
                     // window.location.replace("/weather");
+                    document.querySelector("#error").innerHTML = 'Connexion réussie';
+
                 } else {
                     document.querySelector("#error").innerHTML = result.error;
                 }

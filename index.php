@@ -25,6 +25,7 @@ $router->map('GET', '/user', ['c'=>'UserController', 'a'=>'connected']);
 $router->map('GET', '/user/register', ['c'=>'UserController', 'a'=>'register']);
 $router->map('GET', '/post/[i:id]', ['c'=>'DataController', 'a'=>'post']);
 $router->map('GET', '/404', ['c'=>'DataController', 'a'=>'notFound']);
+$router->map('POST', '/weather/session', ['c'=>'DataController', 'a'=>'session']);
 
 //Correspondance avec l'URL actuelle
 $match = $router->match();

@@ -66,9 +66,9 @@ function verifyRegister(element, event) {
 
                 if(!result.message){
                     document.querySelector(".message").innerHTML = "Inscription réussie, vous allez être redirigé.";
-                    // setTimeout(function(){
-                    //     window.location.replace("/weather");
-                    // }, 3000);
+                    setTimeout(function(){
+                        window.location.replace("/weather");
+                    }, 3000);
                 } else {
                     document.querySelector(".message").innerHTML = "";
                     for (let i = 0; i < result.message.length; i++) {

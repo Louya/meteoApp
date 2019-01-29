@@ -14,6 +14,26 @@ class DataController extends Controller{
         return $this->twig->render('weather.html.twig');
     }
 
+    /** Route /session */
+    public function session(){
+
+        session_start();
+
+        
+        if (isset($_SESSION["authenticated"])) {
+            $session = array("session"=>$_SESSION["authenticated"]);
+        } else {
+            $session = array("session"=>false);
+        }
+
+        $menu = $this->twig->render('weather.html.twig', array("isAuth" => $_SESSION["authenticated"]));
+        $reponse = array("session" => $session, "menu" => $menu);
+	    echo json_encode($reponse);
+
+        // echo json_encode($reponse);
+
+    }
+
     /** Route /weather/get */
     public function get(){
       

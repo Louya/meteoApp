@@ -30,8 +30,9 @@ class UserController extends Controller{
     /** Route /login/verif */
     function verifForm() {
        
+        session_start();
         $error = false;
-
+        
         $curr_login = "";
         $curr_pass = "";
         
@@ -69,7 +70,6 @@ class UserController extends Controller{
             $info_user = $user->bdd_user($curr_login_encr, $curr_pass_encr);
             $reponse = array("error"=>false, "infos"=>$info_user);
             $_SESSION["authenticated"] = true;
-            session_start();
             // Stocke le login pour faire le message d'accueil personnalisé
         }
         echo json_encode($reponse);

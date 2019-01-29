@@ -26,6 +26,14 @@ var latitude = 48.866667;
 var longitude = 2.333333;
 var result, temp, rain;
 
+async function getSession() {
+    const res = await fetch('/weather/session', {method: "POST"});
+    const json = await res.json();
+    console.log(json);
+}
+
+getSession();
+
 
 getInitialData();
 
