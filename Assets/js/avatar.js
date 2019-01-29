@@ -11,7 +11,7 @@ const avatar_f3 = document.querySelector("#avatar_f3");
 const avatar_f4 = document.querySelector("#avatar_f4");
 
 const array_avatar = document.querySelectorAll(".img-avatar");
-const array_skin = document.querySelectorAll(".my-2");
+const array_skin = document.querySelectorAll(".skinButton");
 
 const skin1 = document.querySelector("#skin1");
 const skin2 = document.querySelector("#skin2");

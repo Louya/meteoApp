@@ -7,6 +7,9 @@
             background-color: $colorMain;
             .header-button{
                 background-color: $clearMain !important;
+                img{
+                    color: white;
+                }
                 // box-shadow: black 1px 1px 2px;
             }
             .header-button:hover{
@@ -20,7 +23,7 @@
             }
         }
         nav{
-            height: 60%;
+            height: 50%;
             background-color: $colorMain;
             h2{
                 font-size: 1.4em;
@@ -28,8 +31,9 @@
                 color: white;
             }
             p{
-                font-size: 1em;
-                color: #2E2E2E;
+                font-size: 0.9em;
+                color: $darkFont;
+                font-weight: 600;
             }
             .day-button{
                 width: 40px;
@@ -48,14 +52,22 @@
             }
         }
     }
-   
     .clothe{
         height: 85vh;
         background-color: $colorClothe;
         padding-bottom: 100px;
+        #message{
+            background-color: $clearMain;
+            color: #464646;
+            border-radius: 2px;
+        }
         .animeRow{
+            position: relative;
             height: 100%;
             padding-bottom: 100px;
+            .sexButton{
+                background-color: #464646;
+            }
             .sexButton:hover{
                 transform: scale(1.25);
                 transition: 200;
@@ -112,9 +124,13 @@
             }
             .img-avatar{
                 position: absolute;
+                height: 100%;
+                width: 100%;
             }
             .img-clothes{
-                position: relative;
+                position: absolute;
+                height: 100%;
+                width: 100%;
             }
         }        
     }
@@ -124,8 +140,7 @@
         padding-bottom: 100px;
         #tempCard{
             background-color: white;
-            border-radius: 10px;
-            box-shadow: 2px 2px 5px black;
+            border-radius: 5px;
             img{
                 height: 30px;
                 width: auto;
@@ -137,15 +152,15 @@
             }
         }
         #weatherIcon{
+            height: 100%;
             img{
-                width: 125px;
-                height: 125px;
+                width: auto;
+                height: 175px;
             }
         }
         #rainCard{
             background-color: white;
-            border-radius: 10px;
-            box-shadow: 2px 2px 5px black;
+            border-radius: 5px;
             img{
                 height: 30px;
                 width: auto;
@@ -165,11 +180,12 @@
             background-color: white;
             border-radius: 5px;
             width: 100%;
-            height: 95px;
-            box-shadow: 2px 2px 5px;
-            .data{
-                color: $colorMain;
-                font-weight: 500;
+            height: 100%;
+            .data{ 
+                background-color: $clearMain;
+                border-radius: 3px;
+                color: $darkFont;
+                font-weight: 550;
             }
             .icon{
                 height: 25px;
@@ -179,6 +195,9 @@
         }
         #div-compass{
             position: relative;
+            #compass{
+                transition: 0.3s ease-in-out all;
+            }
             #bgCompass{
                 position: absolute;
                 width: 75px;
@@ -193,10 +212,69 @@
         h2{
             font-size: 1.4em;
             font-weight: bold;
-            color: white;
+            color: $colorMain;
+            background-color: white;
+            border-radius: 2px;
+            width: 100px;
         }
         p{
             font-size: 0.8em;
+        }
+    }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) { 
+    .main-body{
+        .topBar{
+            nav{
+                height: 65%;
+                background-color: $colorMain;
+                h2{
+                    font-size: 1.6em;
+                    font-weight: bold;
+                    color: white;
+                }
+                p{
+                    font-size: 1.2em;
+                    font-weight: 600 !important;
+                    color: #464646;
+                }
+            }
+        }
+        .clothe{
+            #message{
+                font-weight: 600;
+            }
+            .animeRow{
+                position: relative;
+                .img-avatar{
+                    position: absolute;
+                    height: 100%;
+                    width: 100%;
+                }
+                .img-clothes{
+                    position: absolute;
+                    height: 100%;
+                    width: 100%;
+                }
+            }
+        }
+        .summary{
+            #weather-img{
+                width: auto;
+                height: 100%;
+            }
+        }
+        .details{
+            .carte{
+                height: 100%;
+                .data{
+                    font-size: 1.1em;
+                    font-weight: 600;
+                    // background-color: #FFD494;
+                }
+            }
         }
     }
 }
