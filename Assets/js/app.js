@@ -88,9 +88,6 @@ document.onreadystatechange = function () {
                             }  
                             document.querySelector("#search").value = ville;
                         }
-                                                            
-                    // clothes(temp, rain, j);
-
                     }).catch((error) => {
                         console.log(error);
                     });
@@ -443,6 +440,27 @@ function getInitialData() {
         setTime.addEventListener("change", () => {                
             displayHourly();
         })
+
+        let lat = retourReponse.latitude;
+        let lon = retourReponse.longitude;
+        let url = `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${lat}&lon=${lon}`;
+        
+        fetch(url, {method: "POST"})
+        .then( (result) => { return result.json() })
+        .then( (result) => {
+            if(!result.error){
+                let ville;
+                if(typeof result.address.city !== 'undefined'){
+                    ville = result.address.city;
+                } else if(typeof result.address.city === 'undefined' && typeof result.address.town !== 'undefined' ) {
+                    ville = result.address.town
+                } else {
+                    ville = result.address.village;
+                }  
+                document.querySelector("#search").value = ville;
+            }
+        })
+        
 
     }).catch((error) => {
         console.log(error);

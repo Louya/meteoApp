@@ -1,4 +1,3 @@
-
 const validerRegister = document.querySelector("#valider-register");
 const mailRegister = document.querySelector("#mail-register");
 const passRegister = document.querySelector("#pass-register");
@@ -45,7 +44,6 @@ document.onreadystatechange = function () {
 }
 
 
-
 function verifyRegister(element, event) {
 
     element.addEventListener(event, (e) => {
@@ -62,8 +60,6 @@ function verifyRegister(element, event) {
             .then( (result) => { return result.json() } )
             .then( (result) => {
                 console.log(result);
-
-
                 if(!result.message){
                     document.querySelector(".message").innerHTML = "Inscription réussie, vous allez être redirigé.";
                     // setTimeout(function(){

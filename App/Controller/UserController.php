@@ -208,10 +208,3 @@ function callAPI($method, $url, $data){
     curl_close($curl);
     return $result;
 }
-
-// $response = json_decode($get_data, true);
-// $errors = $response['response']['errors'];
-// $data = $response['response']['data'][0];
-
-
-// echo json_encode($response);
