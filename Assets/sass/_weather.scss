@@ -7,6 +7,9 @@
             background-color: $colorMain;
             .header-button{
                 background-color: $clearMain !important;
+                img{
+                    color: white;
+                }
                 // box-shadow: black 1px 1px 2px;
             }
             .header-button:hover{
@@ -20,7 +23,7 @@
             }
         }
         nav{
-            height: 60%;
+            height: 50%;
             background-color: $colorMain;
             h2{
                 font-size: 1.4em;
@@ -124,8 +127,7 @@
         padding-bottom: 100px;
         #tempCard{
             background-color: white;
-            border-radius: 10px;
-            box-shadow: 2px 2px 5px black;
+            border-radius: 5px;
             img{
                 height: 30px;
                 width: auto;
@@ -137,15 +139,15 @@
             }
         }
         #weatherIcon{
+            height: 100%;
             img{
-                width: 125px;
-                height: 125px;
+                width: auto;
+                height: 100%;
             }
         }
         #rainCard{
             background-color: white;
-            border-radius: 10px;
-            box-shadow: 2px 2px 5px black;
+            border-radius: 5px;
             img{
                 height: 30px;
                 width: auto;
@@ -165,8 +167,7 @@
             background-color: white;
             border-radius: 5px;
             width: 100%;
-            height: 95px;
-            box-shadow: 2px 2px 5px;
+            height: 100%;
             .data{
                 color: $colorMain;
                 font-weight: 500;
@@ -197,6 +198,56 @@
         }
         p{
             font-size: 0.8em;
+        }
+    }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) { 
+    .main-body{
+        .topBar{
+            nav{
+                height: 60%;
+                background-color: $colorMain;
+                h2{
+                    font-size: 1.6em;
+                    font-weight: bold;
+                    color: white;
+                }
+                p{
+                    font-size: 1.2em;
+                    font-weight: 600 !important;
+                    color: #464646;
+                }
+            }
+        }
+        .clothe{
+            .img-avatar{
+                height: 90%;
+                width: auto;
+            }
+            .img-clothes{
+                height: 90%;
+                width: auto
+            }
+        }
+        .summary{
+            #weather-img{
+                width: auto;
+                height: 100%;
+            }
+        }
+        .details{
+            .carte{
+                height: 100%;
+                .data{
+                    font-size: 1.25em;
+                    font-weight: bold !important;
+                    background-color: #FFC266;
+                    border-radius: 2px;
+                    color: white;
+                }
+            }
         }
     }
 }
