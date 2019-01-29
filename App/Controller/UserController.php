@@ -103,20 +103,6 @@ class UserController extends Controller{
             array_push($message, "Le prenom est incorrect");
         }
 
-        if($_POST["sexe"] !== "none") {
-            $curr_sexe = $_POST["sexe"];
-        } else {
-            $error = true;
-            array_push($message, "Le sexe est incorrect");
-        }
-
-        if($_POST["color"] !== "#F2F2F2") {
-            $curr_color = $_POST["color"];
-        } else {
-            $error = true;
-            array_push($message, "La couleur est incorrecte");
-        }
-
         if(isset($_POST["adresse"]) &&  !empty($_POST["adresse"])) {
             $curr_adresse = $_POST["adresse"];
         } else {
@@ -164,7 +150,7 @@ class UserController extends Controller{
             $reponse = array("message"=>$message);
         } else {
             $reponse = array("message"=>false);
-            $auth = $user->bdd_register($curr_mail, $curr_pass_encr, $curr_prenom, $curr_sexe, $curr_color, $curr_adresse, $curr_ville);
+            $auth = $user->bdd_register($curr_mail, $curr_pass_encr, $curr_prenom, $curr_adresse, $curr_ville);
         }
             
         echo json_encode($reponse);
