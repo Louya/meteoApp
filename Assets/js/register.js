@@ -1,15 +1,10 @@
-// $('.message a').click(function(){
-//     $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
-//  });
 
 const validerRegister = document.querySelector("#valider-register");
 const mailRegister = document.querySelector("#mail-register");
 const passRegister = document.querySelector("#pass-register");
 const prenomRegister = document.querySelector("#prenom-register");
-const sexeRegister = document.querySelector("#sexe-register");
 const adresseRegister = document.querySelector("#adresse-register");
 const villeRegister = document.querySelector("#ville-register");
-const colorRegister = document.querySelector("#color-register");
 
 
 
@@ -51,12 +46,6 @@ document.onreadystatechange = function () {
 
 
 
-
-
-colorRegister.addEventListener('click', () => {
-    colorRegister.style.backgroundColor = colorRegister.value; 
-})
-
 function verifyRegister(element, event) {
 
     element.addEventListener(event, (e) => {
@@ -66,8 +55,6 @@ function verifyRegister(element, event) {
             data.append("mail", mailRegister.value);
             data.append("pass", passRegister.value);
             data.append("prenom", prenomRegister.value);
-            data.append("sexe", sexeRegister.value);
-            data.append("color", colorRegister.value);
             data.append("adresse", adresseRegister.value);
             data.append("ville", villeRegister.value);
         
@@ -79,9 +66,9 @@ function verifyRegister(element, event) {
 
                 if(!result.message){
                     document.querySelector(".message").innerHTML = "Inscription réussie, vous allez être redirigé.";
-                    setTimeout(function(){
-                        window.location.replace("/weather");
-                    }, 3000);
+                    // setTimeout(function(){
+                    //     window.location.replace("/weather");
+                    // }, 3000);
                 } else {
                     document.querySelector(".message").innerHTML = "";
                     for (let i = 0; i < result.message.length; i++) {
