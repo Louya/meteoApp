@@ -13,7 +13,7 @@
                 // box-shadow: black 1px 1px 2px;
             }
             .header-button:hover{
-                background-color: white !important;
+                background-color: $darkMain !important;
                 color: $clearMain;
                 transition: 250;
             }
@@ -46,8 +46,7 @@
                 font-weight: bold;
             }
             .day-button:hover{
-                background-color: white;
-                color: $colorMain;
+                background-color: $darkMain;
                 transition: 250;
             }
         }
