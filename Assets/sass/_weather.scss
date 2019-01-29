@@ -195,6 +195,9 @@
         }
         #div-compass{
             position: relative;
+            #compass{
+                transition: 0.3s ease-in-out all;
+            }
             #bgCompass{
                 position: absolute;
                 width: 75px;
