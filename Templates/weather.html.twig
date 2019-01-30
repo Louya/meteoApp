@@ -94,19 +94,25 @@
             </div>
             <div class="row pb-3 d-flex justify-content-center align-items-center">
                 <div class="col-6">
-                    <div id="tempCard" class="py-2 py-lg-4 d-flex justify-content-center align-items-center">
-                        <img id="thermoIcon" src="Assets/img/icons/thermometer.svg" alt="icone de thermomètre">
-                        <p id="tempData" class="m-0 px-3 pl-lg-5 ">5°C</p>
+                    <div id="tempCard" class="py-2 py-lg-3 d-flex flex-column justify-content-center align-items-center">
+                        <h3 class="m-0 pb-2 pb-lg-3">Température</h3>
+                        <div class="d-flex justify-content-center align-items-center">
+                            <img id="thermoIcon" src="Assets/img/icons/thermometer.svg" alt="icone de thermomètre">
+                            <p id="tempData" class="m-0 px-3 pl-lg-4 ">5°C</p>
+                        </div>
                     </div>
                 </div>
                 <div class="col-6">
-                    <div id="rainCard" class="py-2 py-lg-4 d-flex justify-content-center align-items-center">
-                        <p id="tempRain" class="m-0 px-3 pr-lg-5">10%</p>
-                        <img id="rainIcon" src="Assets/img/icons/raindrop.svg" alt="icone de thermomètre">
+                    <div id="rainCard" class="py-2 py-lg-3 d-flex flex-column justify-content-center align-items-center">
+                        <h3 class="m-0 pb-2 pb-lg-3">Chance de pluie</h3>
+                        <div class="d-flex justify-content-center align-items-center">
+                            <p id="tempRain" class="m-0 px-3 pr-lg-4">10%</p>
+                            <img id="rainIcon" src="Assets/img/icons/raindrop.svg" alt="icone de thermomètre">
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="row py-3">
+            <div class="row py-2">
                 <div class="col-12 vh-30 d-flex justify-content-center">
                     <canvas class="summaryChart" id="summaryChart"></canvas>
                 </div>
@@ -117,15 +123,15 @@
 
             <div class="row p-1 p-lg-2 px-lg-3 h-100">
                 <div class="carte d-flex justify-content-centeralign-items-center">
-                    <div class="col-4 d-flex flex-column justify-content-center align-items-center">
+                    <div class="col-4 text-center d-flex flex-column justify-content-center align-items-center">
                         <img class="icon" src="Assets/img/icons/sunrise.svg" alt="sunrise">
                         <p class="m-0 mt-2 mt-lg-3 px-2 data">07:12</p>
                     </div>
-                    <div class="col-4 d-flex flex-column justify-content-center align-items-center">
+                    <div class="col-4 text-center d-flex flex-column justify-content-center align-items-center">
                         <img class="icon" src="Assets/img/icons/sunset.svg" alt="sunset">
                         <p class="m-0 mt-2 mt-lg-3 px-2 data">17:32</p>
                     </div>
-                    <div class="col-4  d-flex flex-column justify-content-center align-items-center">
+                    <div class="col-4 text-center d-flex flex-column justify-content-center align-items-center">
                         <img class="icon" src="Assets/img/icons/moon.svg" alt="surise">
                         <p class="m-0 mt-2 mt-lg-3 px-2 data text-center">Croissant</p>
                     </div>
@@ -134,11 +140,11 @@
 
             <div class="row p-1 p-lg-2 px-lg-3 h-100">
                 <div class="carte d-flex justify-content-center align-items-center">
-                    <div class="col-4 d-flex flex-column justify-content-center align-items-center">
+                    <div class="col-4 text-center d-flex flex-column justify-content-center align-items-center">
                         Pression:
                         <br><span class="data px-2 mt-2 mt-lg-3">1083 hPa</span>
                     </div>
-                    <div class="col-4 d-flex flex-column justify-content-center align-items-center">
+                    <div class="col-4 text-center d-flex flex-column justify-content-center align-items-center">
                         Vent:
                         <br><span class="data px-2 mt-2 mt-lg-3">10 km/h</span>
                     </div>
@@ -151,15 +157,15 @@
 
             <div class="row p-1 p-lg-2 px-lg-3 h-100">
                 <div class="carte d-flex justify-content-center align-items-center">
-                    <div class="col-4 d-flex flex-column justify-content-center align-items-center">
+                    <div class="col-4 text-center d-flex flex-column justify-content-center align-items-center">
                         Humidité:
                         <br><span class="data px-2 mt-2 mt-lg-3">63 %</span>
                     </div>
-                    <div class="col-4 d-flex flex-column justify-content-center align-items-center">
+                    <div class="col-4  text-center d-flex flex-column justify-content-center align-items-center">
                         Précip:
                         <br><span class="data px-2 mt-2 mt-lg-3">20 %</span>
                     </div>
-                    <div class="col-4 d-flex flex-column justify-content-center align-items-center">
+                    <div class="col-4 text-center d-flex flex-column justify-content-center align-items-center">
                         Temp:
                         <br><span class="data px-2 mt-2 mt-lg-3">7° C</span>
                     </div>
@@ -168,11 +174,11 @@
 
             <div class="row p-1 p-lg-2 px-lg-3 h-100">
                 <div class="carte d-flex justify-content-center align-items-center">
-                    <div class="col-6 d-flex flex-column justify-content-center align-items-center">
+                    <div class="col-6 text-center d-flex flex-column justify-content-center align-items-center">
                             indice UV:
                             <br><span class="data px-2 mt-2 mt-lg-3">1</span>
                     </div>
-                    <div class="col-6 d-flex flex-column justify-content-center align-items-center">
+                    <div class="col-6 text-center d-flex flex-column justify-content-center align-items-center">
                         Visibilité:
                             <br><span class="data px-2 mt-2 mt-lg-3">16 km</span>
                     </div>

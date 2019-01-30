@@ -172,6 +172,14 @@ function displayData(retourReponse) {
     let chartTemp21 = Math.round(retourReponse.hourly.data[21].temperature);
     let chartTemp23 = Math.round(retourReponse.hourly.data[23].temperature);
 
+    let allChartTemp = [chartTemp0, chartTemp3, chartTemp6, chartTemp9, chartTemp12, chartTemp15, chartTemp18, chartTemp21, chartTemp23];
+
+    let maxTemp = Math.max.apply(null, allChartTemp);
+    let minTemp = Math.min.apply(null, allChartTemp);
+
+    let maxAxisTemp = maxTemp > 20 ? maxTemp+2 : 20;
+    let minAxisTemp = minTemp < 0 ? minTemp-2 : 0;
+    
     let chartPrecip0 = Math.round(retourReponse.hourly.data[0].precipProbability * 100);
     let chartPrecip3 = Math.round(retourReponse.hourly.data[3].precipProbability * 100);
     let chartPrecip6 = Math.round(retourReponse.hourly.data[6].precipProbability * 100);
@@ -181,6 +189,8 @@ function displayData(retourReponse) {
     let chartPrecip18 = Math.round(retourReponse.hourly.data[18].precipProbability * 100);
     let chartPrecip21 = Math.round(retourReponse.hourly.data[21].precipProbability * 100);
     let chartPrecip23 = Math.round(retourReponse.hourly.data[23].precipProbability * 100);
+
+
 
     new Chart(document.getElementById("summaryChart"), {
         type: 'line',
@@ -218,7 +228,12 @@ function displayData(retourReponse) {
                     type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
                     display: true,
                     ticks: {
-                        fontColor: "#980000"
+                        fontColor: "#980000",
+                        min : minAxisTemp,
+                        max: maxAxisTemp,
+                        callback: function(value, index, values) {
+                            return value + '°C';
+                        }
                     },
                     position: 'left',
                     id: 'temperature',
@@ -230,7 +245,10 @@ function displayData(retourReponse) {
                     ticks: {
                         fontColor: "#030340",
                         min: 0,
-                        max: 100
+                        max: 100,
+                        callback: function(value, index, values) {
+                            return value +'%';
+                        }
                     },
     
                     // grid line settings

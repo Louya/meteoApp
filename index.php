@@ -10,7 +10,7 @@ use App\Controller\UserController;
 $router = new AltoRouter();
 
 //Sert a indiquer un sous dossier comme racine du site
-//$router->setBasePath('/meteo');
+// $router->setBasePath('/meteo');
 
 /**Création des routes */
 $router->map('GET', '/', ['c'=>'DataController', 'a'=>'weather']);
