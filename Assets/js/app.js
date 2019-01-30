@@ -91,8 +91,9 @@ document.onreadystatechange = function () {
                     }).catch((error) => {
                         console.log(error);
                     });
-                })
-    
+                }).catch((error) => {
+                    console.log(error);
+                });
             })
         }
     } else {
