@@ -4,12 +4,16 @@ const passLogin = document.querySelector("#pass_login");
 const messageLogin = document.querySelector("#error");
 // const search = document.querySelector("#search");
 
+console.log(connexionLogin);
 console.log("je charge");
 
 function verify(element, event) {
 
+    if ((element) != null) {
+
     element.addEventListener(event, (e) => {
 
+        console.log("listener");
         if (e.key === "Enter" || event === "click") {
 
             console.log("un evenement");
@@ -37,6 +41,7 @@ function verify(element, event) {
             });
         }
     })
+}
 }
 
 

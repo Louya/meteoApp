@@ -32,13 +32,16 @@
 <body class="main-body">
 
     <main class="container-fluid p-0 m-0">
-        {% block menu %}
-        {% endblock %}
+        {% set auth = {'isAuth' : isAuth} %}
+        <nav id="sidebar">
+            {% include "menu.html.twig" with auth %}
+        </nav>
         {# Contenu de la page #}
         <div class="content" id="content">
             {% block content %}
             {% endblock %}
         </div>
+
     </main>
 
     <script src="Assets/js/adress.js"></script>

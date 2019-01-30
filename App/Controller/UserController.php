@@ -158,8 +158,10 @@ class UserController extends Controller{
 
     /** Route /weather/deconnexion */
     public function deconnexion() {
-        session_unset();    
+        session_start();
+        session_unset(); 
         session_destroy(); 
+
         header('Location: /weather');
     }
         
