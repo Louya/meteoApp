@@ -308,7 +308,7 @@ function displayData(retourReponse) {
     weatherData[1].innerHTML = setHour + ":" + setMinute;
     weatherData[2].innerHTML = moon;
     weatherData[3].innerHTML = Math.round(retourReponse.currently.pressure) + " hPa";
-    weatherData[4].innerHTML = Math.round(retourReponse.currently.windSpeed) + " m/s";
+    weatherData[4].innerHTML = Math.round(retourReponse.currently.windSpeed)*3.6 + " km/h";
     weatherData[5].innerHTML = Math.round(retourReponse.currently.humidity) + "%";
     weatherData[6].innerHTML = Math.round(retourReponse.currently.precipProbability * 100) + "%";
     weatherData[7].innerHTML = Math.round(retourReponse.currently.temperature) + "°C";
@@ -326,7 +326,7 @@ function displayHourly() {
     weatherImg.src = "../Assets/img/weather-icons/" + result.hourly.data[setTime.value].icon + ".svg";
     pluie.innerHTML = Math.round(result.hourly.data[setTime.value].precipProbability * 100) + "%";
     weatherData[3].innerHTML = Math.round(result.hourly.data[setTime.value].pressure) + " hPa";
-    weatherData[4].innerHTML = Math.round(result.hourly.data[setTime.value].windSpeed) + " m/s";
+    weatherData[4].innerHTML = Math.round(result.hourly.data[setTime.value].windSpeed)*3.6 + " km/h";
     weatherData[5].innerHTML = Math.round(result.hourly.data[setTime.value].humidity) + "%";
     weatherData[6].innerHTML = Math.round(result.hourly.data[setTime.value].precipProbability * 100) + "%";
     weatherData[7].innerHTML = Math.round(result.hourly.data[setTime.value].temperature) + "°C";
