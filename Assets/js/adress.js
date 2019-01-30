@@ -6,7 +6,7 @@ function verify(element, event) {
         if (e.key === "Enter" || event === "click") {
 
             let city = location_input.value;
-            let url = `https://nominatim.openstreetmap.org/search?format=json&city=${city}`;
+            let url = `https://nominatim.openstreetmap.org/search?format=json&q=${city}`;
 
             fetch(url, {
                     method: "POST"

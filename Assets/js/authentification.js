@@ -26,16 +26,11 @@ function verify(element, event) {
             .then( (result) => {
                 // console.log(result.error);
                 if(!result.error){
-                    // console.log(result);
-                    // messageLogin.innerHTML = 'Bonjour ' + result.infos.prenom;
-                    // search.value = result.infos.adresse + ' ' + result.infos.ville;
-                    // console.log(result.infos.sexe);
-                    // window.location.replace("/weather");
                     console.log(result);
                     console.log(result.adresse)
                     console.log(result.ville)
                     document.querySelector("#error").innerHTML = 'Connexion réussie';
-                    // location.reload();
+                    location.reload();
 
                 } else {
                     document.querySelector("#error").innerHTML = result.error;

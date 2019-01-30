@@ -35,17 +35,17 @@ async function getSession() {
         let ville = json.ville;
         let link = "https://nominatim.openstreetmap.org/search?format=json&q=";
         async function getLocation() {
-            const result = await fetch(link + adresse + "," + ville, {method: "GET"});
-            const reponse = await result.json();
-            console.log(reponse[0].lat);
-            console.log(reponse[0].lon);
+            const resultatFetch = await fetch(link + adresse + "," + ville, {method: "GET"});
+            const reponse = await resultatFetch.json();
             latitude = reponse[0].lat;
             longitude = reponse[0].lon;
+            result = reponse;
+
             getInitialData();
+            // displayHourly();
 
         }
         getLocation();
-        console.log(json);
     } else {
 
     
@@ -135,25 +135,25 @@ getSession();
 
 function clothes(temp, rain, j){
                             
-    if(temp >= 4 && rain < 0.15){
+    if(temp >= 15 && rain < 0.30){
         for (let i = 0; i < array_clothes.length; i++) {
             array_clothes[i].classList.add("invisible");
         }
     set_clothes[j+0].classList.remove("invisible");
     
-    }else if(temp >= 4 && rain > 0.15){
+    }else if(temp >= 15 && rain > 0.30){
         for (let i = 0; i < array_clothes.length; i++) {
             array_clothes[i].classList.add("invisible");
         }
         set_clothes[j+1].classList.remove("invisible");
 
-    }else if(temp < 4 && rain < 0.15){
+    }else if(temp < 15 && rain < 0.30){
         for (let i = 0; i < array_clothes.length; i++) {
             array_clothes[i].classList.add("invisible");
         }
         set_clothes[j+2].classList.remove("invisible");
         
-    }else if(temp < 4 && rain > 0.15){
+    }else if(temp < 15 && rain > 0.30){
         for (let i = 0; i < array_clothes.length; i++) {
             array_clothes[i].classList.add("invisible");
         }

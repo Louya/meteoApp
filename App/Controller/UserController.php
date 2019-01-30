@@ -154,6 +154,7 @@ class UserController extends Controller{
             $reponse = array("message"=>false);
             $auth = $user->bdd_register($curr_mail, $curr_pass_encr, $curr_prenom, $curr_adresse, $curr_ville);
         }
+
             
         echo json_encode($reponse);
     }
