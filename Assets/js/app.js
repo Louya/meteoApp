@@ -26,88 +26,112 @@ var latitude = 48.866667;
 var longitude = 2.333333;
 var result, temp, rain;
 
-// async function getSession() {
-//     const res = await fetch('/weather/session', {method: "POST"});
-//     const json = await res.json();
-//     console.log(json);
-//     document.getElementById("sidebar").innerHTML = json.menu;
-// }
+async function getSession() {
+    const res = await fetch('/weather/session', {method: "POST"});
+    const json = await res.json();
+    
+    if(json) {
+        let adresse = json.adresse;
+        let ville = json.ville;
+        let link = "https://nominatim.openstreetmap.org/search?format=json&q=";
+        async function getLocation() {
+            const result = await fetch(link + adresse + "," + ville, {method: "GET"});
+            const reponse = await result.json();
+            console.log(reponse[0].lat);
+            console.log(reponse[0].lon);
+            latitude = reponse[0].lat;
+            longitude = reponse[0].lon;
+            getInitialData();
 
-// getSession();
+        }
+        getLocation();
+        console.log(json);
+    } else {
+
+    
+    // document.getElementById("sidebar").innerHTML = json.menu;
 
 
-getInitialData();
 
-document.onreadystatechange = function () {
-    if (document.readyState === "complete") {
 
-        if (navigator.geolocation) { /*demander l'autorisation d'obtenir la géolocalisation*/
-            navigator.geolocation.getCurrentPosition(function (position) {
 
-                time = new Date();
-                time = time.getTime();
-                time = Math.round(time/1000);
-                limit = time + (86400*6);
-                base = time;
+    getInitialData();
 
-                precedent.style.display = "none";
+    document.onreadystatechange = function () {
+        if (document.readyState === "complete") {
 
-                latitude = position.coords.latitude;
-                longitude = position.coords.longitude;
+            if (navigator.geolocation) { /*demander l'autorisation d'obtenir la géolocalisation*/
+                navigator.geolocation.getCurrentPosition(function (position) {
 
-                let data = new FormData();
+                    time = new Date();
+                    time = time.getTime();
+                    time = Math.round(time/1000);
+                    limit = time + (86400*6);
+                    base = time;
 
-                data.append("latitude", latitude);
-                data.append("longitude", longitude);
+                    precedent.style.display = "none";
 
-                fetch("/weather/get", {method: "POST", body: data})
-                .then((retourReponse) => {
-                    return retourReponse.json();
-                })
-                .then((retourReponse) => {
+                    latitude = position.coords.latitude;
+                    longitude = position.coords.longitude;
 
-                    result = retourReponse;
+                    let data = new FormData();
 
-                    displayData(retourReponse);
+                    data.append("latitude", latitude);
+                    data.append("longitude", longitude);
 
-                    temp = Math.round(retourReponse.hourly.data[setTime.value].temperature);
-                    rain = retourReponse.hourly.data[setTime.value].precipProbability;
-                     
-                    j = 0 ;
-                    clothes(temp, rain, j);
+                    fetch("/weather/get", {method: "POST", body: data})
+                    .then((retourReponse) => {
+                        return retourReponse.json();
+                    })
+                    .then((retourReponse) => {
 
-                    let lat = retourReponse.latitude;
-                    let lon = retourReponse.longitude;
-                    let url = `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${lat}&lon=${lon}`;
-                    
-                    fetch(url, {method: "POST"})
-                    .then( (result) => { return result.json() })
-                    .then( (result) => {
-                        if(!result.error){
-                            let ville;
+                        result = retourReponse;
 
-                            if(typeof result.address.city !== 'undefined'){
-                                ville = result.address.city;
+                        displayData(retourReponse);
 
-                            } else if(typeof result.address.city === 'undefined' && typeof result.address.town !== 'undefined' ) {
-                                ville = result.address.town
+                        temp = Math.round(retourReponse.hourly.data[setTime.value].temperature);
+                        rain = retourReponse.hourly.data[setTime.value].precipProbability;
+                        
+                        j = 0 ;
+                        clothes(temp, rain, j);
 
-                            } else {
-                                ville = result.address.village;
-                            }  
-                            document.querySelector("#search").value = ville;
-                        }
+                        let lat = retourReponse.latitude;
+                        let lon = retourReponse.longitude;
+                        let url = `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${lat}&lon=${lon}`;
+                        
+                        fetch(url, {method: "POST"})
+                        .then( (result) => { return result.json() })
+                        .then( (result) => {
+                            if(!result.error){
+                                let ville;
+
+                                if(typeof result.address.city !== 'undefined'){
+                                    ville = result.address.city;
+
+                                } else if(typeof result.address.city === 'undefined' && typeof result.address.town !== 'undefined' ) {
+                                    ville = result.address.town
+
+                                } else {
+                                    ville = result.address.village;
+                                }  
+                                document.querySelector("#search").value = ville;
+                            }
+                        }).catch((error) => {
+                            console.log(error);
+                        });
                     }).catch((error) => {
                         console.log(error);
                     });
-                }).catch((error) => {
-                    console.log(error);
-                });
-            })
+                })
+            }
+        } else {
         }
-    } else {
     }
+
 }
+}
+
+getSession();
 
 function clothes(temp, rain, j){
                             
@@ -476,3 +500,4 @@ function getInitialData() {
         console.log(error);
     });
 }
+

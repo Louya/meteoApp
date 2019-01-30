@@ -68,9 +68,10 @@ class UserController extends Controller{
         } else {
             $user = new Users();
             $info_user = $user->bdd_user($curr_login_encr, $curr_pass_encr);
-            $reponse = array("error"=>false, "infos"=>$info_user);
             $_SESSION["authenticated"] = true;
-            $_SESSION["prenom"] = $reponse["infos"];
+            $_SESSION["adresse"] = $info_user["adresse"];
+            $_SESSION["ville"] = $info_user["ville"];
+            $reponse = array("error"=>false, "adresse"=>$_SESSION["adresse"], "ville" => $_SESSION["ville"]);
             // Stocke le login pour faire le message d'accueil personnalisé
         }
         echo json_encode($reponse);

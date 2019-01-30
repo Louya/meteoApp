@@ -27,6 +27,13 @@ class DataController extends Controller{
 
         session_start();
 
+        if (isset($_SESSION["adresse"]) && isset($_SESSION["ville"])) {
+            $infos = array("adresse" => $_SESSION["adresse"],"ville" => $_SESSION["ville"]);
+            echo json_encode($infos);
+        } else {
+            echo json_encode(false);
+        }
+
     //     if(isset($_SESSION["authenticated"])) {
 
     //     if($_SESSION["authenticated"]) {
@@ -42,22 +49,15 @@ class DataController extends Controller{
     //     }
 
         
-        if (isset($_SESSION["authenticated"])) {
-            $session = true;
-        } else {
-            $session = false;
-        }
-
-        $menu = $this->twig->render('menu.html.twig', array("isAuth" => $session));
-        $reponse = array("session" => $session, "menu" => $menu);
-	    echo json_encode($reponse);
-
-        // echo json_encode($reponse);
-
-        // if (isset($_SESSION['last_activity']) && (time() - $_SESSION['last_activity'] > 1)) {
-        //     session_unset();    
-        //     session_destroy(); 
+        // if (isset($_SESSION["authenticated"])) {
+        //     $session = true;
+        // } else {
+        //     $session = false;
         // }
+
+        // $menu = $this->twig->render('menu.html.twig', array("isAuth" => $session));
+        // $reponse = array("session" => $session, "menu" => $menu);
+	    // echo json_encode($reponse);
 
     }
 
