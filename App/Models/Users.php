@@ -30,7 +30,7 @@ class Users extends Database
 
         public function bdd_user($curr_login_encr, $curr_pass_encr) 
         {
-            $req = 'SELECT prenom, sexe, color, adresse, ville FROM `user` WHERE mail = :user AND pass = :password'; // Je compte le nombre d'entrée ayant pour mot de passe et login ceux rentrés
+            $req = 'SELECT prenom, adresse, ville FROM `user` WHERE mail = :user AND pass = :password'; // Je compte le nombre d'entrée ayant pour mot de passe et login ceux rentrés
             return parent::getOne($req,['password'=>$curr_pass_encr, 'user'=>$curr_login_encr]);
         }
 

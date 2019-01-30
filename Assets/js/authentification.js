@@ -4,8 +4,6 @@ const passLogin = document.querySelector("#pass_login");
 const messageLogin = document.querySelector("#error");
 // const search = document.querySelector("#search");
 
-console.log(connexionLogin);
-console.log("je charge");
 
 function verify(element, event) {
 
@@ -34,6 +32,7 @@ function verify(element, event) {
                     // console.log(result.infos.sexe);
                     // window.location.replace("/weather");
                     document.querySelector("#error").innerHTML = 'Connexion réussie';
+                    location.reload();
 
                 } else {
                     document.querySelector("#error").innerHTML = result.error;
