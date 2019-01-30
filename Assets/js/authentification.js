@@ -7,9 +7,15 @@ const messageLogin = document.querySelector("#error");
 
 function verify(element, event) {
 
+    if ((element) != null) {
+
     element.addEventListener(event, (e) => {
 
+        console.log("listener");
         if (e.key === "Enter" || event === "click") {
+
+            console.log("un evenement");
+
            
             let data = new FormData();
             data.append("login", loginLogin.value);
@@ -25,12 +31,16 @@ function verify(element, event) {
                     // search.value = result.infos.adresse + ' ' + result.infos.ville;
                     // console.log(result.infos.sexe);
                     // window.location.replace("/weather");
+                    document.querySelector("#error").innerHTML = 'Connexion réussie';
+                    location.reload();
+
                 } else {
                     document.querySelector("#error").innerHTML = result.error;
                 }
             });
         }
     })
+}
 }
 
 

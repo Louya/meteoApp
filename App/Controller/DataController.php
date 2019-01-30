@@ -11,7 +11,54 @@ class DataController extends Controller{
 
     /** Route /weather */
     public function weather(){
-        return $this->twig->render('weather.html.twig');
+        session_start();
+        if (isset($_SESSION["authenticated"])) {
+            $session = true;
+        } else {
+            $session = false;
+        }
+        // var_dump($session);
+        // die();
+        return $this->twig->render('weather.html.twig', array("isAuth"=>$session));
+    }
+
+    /** Route weather/session */
+    public function session(){
+
+        session_start();
+
+    //     if(isset($_SESSION["authenticated"])) {
+
+    //     if($_SESSION["authenticated"]) {
+
+    //         $session = array("session"=>$_SESSION["authenticated"]);
+            
+    //     } else {
+    //         $session = array("session"=>false);
+    //     }
+        
+    // } else {
+    //         $session = array("session"=>false);
+    //     }
+
+        
+        if (isset($_SESSION["authenticated"])) {
+            $session = true;
+        } else {
+            $session = false;
+        }
+
+        $menu = $this->twig->render('menu.html.twig', array("isAuth" => $session));
+        $reponse = array("session" => $session, "menu" => $menu);
+	    echo json_encode($reponse);
+
+        // echo json_encode($reponse);
+
+        // if (isset($_SESSION['last_activity']) && (time() - $_SESSION['last_activity'] > 1)) {
+        //     session_unset();    
+        //     session_destroy(); 
+        // }
+
     }
 
     /** Route /weather/get */
@@ -61,7 +108,7 @@ class DataController extends Controller{
             $ms = $_POST["time"];
         }
 
-        $link = "https://api.darksky.net/forecast/43ead45b8a5e94d1444fc89ebdc1417e/".$latitude.",".$longitude.",".$ms."?lang=fr&units=si";
+        $link = "https://api.darksky.net/forecast/dc13d8d3db140a701e2aac4edfdfcfb3/".$latitude.",".$longitude.",".$ms."?lang=fr&units=si";
 
         echo $get_data = callAPI('GET', $link, false);
 

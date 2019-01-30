@@ -14,10 +14,12 @@ function verify(element, event) {
                 .then((result) => {
                     return result.json()
                 })
-                .then((result) => {
-                    if (!result.error) {
-                        longitude = result[0].lon;
-                        latitude = result[0].lat;
+                .then((resultat) => {
+                    if (!resultat.error) {
+
+                        // result = resultat;
+                        longitude = resultat[0].lon;
+                        latitude = resultat[0].lat;
 
                         let data = new FormData();
 
@@ -46,18 +48,21 @@ function verify(element, event) {
                                     j = 0;
                                     clothes(temp, rain, j);
 
-                                    displayData(results);
-
                                     result = results;
-
+                                    displayData(results);
+                                    displayHourly();
                                 } else {
                                     document.querySelector("#error").innerHTML = results.error;
                                 }
+                            }).catch((error) => {
+                                console.log(error);
                             });
 
                     } else {
                         document.querySelector("#error").innerHTML = result.error;
                     }
+                }).catch((error) => {
+                    console.log(error);
                 });
         }
     })
