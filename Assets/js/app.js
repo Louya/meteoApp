@@ -152,12 +152,10 @@ function displayData(retourReponse) {
 
     let maxTemp = Math.max.apply(null, allChartTemp);
     let minTemp = Math.min.apply(null, allChartTemp);
-    console.log(maxTemp, minTemp);
 
     let maxAxisTemp = maxTemp > 20 ? maxTemp+2 : 20;
     let minAxisTemp = minTemp < 0 ? minTemp-2 : 0;
-    console.log(maxAxisTemp, minTemp);
-   
+    
     let chartPrecip0 = Math.round(retourReponse.hourly.data[0].precipProbability * 100);
     let chartPrecip3 = Math.round(retourReponse.hourly.data[3].precipProbability * 100);
     let chartPrecip6 = Math.round(retourReponse.hourly.data[6].precipProbability * 100);

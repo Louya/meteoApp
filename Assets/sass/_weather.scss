@@ -140,6 +140,9 @@
         #tempCard{
             background-color: white;
             border-radius: 5px;
+            h3{
+                font-size: 0.8em;
+            }
             img{
                 height: 30px;
                 width: auto;
@@ -160,6 +163,9 @@
         #rainCard{
             background-color: white;
             border-radius: 5px;
+            h3{
+                font-size: 0.8em;
+            }
             img{
                 height: 30px;
                 width: auto;
@@ -185,6 +191,7 @@
                 border-radius: 3px;
                 color: $darkFont;
                 font-weight: 550;
+                min-width: 85px;
             }
             .icon{
                 height: 25px;
@@ -260,6 +267,16 @@
             }
         }
         .summary{
+            #rainCard{
+                h3{
+                font-size: 1em;
+                }
+            }
+            #tempCard{
+                h3{
+                font-size: 1em;
+                }
+            }
             #weather-img{
                 width: auto;
                 height: 100%;
@@ -271,6 +288,7 @@
                 .data{
                     font-size: 1.1em;
                     font-weight: 600;
+                    min-width: 90px;
                     // background-color: #FFD494;
                 }
             }
